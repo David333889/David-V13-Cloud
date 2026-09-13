@@ -1,0 +1,502 @@
+[
+  {
+    "code": "2330",
+    "name": "台積電",
+    "market": "TW"
+  },
+  {
+    "code": "2454",
+    "name": "聯發科",
+    "market": "TW"
+  },
+  {
+    "code": "2317",
+    "name": "鴻海",
+    "market": "TW"
+  },
+  {
+    "code": "2382",
+    "name": "廣達",
+    "market": "TW"
+  },
+  {
+    "code": "3231",
+    "name": "緯創",
+    "market": "TW"
+  },
+  {
+    "code": "6669",
+    "name": "緯穎",
+    "market": "TW"
+  },
+  {
+    "code": "3443",
+    "name": "創意",
+    "market": "TW"
+  },
+  {
+    "code": "3661",
+    "name": "世芯-KY",
+    "market": "TW"
+  },
+  {
+    "code": "2357",
+    "name": "華碩",
+    "market": "TW"
+  },
+  {
+    "code": "2376",
+    "name": "技嘉",
+    "market": "TW"
+  },
+  {
+    "code": "2383",
+    "name": "台光電",
+    "market": "TW"
+  },
+  {
+    "code": "2368",
+    "name": "金像電",
+    "market": "TW"
+  },
+  {
+    "code": "3037",
+    "name": "欣興",
+    "market": "TW"
+  },
+  {
+    "code": "8046",
+    "name": "南電",
+    "market": "TW"
+  },
+  {
+    "code": "3189",
+    "name": "景碩",
+    "market": "TW"
+  },
+  {
+    "code": "6274",
+    "name": "台燿",
+    "market": "TWO"
+  },
+  {
+    "code": "6213",
+    "name": "聯茂",
+    "market": "TW"
+  },
+  {
+    "code": "2313",
+    "name": "華通",
+    "market": "TW"
+  },
+  {
+    "code": "4958",
+    "name": "臻鼎-KY",
+    "market": "TW"
+  },
+  {
+    "code": "1815",
+    "name": "富喬",
+    "market": "TWO"
+  },
+  {
+    "code": "2345",
+    "name": "智邦",
+    "market": "TW"
+  },
+  {
+    "code": "6442",
+    "name": "光聖",
+    "market": "TW"
+  },
+  {
+    "code": "3081",
+    "name": "聯亞",
+    "market": "TWO"
+  },
+  {
+    "code": "4979",
+    "name": "華星光",
+    "market": "TWO"
+  },
+  {
+    "code": "3163",
+    "name": "波若威",
+    "market": "TWO"
+  },
+  {
+    "code": "3363",
+    "name": "上詮",
+    "market": "TWO"
+  },
+  {
+    "code": "3450",
+    "name": "聯鈞",
+    "market": "TW"
+  },
+  {
+    "code": "2455",
+    "name": "全新",
+    "market": "TW"
+  },
+  {
+    "code": "4971",
+    "name": "IET-KY",
+    "market": "TWO"
+  },
+  {
+    "code": "4991",
+    "name": "環宇-KY",
+    "market": "TWO"
+  },
+  {
+    "code": "3017",
+    "name": "奇鋐",
+    "market": "TW"
+  },
+  {
+    "code": "3324",
+    "name": "雙鴻",
+    "market": "TWO"
+  },
+  {
+    "code": "3653",
+    "name": "健策",
+    "market": "TW"
+  },
+  {
+    "code": "2059",
+    "name": "川湖",
+    "market": "TW"
+  },
+  {
+    "code": "8996",
+    "name": "高力",
+    "market": "TW"
+  },
+  {
+    "code": "2308",
+    "name": "台達電",
+    "market": "TW"
+  },
+  {
+    "code": "2301",
+    "name": "光寶科",
+    "market": "TW"
+  },
+  {
+    "code": "2421",
+    "name": "建準",
+    "market": "TW"
+  },
+  {
+    "code": "6230",
+    "name": "尼得科超眾",
+    "market": "TW"
+  },
+  {
+    "code": "3483",
+    "name": "力致",
+    "market": "TWO"
+  },
+  {
+    "code": "2408",
+    "name": "南亞科",
+    "market": "TW"
+  },
+  {
+    "code": "2344",
+    "name": "華邦電",
+    "market": "TW"
+  },
+  {
+    "code": "2337",
+    "name": "旺宏",
+    "market": "TW"
+  },
+  {
+    "code": "8299",
+    "name": "群聯",
+    "market": "TWO"
+  },
+  {
+    "code": "5289",
+    "name": "宜鼎",
+    "market": "TWO"
+  },
+  {
+    "code": "3260",
+    "name": "威剛",
+    "market": "TWO"
+  },
+  {
+    "code": "2451",
+    "name": "創見",
+    "market": "TW"
+  },
+  {
+    "code": "3006",
+    "name": "晶豪科",
+    "market": "TW"
+  },
+  {
+    "code": "8271",
+    "name": "宇瞻",
+    "market": "TW"
+  },
+  {
+    "code": "6770",
+    "name": "力積電",
+    "market": "TW"
+  },
+  {
+    "code": "2327",
+    "name": "國巨",
+    "market": "TW"
+  },
+  {
+    "code": "2492",
+    "name": "華新科",
+    "market": "TW"
+  },
+  {
+    "code": "3026",
+    "name": "禾伸堂",
+    "market": "TW"
+  },
+  {
+    "code": "6173",
+    "name": "信昌電",
+    "market": "TWO"
+  },
+  {
+    "code": "5483",
+    "name": "中美晶",
+    "market": "TWO"
+  },
+  {
+    "code": "6488",
+    "name": "環球晶",
+    "market": "TWO"
+  },
+  {
+    "code": "2449",
+    "name": "京元電子",
+    "market": "TW"
+  },
+  {
+    "code": "3711",
+    "name": "日月光投控",
+    "market": "TW"
+  },
+  {
+    "code": "6223",
+    "name": "旺矽",
+    "market": "TWO"
+  },
+  {
+    "code": "6515",
+    "name": "穎崴",
+    "market": "TW"
+  },
+  {
+    "code": "7769",
+    "name": "鴻勁",
+    "market": "TW"
+  },
+  {
+    "code": "6640",
+    "name": "均華",
+    "market": "TWO"
+  },
+  {
+    "code": "2467",
+    "name": "志聖",
+    "market": "TW"
+  },
+  {
+    "code": "3131",
+    "name": "弘塑",
+    "market": "TWO"
+  },
+  {
+    "code": "6510",
+    "name": "精測",
+    "market": "TWO"
+  },
+  {
+    "code": "1560",
+    "name": "中砂",
+    "market": "TW"
+  },
+  {
+    "code": "5269",
+    "name": "祥碩",
+    "market": "TW"
+  },
+  {
+    "code": "6187",
+    "name": "萬潤",
+    "market": "TWO"
+  },
+  {
+    "code": "6271",
+    "name": "同欣電",
+    "market": "TW"
+  },
+  {
+    "code": "3034",
+    "name": "聯詠",
+    "market": "TW"
+  },
+  {
+    "code": "3008",
+    "name": "大立光",
+    "market": "TW"
+  },
+  {
+    "code": "3665",
+    "name": "貿聯-KY",
+    "market": "TW"
+  },
+  {
+    "code": "2303",
+    "name": "聯電",
+    "market": "TW"
+  },
+  {
+    "code": "5347",
+    "name": "世界",
+    "market": "TWO"
+  },
+  {
+    "code": "2207",
+    "name": "和泰車",
+    "market": "TW"
+  },
+  {
+    "code": "2049",
+    "name": "上銀",
+    "market": "TW"
+  },
+  {
+    "code": "1590",
+    "name": "亞德客-KY",
+    "market": "TW"
+  },
+  {
+    "code": "2359",
+    "name": "所羅門",
+    "market": "TW"
+  },
+  {
+    "code": "6215",
+    "name": "和椿",
+    "market": "TW"
+  },
+  {
+    "code": "4576",
+    "name": "大銀微系統",
+    "market": "TW"
+  },
+  {
+    "code": "2356",
+    "name": "英業達",
+    "market": "TW"
+  },
+  {
+    "code": "4938",
+    "name": "和碩",
+    "market": "TW"
+  },
+  {
+    "code": "2377",
+    "name": "微星",
+    "market": "TW"
+  },
+  {
+    "code": "3706",
+    "name": "神達",
+    "market": "TW"
+  },
+  {
+    "code": "8210",
+    "name": "勤誠",
+    "market": "TW"
+  },
+  {
+    "code": "3013",
+    "name": "晟銘電",
+    "market": "TW"
+  },
+  {
+    "code": "3533",
+    "name": "嘉澤",
+    "market": "TW"
+  },
+  {
+    "code": "2360",
+    "name": "致茂",
+    "market": "TW"
+  },
+  {
+    "code": "2395",
+    "name": "研華",
+    "market": "TW"
+  },
+  {
+    "code": "6414",
+    "name": "樺漢",
+    "market": "TW"
+  },
+  {
+    "code": "3583",
+    "name": "辛耘",
+    "market": "TW"
+  },
+  {
+    "code": "3413",
+    "name": "京鼎",
+    "market": "TW"
+  },
+  {
+    "code": "3680",
+    "name": "家登",
+    "market": "TWO"
+  },
+  {
+    "code": "6643",
+    "name": "M31",
+    "market": "TWO"
+  },
+  {
+    "code": "6531",
+    "name": "愛普*",
+    "market": "TW"
+  },
+  {
+    "code": "6789",
+    "name": "采鈺",
+    "market": "TW"
+  },
+  {
+    "code": "6282",
+    "name": "康舒",
+    "market": "TW"
+  },
+  {
+    "code": "6781",
+    "name": "AES-KY",
+    "market": "TW"
+  },
+  {
+    "code": "6805",
+    "name": "富世達",
+    "market": "TW"
+  },
+  {
+    "code": "3693",
+    "name": "營邦",
+    "market": "TWO"
+  }
+]
