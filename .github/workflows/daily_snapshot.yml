@@ -1,15 +1,23 @@
-name: David V13 100-Stock Daily Snapshot
+name: David V13 100-Stock Market Update
 
 on:
   workflow_dispatch:
   schedule:
-    # 06:45 UTC = 14:45 Taiwan time; Monday-Friday after TW market close
+    # GitHub cron 使用 UTC，台灣時間 = UTC+8
+    # 台灣 09:00～12:55，每 5 分鐘執行一次
+    - cron: "*/5 1-4 * * 1-5"
+
+    # 台灣 13:00～13:30，每 5 分鐘執行一次
+    - cron: "0,5,10,15,20,25,30 5 * * 1-5"
+
+    # 台灣 14:45，盤後最後一次校正保存
     - cron: "45 6 * * 1-5"
 
 jobs:
   snapshot:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Save 100-stock daily snapshot to Supabase
+      - name: Save 100-stock market snapshot to Supabase
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
