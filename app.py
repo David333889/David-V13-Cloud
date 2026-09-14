@@ -5,7 +5,8 @@ import numpy as np
 import json
 import time
 import os
-from datetime import date
+from datetime import date, datetime, time as dt_time
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 
@@ -191,9 +192,67 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.success(
-    "系統狀態：正常"
-)
+# ============================================================
+# V13 Cloud｜台股盤中 60 秒自動刷新
+# 週一～週五 09:00～13:30
+# 非交易時間不觸發完整 App 重跑
+# ============================================================
+
+TAIPEI_TZ = ZoneInfo("Asia/Taipei")
+
+
+def is_tw_market_open():
+    now = datetime.now(TAIPEI_TZ)
+
+    return (
+        now.weekday() < 5
+        and dt_time(9, 0) <= now.time() <= dt_time(13, 30)
+    )
+
+
+@st.fragment(run_every="60s")
+def v13_market_auto_refresh():
+
+    now_ts = time.time()
+
+    last_ts = st.session_state.get(
+        "_v13_last_full_refresh_ts"
+    )
+
+    # 第一次開啟頁面時只記錄時間，
+    # 避免一進頁面就立刻無限 rerun
+    if last_ts is None:
+
+        st.session_state[
+            "_v13_last_full_refresh_ts"
+        ] = now_ts
+
+    # 台股交易時間內，每約 60 秒完整刷新一次
+    elif (
+        is_tw_market_open()
+        and (now_ts - last_ts) >= 55
+    ):
+
+        st.session_state[
+            "_v13_last_full_refresh_ts"
+        ] = now_ts
+
+        st.rerun()
+
+    if is_tw_market_open():
+
+        st.caption(
+            "🟢 盤中自動刷新：ON｜每 60 秒更新"
+        )
+
+    else:
+
+        st.caption(
+            "⚪ 盤中自動刷新：OFF｜非交易時間"
+        )
+
+
+v13_market_auto_refresh()
 
 
 # ============================================================
