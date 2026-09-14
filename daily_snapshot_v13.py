@@ -6,11 +6,15 @@ import time
 import pandas as pd
 import numpy as np
 import yfinance as yf
-from supabase import create_client
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 MIN_HISTORY_ROWS = 60
 STOCKS_PER_PAGE = 10
-DEFAULT_STOCKS = [{'code': '2330', 'name': '台積電', 'market': 'TW'},
+
+DEFAULT_STOCKS = [
+    {'code': '2330', 'name': '台積電', 'market': 'TW'},
     {'code': '2454', 'name': '聯發科', 'market': 'TW'},
     {'code': '2317', 'name': '鴻海', 'market': 'TW'},
     {'code': '2382', 'name': '廣達', 'market': 'TW'},
@@ -109,7 +113,9 @@ DEFAULT_STOCKS = [{'code': '2330', 'name': '台積電', 'market': 'TW'},
     {'code': '6282', 'name': '康舒', 'market': 'TW'},
     {'code': '6781', 'name': 'AES-KY', 'market': 'TW'},
     {'code': '6805', 'name': '富世達', 'market': 'TW'},
-    {'code': '3693', 'name': '營邦', 'market': 'TWO'}]
+    {'code': '3693', 'name': '營邦', 'market': 'TWO'},
+]
+
 
 def _clean_history_frame(data):
     """統一整理 Yahoo 回傳的 OHLCV DataFrame。"""
@@ -136,6 +142,7 @@ def _clean_history_frame(data):
         print(f'Yahoo 資料整理錯誤：{e}')
         return pd.DataFrame()
 
+
 def _extract_symbol_frame(raw, symbol, symbol_count):
     if raw is None or raw.empty:
         return pd.DataFrame()
@@ -158,23 +165,38 @@ def _extract_symbol_frame(raw, symbol, symbol_count):
         print(f'{symbol} 批次資料拆分錯誤：{e}')
         return pd.DataFrame()
 
+
 def _fetch_one_symbol(symbol):
     """個別補抓。先用 yf.download，再用 Ticker.history 做第二次救援。"""
     try:
-        raw = yf.download(tickers=symbol, period='1y', interval='1d', auto_adjust=False, threads=False, progress=False, timeout=10)
+        raw = yf.download(
+            tickers=symbol,
+            period='1y',
+            interval='1d',
+            auto_adjust=False,
+            threads=False,
+            progress=False,
+            timeout=10,
+        )
         data = _clean_history_frame(raw)
         if len(data) >= MIN_HISTORY_ROWS:
             return data
     except Exception as e:
         print(f'{symbol} 單檔 download 補抓失敗：{e}')
     try:
-        raw = yf.Ticker(symbol).history(period='1y', interval='1d', auto_adjust=False, timeout=10)
+        raw = yf.Ticker(symbol).history(
+            period='1y',
+            interval='1d',
+            auto_adjust=False,
+            timeout=10,
+        )
         data = _clean_history_frame(raw)
         if len(data) >= MIN_HISTORY_ROWS:
             return data
     except Exception as e:
         print(f'{symbol} Ticker.history 補抓失敗：{e}')
     return pd.DataFrame()
+
 
 def calculate_macd(close):
     ema12 = close.ewm(span=12, adjust=False).mean()
@@ -184,16 +206,31 @@ def calculate_macd(close):
     histogram = macd_line - signal_line
     return histogram
 
+
 def calculate_pivot_fib(data, lookback=120, left=3, right=3):
-    empty_result = {'方向': '資料不足', '波段高': np.nan, '波段低': np.nan, '0.236': np.nan, '0.382': np.nan, '0.500': np.nan, '0.618': np.nan, '0.786': np.nan, '1.272': np.nan, '1.618': np.nan, 'Fib位置': '資料不足'}
+    empty_result = {
+        '方向': '資料不足',
+        '波段高': np.nan,
+        '波段低': np.nan,
+        '0.236': np.nan,
+        '0.382': np.nan,
+        '0.500': np.nan,
+        '0.618': np.nan,
+        '0.786': np.nan,
+        '1.272': np.nan,
+        '1.618': np.nan,
+        'Fib位置': '資料不足',
+    }
     if data is None or data.empty or len(data) < left + right + 20:
         return empty_result
+
     d = data.tail(lookback).copy().reset_index(drop=True)
     highs = d['High'].astype(float).to_numpy()
     lows = d['Low'].astype(float).to_numpy()
     close_now = float(d['Close'].iloc[-1])
     pivot_highs = []
     pivot_lows = []
+
     for i in range(left, len(d) - right):
         hi_window = highs[i - left:i + right + 1]
         lo_window = lows[i - left:i + right + 1]
@@ -201,22 +238,39 @@ def calculate_pivot_fib(data, lookback=120, left=3, right=3):
             pivot_highs.append(i)
         if lows[i] == np.min(lo_window):
             pivot_lows.append(i)
+
     if not pivot_highs or not pivot_lows:
         high_idx = int(d['High'].idxmax())
         low_idx = int(d['Low'].idxmin())
     else:
         high_idx = pivot_highs[-1]
         low_idx = pivot_lows[-1]
+
     swing_high = float(d.loc[high_idx, 'High'])
     swing_low = float(d.loc[low_idx, 'Low'])
     wave = swing_high - swing_low
+
     if wave <= 0:
         result = empty_result.copy()
-        result.update({'方向': '無有效波段', '波段高': swing_high, '波段低': swing_low, 'Fib位置': '無有效波段'})
+        result.update({
+            '方向': '無有效波段',
+            '波段高': swing_high,
+            '波段低': swing_low,
+            'Fib位置': '無有效波段',
+        })
         return result
+
     if low_idx < high_idx:
         direction = '多頭波段'
-        levels = {'0.236': swing_high - wave * 0.236, '0.382': swing_high - wave * 0.382, '0.500': swing_high - wave * 0.5, '0.618': swing_high - wave * 0.618, '0.786': swing_high - wave * 0.786, '1.272': swing_high + wave * 0.272, '1.618': swing_high + wave * 0.618}
+        levels = {
+            '0.236': swing_high - wave * 0.236,
+            '0.382': swing_high - wave * 0.382,
+            '0.500': swing_high - wave * 0.5,
+            '0.618': swing_high - wave * 0.618,
+            '0.786': swing_high - wave * 0.786,
+            '1.272': swing_high + wave * 0.272,
+            '1.618': swing_high + wave * 0.618,
+        }
         if close_now > swing_high:
             fib_status = '突破前高'
         elif close_now >= levels['0.236']:
@@ -233,7 +287,15 @@ def calculate_pivot_fib(data, lookback=120, left=3, right=3):
             fib_status = '跌破0.786'
     else:
         direction = '空頭波段'
-        levels = {'0.236': swing_low + wave * 0.236, '0.382': swing_low + wave * 0.382, '0.500': swing_low + wave * 0.5, '0.618': swing_low + wave * 0.618, '0.786': swing_low + wave * 0.786, '1.272': swing_low - wave * 0.272, '1.618': swing_low - wave * 0.618}
+        levels = {
+            '0.236': swing_low + wave * 0.236,
+            '0.382': swing_low + wave * 0.382,
+            '0.500': swing_low + wave * 0.5,
+            '0.618': swing_low + wave * 0.618,
+            '0.786': swing_low + wave * 0.786,
+            '1.272': swing_low - wave * 0.272,
+            '1.618': swing_low - wave * 0.618,
+        }
         if close_now < swing_low:
             fib_status = '跌破前低'
         elif close_now <= levels['0.236']:
@@ -248,38 +310,75 @@ def calculate_pivot_fib(data, lookback=120, left=3, right=3):
             fib_status = '0.786壓力'
         else:
             fib_status = '逼近前高'
-    return {'方向': direction, '波段高': swing_high, '波段低': swing_low, **levels, 'Fib位置': fib_status}
+
+    return {
+        '方向': direction,
+        '波段高': swing_high,
+        '波段低': swing_low,
+        **levels,
+        'Fib位置': fib_status,
+    }
+
 
 def analyze_stock(code, name, data, symbol):
     if data.empty or len(data) < 60:
-        return {'AI 精選族群': f'{code} {name}', '昨收': np.nan, '開盤': np.nan, '現價': np.nan, '漲跌': np.nan, '幅%': '--', '量比': '--', '乖離': '--', '早盤': '--', '動能': '--', '成本': '--', '力道': '--', '六買': '--', '六賣': '--', 'Fib位置': '資料不足', '決策': '無資料', '_fib': None}
+        return {
+            'AI 精選族群': f'{code} {name}',
+            '昨收': np.nan,
+            '開盤': np.nan,
+            '現價': np.nan,
+            '漲跌': np.nan,
+            '幅%': '--',
+            '量比': '--',
+            '乖離': '--',
+            '早盤': '--',
+            '動能': '--',
+            '成本': '--',
+            '力道': '--',
+            '六買': '--',
+            '六賣': '--',
+            'Fib位置': '資料不足',
+            '決策': '無資料',
+            '_fib': None,
+        }
+
     close = data['Close'].astype(float)
     volume_series = data['Volume'].astype(float)
     latest = data.iloc[-1]
     previous = data.iloc[-2]
+
     p = float(latest['Close'])
     op = float(latest['Open'])
     hi = float(latest['High'])
     lo = float(latest['Low'])
     vo = float(latest['Volume'])
     pc = float(previous['Close'])
+
     ma20_series = close.rolling(20).mean()
     vm20_series = volume_series.rolling(20).mean()
     ma5_series = close.rolling(5).mean()
+
     ma20 = float(ma20_series.iloc[-1])
     vm20 = float(vm20_series.iloc[-1])
     ma5_now = float(ma5_series.iloc[-1])
     ma5_prev = float(ma5_series.iloc[-2])
-    ma5_up = not np.isnan(ma5_now) and (not np.isnan(ma5_prev)) and (ma5_now > ma5_prev)
+    ma5_up = (
+        not np.isnan(ma5_now)
+        and not np.isnan(ma5_prev)
+        and ma5_now > ma5_prev
+    )
+
     macd_hist = calculate_macd(close)
     mh = float(macd_hist.iloc[-1])
     if np.isnan(mh):
         mh = 0.0
+
     diff = p - pc
     ch = (p - pc) / pc * 100 if pc > 0 else 0.0
     vr = vo / vm20 if vm20 > 0 else 1.0
     bias = (p - ma20) / ma20 * 100 if ma20 > 0 else 0.0
     mid = (hi + lo) / 2
+
     b1 = p > op
     b2 = p > ma20
     b3 = vo > vm20
@@ -287,6 +386,7 @@ def analyze_stock(code, name, data, symbol):
     b5 = ma5_up
     b6 = mh > 0
     b_score = sum([b1, b2, b3, b4, b5, b6])
+
     s1 = p < op
     s2 = p < ma20
     s3 = vo > vm20 and p < pc
@@ -294,6 +394,7 @@ def analyze_stock(code, name, data, symbol):
     s5 = not ma5_up
     s6 = mh <= 0
     s_score = sum([s1, s2, s3, s4, s5, s6])
+
     is_strong = ch >= 3.0
     if is_strong:
         morning = '強攻'
@@ -301,9 +402,11 @@ def analyze_stock(code, name, data, symbol):
         morning = '合格'
     else:
         morning = '待定'
+
     momentum = '放量' if vo > vm20 else '量縮'
     cost = '站穩' if p > ma20 else '破位'
     strength = '強勢' if p > mid else '弱勢'
+
     if b_score == 6:
         decision = '全導通'
     elif s_score == 6:
@@ -314,19 +417,45 @@ def analyze_stock(code, name, data, symbol):
         decision = '看空'
     else:
         decision = '觀望'
+
     fib = calculate_pivot_fib(data)
-    return {'AI 精選族群': f'{code} {name}', '昨收': pc, '開盤': op, '現價': p, '漲跌': diff, '幅%': f'{ch:+.1f}%', '量比': f'{vr:.1f}x', '乖離': f'{bias:+.1f}%', '早盤': morning, '動能': momentum, '成本': cost, '力道': strength, '六買': int(b_score), '六賣': int(s_score), 'Fib位置': fib['Fib位置'], '決策': decision, '_fib': fib}
+
+    return {
+        'AI 精選族群': f'{code} {name}',
+        '昨收': pc,
+        '開盤': op,
+        '現價': p,
+        '漲跌': diff,
+        '幅%': f'{ch:+.1f}%',
+        '量比': f'{vr:.1f}x',
+        '乖離': f'{bias:+.1f}%',
+        '早盤': morning,
+        '動能': momentum,
+        '成本': cost,
+        '力道': strength,
+        '六買': int(b_score),
+        '六賣': int(s_score),
+        'Fib位置': fib['Fib位置'],
+        '決策': decision,
+        '_fib': fib,
+    }
 
 
 def fetch_page(rows):
     symbols = [f"{x['code']}.{x['market']}" for x in rows]
     result = {s: pd.DataFrame() for s in symbols}
     raw = pd.DataFrame()
+
     try:
         raw = yf.download(
-            tickers=" ".join(symbols), period="1y", interval="1d",
-            group_by="ticker", auto_adjust=False, threads=True,
-            progress=False, timeout=15,
+            tickers=" ".join(symbols),
+            period="1y",
+            interval="1d",
+            group_by="ticker",
+            auto_adjust=False,
+            threads=True,
+            progress=False,
+            timeout=15,
         )
     except Exception as e:
         print("batch error:", e)
@@ -345,6 +474,7 @@ def fetch_page(rows):
             result[symbol] = data.copy()
         else:
             print("failed:", symbol)
+
     return result
 
 
@@ -359,9 +489,15 @@ def to_float(value, suffix=""):
 
 
 def make_payload(item, result, data):
-    if data is None or data.empty or result.get("決策") in ("無資料", "資料錯誤"):
+    if (
+        data is None
+        or data.empty
+        or result.get("決策") in ("無資料", "資料錯誤")
+    ):
         return None
+
     trade_date = pd.Timestamp(data.index[-1]).date().isoformat()
+
     return {
         "trade_date": trade_date,
         "code": item["code"],
@@ -379,70 +515,212 @@ def make_payload(item, result, data):
         "momentum": result.get("動能"),
         "cost": result.get("成本"),
         "strength": result.get("力道"),
-        "buy_score": int(result["六買"]) if str(result.get("六買", "")).isdigit() else None,
-        "sell_score": int(result["六賣"]) if str(result.get("六賣", "")).isdigit() else None,
+        "buy_score": (
+            int(result["六買"])
+            if str(result.get("六買", "")).isdigit()
+            else None
+        ),
+        "sell_score": (
+            int(result["六賣"])
+            if str(result.get("六賣", "")).isdigit()
+            else None
+        ),
         "fib_position": result.get("Fib位置"),
         "decision": result.get("決策"),
     }
 
 
-def load_stock_config(client):
+# ============================================================
+# Supabase REST / HTTP/1.1
+# 避開 supabase-py + httpx 的 HTTP/2 StreamReset
+# ============================================================
+
+def build_rest_session():
+    retry = Retry(
+        total=5,
+        connect=5,
+        read=5,
+        status=5,
+        backoff_factor=1.0,
+        status_forcelist=(429, 500, 502, 503, 504),
+        allowed_methods=frozenset(
+            {"GET", "POST", "PUT", "PATCH", "DELETE"}
+        ),
+        raise_on_status=False,
+    )
+
+    session = requests.Session()
+
+    adapter = HTTPAdapter(
+        max_retries=retry,
+        pool_connections=4,
+        pool_maxsize=4,
+    )
+
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+
+    return session
+
+
+def supabase_headers(key, prefer=None):
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Connection": "close",
+    }
+
+    if prefer:
+        headers["Prefer"] = prefer
+
+    return headers
+
+
+def load_stock_config(session, url, key):
     """GitHub Actions 優先使用 Supabase 的100檔設定；不足時以新版預設補足。"""
     rows = []
+
     try:
-        resp = client.table("stock_config").select("position,code,name,market").order("position").execute()
+        endpoint = f"{url.rstrip('/')}/rest/v1/stock_config"
+
+        resp = session.get(
+            endpoint,
+            headers=supabase_headers(key),
+            params={
+                "select": "position,code,name,market",
+                "order": "position.asc",
+            },
+            timeout=(10, 30),
+        )
+
+        resp.raise_for_status()
+        data = resp.json() or []
+
         rows = [
-            {"code": str(x["code"]), "name": str(x["name"]), "market": str(x["market"]).upper()}
-            for x in (resp.data or [])
+            {
+                "code": str(x["code"]),
+                "name": str(x["name"]),
+                "market": str(x["market"]).upper(),
+            }
+            for x in data
         ]
+
+        print(f"cloud stock_config REST read: {len(rows)} rows")
+
     except Exception as e:
-        print("cloud stock_config read failed:", e)
+        print("cloud stock_config REST read failed:", repr(e))
+
     seen = {x["code"] for x in rows}
+
     for item in DEFAULT_STOCKS:
         if len(rows) >= 100:
             break
         if item["code"] not in seen:
             rows.append(item.copy())
             seen.add(item["code"])
+
     return rows[:100]
+
+
+def upsert_stock_history(session, url, key, payload):
+    """以 Supabase REST/PostgREST 寫入，避開 HTTP/2 StreamReset。"""
+    endpoint = f"{url.rstrip('/')}/rest/v1/stock_history"
+
+    resp = session.post(
+        endpoint,
+        headers=supabase_headers(
+            key,
+            prefer="resolution=merge-duplicates,return=minimal",
+        ),
+        params={
+            "on_conflict": "trade_date,code",
+        },
+        json=payload,
+        timeout=(10, 45),
+    )
+
+    if not resp.ok:
+        print(
+            "Supabase REST upsert failed:",
+            resp.status_code,
+            resp.text[:1000],
+        )
+
+    resp.raise_for_status()
 
 
 def main():
     url = os.environ.get("SUPABASE_URL", "").strip()
     key = os.environ.get("SUPABASE_KEY", "").strip()
+
     if not url or not key:
         raise SystemExit("Missing SUPABASE_URL / SUPABASE_KEY")
 
-    client = create_client(url, key)
-    stock_rows = load_stock_config(client)
+    session = build_rest_session()
+
+    print("V13 snapshot: Supabase REST / HTTP1 mode")
+    stock_rows = load_stock_config(session, url, key)
+
     total_payload = []
     started = time.perf_counter()
 
     for page in range(10):
-        rows = stock_rows[page*10:(page+1)*10]
+        rows = stock_rows[
+            page * STOCKS_PER_PAGE:
+            (page + 1) * STOCKS_PER_PAGE
+        ]
+
         data_map = fetch_page(rows)
         page_payload = []
+
         for item in rows:
             symbol = f"{item['code']}.{item['market']}"
             data = data_map.get(symbol, pd.DataFrame())
+
             try:
-                result = analyze_stock(item["code"], item["name"], data, symbol)
+                result = analyze_stock(
+                    item["code"],
+                    item["name"],
+                    data,
+                    symbol,
+                )
+
                 payload = make_payload(item, result, data)
+
                 if payload:
                     page_payload.append(payload)
+
             except Exception as e:
                 print(item["code"], "analysis error:", e)
 
         if page_payload:
-            client.table("stock_history").upsert(
-                page_payload, on_conflict="trade_date,code"
-            ).execute()
+            upsert_stock_history(
+                session,
+                url,
+                key,
+                page_payload,
+            )
             total_payload.extend(page_payload)
-        print(f"page {page+1}: saved {len(page_payload)}/10")
 
-    print(f"DONE: saved {len(total_payload)}/100 in {time.perf_counter()-started:.1f}s")
+        print(
+            f"page {page + 1}: "
+            f"saved {len(page_payload)}/{len(rows)}"
+        )
+
+    elapsed = time.perf_counter() - started
+
+    print(
+        f"DONE: saved {len(total_payload)}/100 "
+        f"in {elapsed:.1f}s"
+    )
+
     if len(total_payload) < 90:
-        raise SystemExit("Too many missing stocks; workflow marked failed for review.")
+        raise SystemExit(
+            "Too many missing stocks; "
+            "workflow marked failed for review."
+        )
 
 
 if __name__ == "__main__":
