@@ -1,0 +1,66 @@
+name: David V13 Supabase Golden Backup
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # 台灣時間週一～週五 15:30
+    # GitHub Actions 使用 UTC，所以是 07:30 UTC
+    - cron: "30 7 * * 1-5"
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Install Supabase CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/supabase/cli/main/install.sh | sh
+
+      - name: Create backup folder
+        run: |
+          mkdir -p backup
+
+      - name: Backup database roles
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          supabase db dump \
+            --db-url "$SUPABASE_DB_URL" \
+            -f backup/roles.sql \
+            --role-only
+
+      - name: Backup database schema
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          supabase db dump \
+            --db-url "$SUPABASE_DB_URL" \
+            -f backup/schema.sql
+
+      - name: Backup database data
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          supabase db dump \
+            --db-url "$SUPABASE_DB_URL" \
+            -f backup/data.sql \
+            --data-only \
+            --use-copy
+
+      - name: Create backup information
+        run: |
+          echo "David V13 Cloud Supabase Backup" > backup/backup_info.txt
+          echo "UTC: $(date -u '+%Y-%m-%d %H:%M:%S')" >> backup/backup_info.txt
+          echo "Commit: $GITHUB_SHA" >> backup/backup_info.txt
+          echo "Branch: $GITHUB_REF_NAME" >> backup/backup_info.txt
+          ls -lh backup >> backup/backup_info.txt
+
+      - name: Upload private backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: David_V13_Supabase_Backup_${{ github.run_number }}
+          path: backup/
+          retention-days: 30
+          if-no-files-found: error
