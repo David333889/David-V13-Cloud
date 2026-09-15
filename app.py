@@ -717,7 +717,7 @@ symbol_map = {
 # ============================================================
 
 MIN_HISTORY_ROWS = 60
-CACHE_TTL_SECONDS = 300
+CACHE_TTL_SECONDS = 60
 
 
 def _clean_history_frame(data):
