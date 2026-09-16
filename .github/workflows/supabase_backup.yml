@@ -14,9 +14,10 @@ jobs:
     timeout-minutes: 20
 
     steps:
-      - name: Install Supabase CLI
-        run: |
-          curl -fsSL https://raw.githubusercontent.com/supabase/cli/main/install.sh | sh
+      - name: Setup Supabase CLI
+      uses: supabase/setup-cli@v1
+      with:
+           version: latest
 
       - name: Create backup folder
         run: |
