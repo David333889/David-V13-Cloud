@@ -137,8 +137,9 @@ def main():
 
     try:
         from v14.core_engine import (
-            build_pending_result,
-            engine_contract,
+        build_pending_result,
+        engine_contract,
+        run_core,
         )
 
         print("[PASS] V14 Core Engine imported")
@@ -147,7 +148,7 @@ def main():
         return 1
 
     contract = engine_contract()
-    result = build_pending_result()
+    result = run_core(expected["market_input"])
     actual = result.to_dict()
 
     print(

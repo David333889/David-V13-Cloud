@@ -116,6 +116,44 @@ def build_pending_result() -> CoreEngineResult:
         },
     )
 
+def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
+    """
+    V14 Unified Core Engine entry point.
+
+    Phase 1:
+    Accept Market Input from the caller only.
+
+    IMPORTANT:
+    - No live API.
+    - No Supabase.
+    - No Streamlit.
+    - No V13 formula is changed here.
+    - Remaining V13 locked domains stay pending
+      until migrated and verified by Gate 3.
+    """
+
+    if not isinstance(market_input, dict):
+        raise TypeError("market_input must be a dictionary")
+
+    return CoreEngineResult(
+        market_input=dict(market_input),
+        technical={},
+        status={},
+        six_buy={},
+        six_sell={},
+        position={},
+        decision={},
+        ranking={},
+        risk={
+            "state": "SPEC_PENDING",
+            "reason": "V14 Risk Engine not implemented",
+        },
+        action={
+            "state": ACTION_SPEC_PENDING,
+            "reason": "V14 Action Engine not implemented",
+        },
+    )
+
 
 def engine_contract() -> Dict[str, Any]:
     """
