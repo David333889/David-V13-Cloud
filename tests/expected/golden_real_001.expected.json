@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "baseline_version": "V13.100",
+  "fixture_id": "golden_real_001",
+  "fixture_sha256": "82c7d4eb4c868bf2707b9315f00ec741b0bf60f40a3c1b3ed2de0686dfa36c70",
+  "symbol": "6213.TW",
+  "row_count": 200,
+  "first_trade_date": "2025-11-20",
+  "last_trade_date": "2026-09-15",
+  "market_input": {
+    "prev_close": 515.0,
+    "open": 514.0,
+    "high": 531.0,
+    "low": 511.0,
+    "close": 519.0,
+    "volume": 11373100.0
+  },
+  "technical": {
+    "ma5": 517.0,
+    "ma5_previous": 515.2,
+    "ma20": 525.925,
+    "vm20": 16659068.55,
+    "macd_histogram": -9.31288308168137,
+    "mid": 521.0,
+    "volume_ratio_raw": 0.6826972327933665,
+    "bias20_raw": -1.3167276702951858,
+    "change_pct_raw": 0.7766990291262136
+  },
+  "status": {
+    "early": "合格",
+    "momentum": "量縮",
+    "cost": "破位",
+    "strength": "弱勢"
+  },
+  "six_buy": {
+    "b1": true,
+    "b2": false,
+    "b3": false,
+    "b4": false,
+    "b5": true,
+    "b6": false,
+    "score": 2
+  },
+  "six_sell": {
+    "s1": false,
+    "s2": true,
+    "s3": false,
+    "s4": true,
+    "s5": false,
+    "s6": true,
+    "score": 3
+  },
+  "position": {
+    "swing_high": 599.0,
+    "swing_low": 493.5,
+    "swing_direction": "空頭波段",
+    "fib_0236": 518.398,
+    "fib_0382": 533.801,
+    "fib_0500": 546.25,
+    "fib_0618": 558.699,
+    "fib_0786": 576.423,
+    "fib_1272": 464.804,
+    "fib_1618": 428.301,
+    "fib_position": "0.382壓力"
+  },
+  "decision": {
+    "core_decision": "觀望"
+  },
+  "ranking": {
+    "david_score_v1": 39.0,
+    "ret1": 0.7766990291262044,
+    "ret5": 1.764705882352935,
+    "ret20": 6.3524590163934525,
+    "technical_volume_ratio": 0.6826972327933665,
+    "new20": false,
+    "macd_flip": false,
+    "ma_cross": false
+  },
+  "display_reference": {
+    "change": 4.0,
+    "change_pct": "+0.8%",
+    "volume_ratio": "0.7x",
+    "bias": "-1.3%"
+  },
+  "protection": {
+    "fixture_read_only": true,
+    "live_api_used": false,
+    "supabase_used": false,
+    "streamlit_used": false,
+    "expected_overwrite_policy": "DENY_BY_DEFAULT"
+  }
+}
