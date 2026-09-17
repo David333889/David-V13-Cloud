@@ -20,6 +20,8 @@ from __future__ import annotations
 import json
 import math
 import sys
+
+import pandas as pd
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -35,7 +37,12 @@ EXPECTED_PATH = (
     / "expected"
     / "golden_real_001.expected.json"
 )
-
+FIXTURE_PATH = (
+    ROOT
+    / "tests"
+    / "fixtures"
+    / "golden_real_001.csv"
+)
 ABS_TOL = 1e-8
 
 
@@ -46,7 +53,41 @@ def load_json(path: Path):
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
+def load_fixture(path: Path):
+    if not path.exists():
+        raise FileNotFoundError(f"Required fixture not found: {path}")
 
+    df = pd.read_csv(path)
+
+    required = {"timestamp", "open", "high", "low", "close", "volume"}
+    missing = required - set(df.columns)
+
+    if missing:
+        raise RuntimeError(
+            f"Fixture missing columns: {sorted(missing)}"
+        )
+
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+
+    df = df.rename(
+        columns={
+            "open": "Open",
+            "high": "High",
+            "low": "Low",
+            "close": "Close",
+            "volume": "Volume",
+        }
+    )
+
+    df = df.set_index("timestamp")
+
+    for col in ["Open", "High", "Low", "Close", "Volume"]:
+        df[col] = pd.to_numeric(df[col], errors="raise")
+
+    if len(df) < 60:
+        raise RuntimeError("Fixture has fewer than 60 rows.")
+
+    return df
 def is_number(value):
     return (
         isinstance(value, (int, float))
@@ -134,7 +175,15 @@ def main():
     except Exception as exc:
         print(f"[FAIL] Cannot load Golden Expected Oracle: {exc}")
         return 1
-
+    try:
+        fixture = load_fixture(FIXTURE_PATH)
+        print(
+            f"[PASS] Golden Fixture loaded: "
+            f"{len(fixture)} rows"
+        )
+    except Exception as exc:
+        print(f"[FAIL] Cannot load Golden Fixture: {exc}")
+        return 1
     try:
         from v14.core_engine import (
         build_pending_result,
