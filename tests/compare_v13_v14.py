@@ -386,7 +386,46 @@ def main():
 
         print("=" * 72)
         print()
+    # ------------------------------------------------------------
+    # Incremental Gate 3 - Position Domain Verification
+    # ------------------------------------------------------------
+    if actual.get("position"):
+        position_differences = []
 
+        if "position" not in expected:
+            position_differences.append(
+                "position: missing in V13 Golden Oracle"
+            )
+        else:
+            compare_value(
+                "position",
+                expected["position"],
+                actual["position"],
+                position_differences,
+            )
+
+        print()
+        print("=" * 72)
+        print("GATE 3 - POSITION DOMAIN CHECK")
+        print("=" * 72)
+
+        if position_differences:
+            print("[FAIL] Position domain mismatch")
+            print(
+                f"Differences found: "
+                f"{len(position_differences)}"
+            )
+            print()
+
+            for item in position_differences:
+                print(f"[DIFF] {item}")
+
+        else:
+            print("[PASS] Position domain")
+            print("V13.100 Golden Oracle == V14 Position")
+
+        print("=" * 72)
+        print()
     if empty_domains:
         print("[NOT READY] V14 Core Engine is still a skeleton.")
         print()

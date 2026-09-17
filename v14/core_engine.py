@@ -364,6 +364,130 @@ def calculate_six_sell(
         "s6": bool(s6),
         "score": int(score),
     }
+def calculate_position(
+    data: pd.DataFrame,
+    lookback: int = 120,
+    left: int = 3,
+    right: int = 3,
+) -> Dict[str, Any]:
+    """
+    V13.100 Pivot Swing + Fibonacci migration.
+
+    Position domain only.
+    No Decision.
+    No Ranking.
+    """
+
+    if (
+        data is None
+        or data.empty
+        or len(data) < left + right + 20
+    ):
+        return {}
+
+    d = (
+        data
+        .tail(lookback)
+        .copy()
+        .reset_index(drop=True)
+    )
+
+    highs = d["High"].astype(float).to_numpy()
+    lows = d["Low"].astype(float).to_numpy()
+
+    close_now = float(d["Close"].iloc[-1])
+
+    pivot_highs = []
+    pivot_lows = []
+
+    for i in range(left, len(d) - right):
+        hi_window = highs[i-left:i+right+1]
+        lo_window = lows[i-left:i+right+1]
+
+        if highs[i] == np.max(hi_window):
+            pivot_highs.append(i)
+
+        if lows[i] == np.min(lo_window):
+            pivot_lows.append(i)
+
+    if not pivot_highs or not pivot_lows:
+        high_idx = int(d["High"].idxmax())
+        low_idx = int(d["Low"].idxmin())
+    else:
+        high_idx = pivot_highs[-1]
+        low_idx = pivot_lows[-1]
+
+    swing_high = float(d.loc[high_idx, "High"])
+    swing_low = float(d.loc[low_idx, "Low"])
+
+    wave = swing_high - swing_low
+
+    if wave <= 0:
+        return {}
+
+    if low_idx < high_idx:
+        swing_direction = "\u591a\u982d\u6ce2\u6bb5"
+
+        levels = {
+            "fib_0236": swing_high - wave * 0.236,
+            "fib_0382": swing_high - wave * 0.382,
+            "fib_0500": swing_high - wave * 0.500,
+            "fib_0618": swing_high - wave * 0.618,
+            "fib_0786": swing_high - wave * 0.786,
+            "fib_1272": swing_high + wave * 0.272,
+            "fib_1618": swing_high + wave * 0.618,
+        }
+
+        if close_now > swing_high:
+            fib_position = "\u7a81\u7834\u524d\u9ad8"
+        elif close_now >= levels["fib_0236"]:
+            fib_position = "0.236\u58d3\u529b"
+        elif close_now >= levels["fib_0382"]:
+            fib_position = "0.382\u58d3\u529b"
+        elif close_now >= levels["fib_0500"]:
+            fib_position = "0.500\u58d3\u529b"
+        elif close_now >= levels["fib_0618"]:
+            fib_position = "0.618\u58d3\u529b"
+        elif close_now >= levels["fib_0786"]:
+            fib_position = "0.786\u58d3\u529b"
+        else:
+            fib_position = "\u8dcc\u7834 0.786"
+
+    else:
+        swing_direction = "\u7a7a\u982d\u6ce2\u6bb5"
+
+        levels = {
+            "fib_0236": swing_low + wave * 0.236,
+            "fib_0382": swing_low + wave * 0.382,
+            "fib_0500": swing_low + wave * 0.500,
+            "fib_0618": swing_low + wave * 0.618,
+            "fib_0786": swing_low + wave * 0.786,
+            "fib_1272": swing_low - wave * 0.272,
+            "fib_1618": swing_low - wave * 0.618,
+        }
+
+        if close_now < swing_low:
+            fib_position = "\u8dcc\u7834\u524d\u4f4e"
+        elif close_now <= levels["fib_0236"]:
+            fib_position = "0.236\u652f\u6490"
+        elif close_now <= levels["fib_0382"]:
+            fib_position = "0.382\u58d3\u529b"
+        elif close_now <= levels["fib_0500"]:
+            fib_position = "0.500\u58d3\u529b"
+        elif close_now <= levels["fib_0618"]:
+            fib_position = "0.618\u58d3\u529b"
+        elif close_now <= levels["fib_0786"]:
+            fib_position = "0.786\u58d3\u529b"
+        else:
+            fib_position = "\u7a81\u7834 0.786"
+
+    return {
+        "swing_high": swing_high,
+        "swing_low": swing_low,
+        "swing_direction": swing_direction,
+        **levels,
+        "fib_position": fib_position,
+    }
 def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
     """
     V14 Unified Core Engine entry point.
@@ -403,6 +527,11 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         market_input,
         technical,
     )
+    position = (
+        calculate_position(data)
+        if isinstance(data, pd.DataFrame)
+        else {}
+    )
     clean_market_input = {
         key: value
         for key, value in market_input.items()
@@ -415,7 +544,7 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         status=status,
         six_buy=six_buy,
         six_sell=six_sell,
-        position={},
+        position=position,
         decision={},
         ranking={},
         risk={
