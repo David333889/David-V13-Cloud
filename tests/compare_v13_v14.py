@@ -305,6 +305,88 @@ def main():
         print("=" * 72)
         print()
 
+    # ------------------------------------------------------------
+    # Incremental Gate 3 - Six Buy Domain Verification
+    # ------------------------------------------------------------
+    if actual.get("six_buy"):
+        six_buy_differences = []
+
+        if "six_buy" not in expected:
+            six_buy_differences.append(
+                "six_buy: missing in V13 Golden Oracle"
+            )
+        else:
+            compare_value(
+                "six_buy",
+                expected["six_buy"],
+                actual["six_buy"],
+                six_buy_differences,
+            )
+
+        print()
+        print("=" * 72)
+        print("GATE 3 - SIX BUY DOMAIN CHECK")
+        print("=" * 72)
+
+        if six_buy_differences:
+            print("[FAIL] Six Buy domain mismatch")
+            print(
+                f"Differences found: "
+                f"{len(six_buy_differences)}"
+            )
+            print()
+
+            for item in six_buy_differences:
+                print(f"[DIFF] {item}")
+
+        else:
+            print("[PASS] Six Buy domain")
+            print("V13.100 Golden Oracle == V14 Six Buy")
+
+        print("=" * 72)
+        print()
+
+    # ------------------------------------------------------------
+    # Incremental Gate 3 - Six Sell Domain Verification
+    # ------------------------------------------------------------
+    if actual.get("six_sell"):
+        six_sell_differences = []
+
+        if "six_sell" not in expected:
+            six_sell_differences.append(
+                "six_sell: missing in V13 Golden Oracle"
+            )
+        else:
+            compare_value(
+                "six_sell",
+                expected["six_sell"],
+                actual["six_sell"],
+                six_sell_differences,
+            )
+
+        print()
+        print("=" * 72)
+        print("GATE 3 - SIX SELL DOMAIN CHECK")
+        print("=" * 72)
+
+        if six_sell_differences:
+            print("[FAIL] Six Sell domain mismatch")
+            print(
+                f"Differences found: "
+                f"{len(six_sell_differences)}"
+            )
+            print()
+
+            for item in six_sell_differences:
+                print(f"[DIFF] {item}")
+
+        else:
+            print("[PASS] Six Sell domain")
+            print("V13.100 Golden Oracle == V14 Six Sell")
+
+        print("=" * 72)
+        print()
+
     if empty_domains:
         print("[NOT READY] V14 Core Engine is still a skeleton.")
         print()

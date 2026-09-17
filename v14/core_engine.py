@@ -263,6 +263,107 @@ def calculate_status(
         "cost": cost,
         "strength": strength,
     }
+def calculate_six_buy(
+    market_input: Dict[str, Any],
+    technical: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    V13.100 Six Buy V10 migration only.
+    """
+
+    if not technical:
+        return {}
+
+    p = float(market_input["close"])
+    op = float(market_input["open"])
+    vo = float(market_input["volume"])
+
+    ma20 = float(technical["ma20"])
+    vm20 = float(technical["vm20"])
+    mid = float(technical["mid"])
+    mh = float(technical["macd_histogram"])
+
+    ma5_now = float(technical["ma5"])
+    ma5_prev = float(technical["ma5_previous"])
+
+    ma5_up = (
+        not np.isnan(ma5_now)
+        and not np.isnan(ma5_prev)
+        and ma5_now > ma5_prev
+    )
+
+    b1 = p > op
+    b2 = p > ma20
+    b3 = vo > vm20
+    b4 = p > mid
+    b5 = ma5_up
+    b6 = mh > 0
+
+    score = sum([b1, b2, b3, b4, b5, b6])
+
+    return {
+        "b1": bool(b1),
+        "b2": bool(b2),
+        "b3": bool(b3),
+        "b4": bool(b4),
+        "b5": bool(b5),
+        "b6": bool(b6),
+        "score": int(score),
+    }
+
+
+def calculate_six_sell(
+    market_input: Dict[str, Any],
+    technical: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    V13.100 Six Sell V10 migration only.
+
+    Important:
+    s3 is NOT the inverse of b3.
+    MACD == 0 belongs to s6.
+    """
+
+    if not technical:
+        return {}
+
+    p = float(market_input["close"])
+    op = float(market_input["open"])
+    vo = float(market_input["volume"])
+    pc = float(market_input["prev_close"])
+
+    ma20 = float(technical["ma20"])
+    vm20 = float(technical["vm20"])
+    mid = float(technical["mid"])
+    mh = float(technical["macd_histogram"])
+
+    ma5_now = float(technical["ma5"])
+    ma5_prev = float(technical["ma5_previous"])
+
+    ma5_up = (
+        not np.isnan(ma5_now)
+        and not np.isnan(ma5_prev)
+        and ma5_now > ma5_prev
+    )
+
+    s1 = p < op
+    s2 = p < ma20
+    s3 = vo > vm20 and p < pc
+    s4 = p < mid
+    s5 = not ma5_up
+    s6 = mh <= 0
+
+    score = sum([s1, s2, s3, s4, s5, s6])
+
+    return {
+        "s1": bool(s1),
+        "s2": bool(s2),
+        "s3": bool(s3),
+        "s4": bool(s4),
+        "s5": bool(s5),
+        "s6": bool(s6),
+        "score": int(score),
+    }
 def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
     """
     V14 Unified Core Engine entry point.
@@ -293,6 +394,15 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         market_input,
         technical,
     )
+    six_buy = calculate_six_buy(
+        market_input,
+        technical,
+    )
+
+    six_sell = calculate_six_sell(
+        market_input,
+        technical,
+    )
     clean_market_input = {
         key: value
         for key, value in market_input.items()
@@ -303,8 +413,8 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         market_input=clean_market_input,
         technical=technical,
         status=status,
-        six_buy={},
-        six_sell={},
+        six_buy=six_buy,
+        six_sell=six_sell,
         position={},
         decision={},
         ranking={},
