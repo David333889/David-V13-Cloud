@@ -426,6 +426,46 @@ def main():
 
         print("=" * 72)
         print()
+    # ------------------------------------------------------------
+    # Incremental Gate 3 - Decision Domain Verification
+    # ------------------------------------------------------------
+    if actual.get("decision"):
+        decision_differences = []
+
+        if "decision" not in expected:
+            decision_differences.append(
+                "decision: missing in V13 Golden Oracle"
+            )
+        else:
+            compare_value(
+                "decision",
+                expected["decision"],
+                actual["decision"],
+                decision_differences,
+            )
+
+        print()
+        print("=" * 72)
+        print("GATE 3 - DECISION DOMAIN CHECK")
+        print("=" * 72)
+
+        if decision_differences:
+            print("[FAIL] Decision domain mismatch")
+            print(
+                f"Differences found: "
+                f"{len(decision_differences)}"
+            )
+            print()
+
+            for item in decision_differences:
+                print(f"[DIFF] {item}")
+
+        else:
+            print("[PASS] Decision domain")
+            print("V13.100 Golden Oracle == V14 Decision")
+
+        print("=" * 72)
+        print()
     if empty_domains:
         print("[NOT READY] V14 Core Engine is still a skeleton.")
         print()

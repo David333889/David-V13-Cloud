@@ -488,6 +488,41 @@ def calculate_position(
         **levels,
         "fib_position": fib_position,
     }
+def calculate_decision(
+    six_buy: Dict[str, Any],
+    six_sell: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    V13.100 Core Decision migration only.
+
+    Priority is frozen:
+    1. Buy score == 6
+    2. Sell score == 6
+    3. Buy score >= 4
+    4. Sell score >= 4
+    5. Otherwise observe
+    """
+
+    if not six_buy or not six_sell:
+        return {}
+
+    b_score = int(six_buy["score"])
+    s_score = int(six_sell["score"])
+
+    if b_score == 6:
+        core_decision = "\u5f37\u529b\u8cb7\u9032"
+    elif s_score == 6:
+        core_decision = "\u5f37\u529b\u8ce3\u51fa"
+    elif b_score >= 4:
+        core_decision = "\u504f\u591a"
+    elif s_score >= 4:
+        core_decision = "\u504f\u7a7a"
+    else:
+        core_decision = "\u89c0\u671b"
+
+    return {
+        "core_decision": core_decision,
+    }
 def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
     """
     V14 Unified Core Engine entry point.
@@ -532,6 +567,10 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         if isinstance(data, pd.DataFrame)
         else {}
     )
+    decision = calculate_decision(
+        six_buy,
+        six_sell,
+    )
     clean_market_input = {
         key: value
         for key, value in market_input.items()
@@ -545,7 +584,7 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         six_buy=six_buy,
         six_sell=six_sell,
         position=position,
-        decision={},
+        decision=decision,
         ranking={},
         risk={
             "state": "SPEC_PENDING",
