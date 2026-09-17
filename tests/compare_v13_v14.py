@@ -197,7 +197,10 @@ def main():
         return 1
 
     contract = engine_contract()
-    result = run_core(expected["market_input"])
+    market_input = dict(expected["market_input"])
+    market_input["_data"] = fixture
+
+    result = run_core(market_input)
     actual = result.to_dict()
 
     print(
@@ -219,6 +222,47 @@ def main():
 
         if value is None or value == {}:
             empty_domains.append(domain)
+
+    # ------------------------------------------------------------
+    # Incremental Gate 3 - Technical Domain Verification
+    # ------------------------------------------------------------
+    if actual.get("technical"):
+        technical_differences = []
+
+        if "technical" not in expected:
+            technical_differences.append(
+                "technical: missing in V13 Golden Oracle"
+            )
+        else:
+            compare_value(
+                "technical",
+                expected["technical"],
+                actual["technical"],
+                technical_differences,
+            )
+
+        print()
+        print("=" * 72)
+        print("GATE 3 - TECHNICAL DOMAIN CHECK")
+        print("=" * 72)
+
+        if technical_differences:
+            print("[FAIL] Technical domain mismatch")
+            print(
+                f"Differences found: "
+                f"{len(technical_differences)}"
+            )
+            print()
+
+            for item in technical_differences:
+                print(f"[DIFF] {item}")
+
+        else:
+            print("[PASS] Technical domain")
+            print("V13.100 Golden Oracle == V14 Technical")
+
+        print("=" * 72)
+        print()
 
     if empty_domains:
         print("[NOT READY] V14 Core Engine is still a skeleton.")
