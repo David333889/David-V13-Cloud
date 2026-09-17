@@ -1,0 +1,26 @@
+{
+  "fixture_id": "golden_real_001",
+  "fixture_version": 1,
+  "baseline_version": "V13.100",
+  "purpose": "V13.100 Core Golden Baseline regression fixture",
+  "source": "Yahoo Finance",
+  "source_type": "frozen_historical_ohlcv",
+  "symbol": "6213.TW",
+  "stock_code": "6213",
+  "stock_name": "聯茂",
+  "market": "TW",
+  "interval": "1d",
+  "auto_adjust": false,
+  "row_count": 200,
+  "first_trade_date": "2025-11-20",
+  "last_trade_date": "2026-09-15",
+  "generated_at_utc": "2026-09-16T10:59:45.368402+00:00",
+  "csv_file": "golden_real_001.csv",
+  "csv_sha256": "82c7d4eb4c868bf2707b9315f00ec741b0bf60f40a3c1b3ed2de0686dfa36c70",
+  "overwrite_policy": "DENY_BY_DEFAULT",
+  "notes": [
+    "Fixture contains frozen OHLCV only.",
+    "Fixture must not depend on live APIs during baseline tests.",
+    "This file is test evidence, not a trading recommendation."
+  ]
+}
