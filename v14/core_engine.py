@@ -206,6 +206,63 @@ def calculate_technical(data: pd.DataFrame) -> Dict[str, Any]:
         "bias20_raw": bias,
         "change_pct_raw": ch,
     }
+def calculate_status(
+    market_input: Dict[str, Any],
+    technical: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    V13.100 Status domain migration only.
+
+    Early / Momentum / Cost / Strength.
+    No Six Buy / Six Sell.
+    No Decision.
+    """
+
+    if not technical:
+        return {}
+
+    close = float(market_input["close"])
+    open_price = float(market_input["open"])
+    volume = float(market_input["volume"])
+
+    change_pct = float(technical["change_pct_raw"])
+    vm20 = float(technical["vm20"])
+    ma20 = float(technical["ma20"])
+    mid = float(technical["mid"])
+
+    is_strong = change_pct >= 3.0
+
+    if is_strong:
+        early = "\u5f37\u653b"
+    elif close > open_price:
+        early = "\u5408\u683c"
+    else:
+        early = "\u5f85\u5b9a"
+
+    momentum = (
+        "\u653e\u91cf"
+        if volume > vm20
+        else "\u91cf\u7e2e"
+    )
+
+    cost = (
+        "\u7ad9\u7a69"
+        if close > ma20
+        else "\u7834\u4f4d"
+    )
+
+    strength = (
+        "\u5f37\u52e2"
+        if close > mid
+        else "\u5f31\u52e2"
+    )
+
+    return {
+        "early": early,
+        "momentum": momentum,
+        "cost": cost,
+        "strength": strength,
+    }
 def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
     """
     V14 Unified Core Engine entry point.
@@ -232,7 +289,10 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         if isinstance(data, pd.DataFrame)
         else {}
     )
-
+    status = calculate_status(
+        market_input,
+        technical,
+    )
     clean_market_input = {
         key: value
         for key, value in market_input.items()
@@ -242,7 +302,7 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
     return CoreEngineResult(
         market_input=clean_market_input,
         technical=technical,
-        status={},
+        status=status,
         six_buy={},
         six_sell={},
         position={},

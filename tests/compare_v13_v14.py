@@ -264,6 +264,47 @@ def main():
         print("=" * 72)
         print()
 
+    # ------------------------------------------------------------
+    # Incremental Gate 3 - Status Domain Verification
+    # ------------------------------------------------------------
+    if actual.get("status"):
+        status_differences = []
+
+        if "status" not in expected:
+            status_differences.append(
+                "status: missing in V13 Golden Oracle"
+            )
+        else:
+            compare_value(
+                "status",
+                expected["status"],
+                actual["status"],
+                status_differences,
+            )
+
+        print()
+        print("=" * 72)
+        print("GATE 3 - STATUS DOMAIN CHECK")
+        print("=" * 72)
+
+        if status_differences:
+            print("[FAIL] Status domain mismatch")
+            print(
+                f"Differences found: "
+                f"{len(status_differences)}"
+            )
+            print()
+
+            for item in status_differences:
+                print(f"[DIFF] {item}")
+
+        else:
+            print("[PASS] Status domain")
+            print("V13.100 Golden Oracle == V14 Status")
+
+        print("=" * 72)
+        print()
+
     if empty_domains:
         print("[NOT READY] V14 Core Engine is still a skeleton.")
         print()
