@@ -720,6 +720,340 @@ def calculate_ranking(
         "macd_flip": tech["macd_flip"],
         "ma_cross": tech["ma_cross"],
     }
+
+
+def calculate_risk(
+    decision: Dict[str, Any],
+    six_buy: Dict[str, Any],
+    six_sell: Dict[str, Any],
+    technical: Dict[str, Any],
+    position: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    V14 Risk Engine V1 skeleton.
+
+    Gate 4B initial implementation:
+    - Risk is NOT Core Decision.
+    - Does not modify V13 locked domains.
+    - Does not modify DAVID Score V1.
+    - Does not emit Action.
+    - Golden Risk logic will be implemented incrementally.
+    """
+    bias_pct = technical.get(
+    "bias20_raw",
+    technical.get("bias_pct"),
+    )
+
+    if bias_pct is None:
+        bias_state = "UNKNOWN"
+        bias_severity = "UNKNOWN"
+        abs_bias_pct = None
+        bias_reason_code = "BIAS_UNKNOWN"
+    else:
+        bias_pct = float(bias_pct)
+        abs_bias_pct = abs(bias_pct)
+
+        if abs_bias_pct <= 5.0:
+            bias_state = "NORMAL"
+            bias_severity = "LOW"
+            bias_reason_code = "BIAS_NORMAL"
+        elif abs_bias_pct <= 15.0:
+            bias_state = "EXTENDED"
+            bias_severity = "MEDIUM"
+            bias_reason_code = "BIAS_EXTENDED"
+        else:
+            bias_state = "EXTREME"
+            bias_severity = "HIGH"
+            bias_reason_code = "BIAS_EXTREME"
+
+    r1_bias = {
+        "state": bias_state,
+        "severity": bias_severity,
+        "evidence": {
+            "bias_pct": bias_pct,
+            "abs_bias_pct": abs_bias_pct,
+        },
+        "reason_code": bias_reason_code,
+    }
+    position_context = position.get("position_context")
+    swing_direction = position.get("swing_direction")
+    fib_position = position.get("fib_position")
+
+    if position_context in {
+        "SUPPORT",
+        "PRESSURE",
+        "BREAKOUT",
+        "BREAKDOWN",
+        "NEUTRAL",
+        "UNKNOWN",
+    }:
+        r2_state = position_context
+    elif fib_position in {
+        "0.236支撐",
+        "0.382支撐",
+        "0.500支撐",
+        "0.618支撐",
+        "0.786支撐",
+    }:
+        r2_state = "SUPPORT"
+    elif fib_position in {
+        "0.236壓力",
+        "0.382壓力",
+        "0.500壓力",
+        "0.618壓力",
+        "0.786壓力",
+    }:
+        r2_state = "PRESSURE"
+    elif fib_position in {
+        "突破前高",
+        "突破 0.786",
+    }:
+        r2_state = "BREAKOUT"
+    elif fib_position in {
+        "跌破前低",
+        "跌破 0.786",
+    }:
+        r2_state = "BREAKDOWN"
+    else:
+        r2_state = "UNKNOWN"
+
+    r2_severity_map = {
+        "SUPPORT": "LOW",
+        "PRESSURE": "MEDIUM",
+        "BREAKOUT": "LOW",
+        "BREAKDOWN": "HIGH",
+        "NEUTRAL": "LOW",
+        "UNKNOWN": "UNKNOWN",
+    }
+
+    r2_reason_code_map = {
+        "SUPPORT": "POSITION_SUPPORT",
+        "PRESSURE": "POSITION_PRESSURE",
+        "BREAKOUT": "POSITION_BREAKOUT",
+        "BREAKDOWN": "POSITION_BREAKDOWN",
+        "NEUTRAL": "POSITION_NEUTRAL",
+        "UNKNOWN": "POSITION_UNKNOWN",
+    }
+
+    r2_position = {
+        "state": r2_state,
+        "severity": r2_severity_map[r2_state],
+        "evidence": {
+            "position_context": position_context,
+            "swing_direction": swing_direction,
+            "fib_position": fib_position,
+        },
+        "reason_code": r2_reason_code_map[r2_state],
+    }
+    buy_score = six_buy.get("score")
+    sell_score = six_sell.get("score")
+
+    if buy_score is None or sell_score is None:
+        conflict_state = "UNKNOWN"
+        conflict_severity = "UNKNOWN"
+        conflict_reason_code = "CONFLICT_UNKNOWN"
+    else:
+        buy_score = int(buy_score)
+        sell_score = int(sell_score)
+
+        if buy_score >= 4 and sell_score >= 4:
+            conflict_state = "HIGH"
+            conflict_severity = "HIGH"
+            conflict_reason_code = "CONFLICT_HIGH"
+        elif buy_score == 3 and sell_score == 3:
+            conflict_state = "MEDIUM"
+            conflict_severity = "MEDIUM"
+            conflict_reason_code = "CONFLICT_MEDIUM"
+        else:
+            conflict_state = "LOW"
+            conflict_severity = "LOW"
+            conflict_reason_code = "CONFLICT_LOW"
+
+    r3_conflict = {
+        "state": conflict_state,
+        "severity": conflict_severity,
+        "evidence": {
+            "buy_score": buy_score,
+            "sell_score": sell_score,
+        },
+        "reason_code": conflict_reason_code,
+    }
+    core_decision = decision.get(
+        "core_decision",
+        decision.get("decision"),
+    )
+
+    position_state = r2_position["state"]
+
+    bullish_decisions = {
+        "全導通",
+        "看多",
+    }
+
+    bearish_decisions = {
+        "全空破",
+        "看空",
+    }
+
+    if core_decision in bullish_decisions:
+        if position_state == "SUPPORT":
+            dp_state = "ALIGNED"
+            dp_severity = "LOW"
+            dp_reason_code = "BULLISH_AT_SUPPORT"
+        elif position_state == "PRESSURE":
+            dp_state = "CAUTION"
+            dp_severity = "MEDIUM"
+            dp_reason_code = "BULLISH_AT_PRESSURE"
+        elif position_state == "BREAKDOWN":
+            dp_state = "CONFLICT"
+            dp_severity = "HIGH"
+            dp_reason_code = "BULLISH_AT_BREAKDOWN"
+        else:
+            dp_state = "NORMAL"
+            dp_severity = "LOW"
+            dp_reason_code = "BULLISH_POSITION_NORMAL"
+
+    elif core_decision in bearish_decisions:
+        if position_state == "PRESSURE":
+            dp_state = "ALIGNED"
+            dp_severity = "LOW"
+            dp_reason_code = "BEARISH_AT_PRESSURE"
+        elif position_state == "SUPPORT":
+            dp_state = "CAUTION"
+            dp_severity = "MEDIUM"
+            dp_reason_code = "BEARISH_AT_SUPPORT"
+        elif position_state == "BREAKOUT":
+            dp_state = "CONFLICT"
+            dp_severity = "HIGH"
+            dp_reason_code = "BEARISH_AT_BREAKOUT"
+        else:
+            dp_state = "NORMAL"
+            dp_severity = "LOW"
+            dp_reason_code = "BEARISH_POSITION_NORMAL"
+
+    elif core_decision == "觀望":
+        dp_state = "NEUTRAL"
+        dp_severity = "LOW"
+        dp_reason_code = "DECISION_NEUTRAL"
+
+    else:
+        dp_state = "UNKNOWN"
+        dp_severity = "UNKNOWN"
+        dp_reason_code = "DECISION_POSITION_UNKNOWN"
+
+    r4_decision_position = {
+        "state": dp_state,
+        "severity": dp_severity,
+        "evidence": {
+            "decision": core_decision,
+            "position_context": position_state,
+        },
+        "reason_code": dp_reason_code,
+    }
+    volume_ratio = technical.get("volume_ratio_raw")
+    change_pct = technical.get("change_pct_raw")
+
+    if volume_ratio is None or change_pct is None:
+        volume_price_state = "UNKNOWN"
+        volume_price_severity = "UNKNOWN"
+        volume_price_reason_code = "VOLUME_PRICE_UNKNOWN"
+    else:
+        volume_ratio = float(volume_ratio)
+        change_pct = float(change_pct)
+
+        if change_pct == 0:
+            volume_price_state = "FLAT_PRICE"
+            volume_price_severity = "LOW"
+            volume_price_reason_code = "FLAT_PRICE"
+
+        elif volume_ratio > 1.0 and change_pct > 0:
+            volume_price_state = "VOLUME_CONFIRM"
+            volume_price_severity = "LOW"
+            volume_price_reason_code = "VOLUME_CONFIRM"
+
+        elif volume_ratio > 1.0 and change_pct < 0:
+            volume_price_state = "VOLUME_WEAKNESS"
+            volume_price_severity = "MEDIUM"
+            volume_price_reason_code = "VOLUME_WEAKNESS"
+
+        elif volume_ratio <= 1.0 and change_pct > 0:
+            volume_price_state = "LOW_VOLUME_ADVANCE"
+            volume_price_severity = "LOW"
+            volume_price_reason_code = "LOW_VOLUME_ADVANCE"
+
+        else:
+            volume_price_state = "LOW_VOLUME_WEAKNESS"
+            volume_price_severity = "MEDIUM"
+            volume_price_reason_code = "LOW_VOLUME_WEAKNESS"
+
+    r5_volume_price = {
+        "state": volume_price_state,
+        "severity": volume_price_severity,
+        "evidence": {
+            "volume_ratio": volume_ratio,
+            "change_pct": change_pct,
+        },
+        "reason_code": volume_price_reason_code,
+    }
+    if (
+        r1_bias["state"] == "UNKNOWN"
+        or r2_position["state"] == "UNKNOWN"
+    ):
+        risk_state = "PARTIAL"
+        risk_level = "UNKNOWN"
+        risk_lock = "CAUTION"
+
+    elif r3_conflict["state"] == "HIGH":
+        risk_state = "READY"
+        risk_level = "HIGH"
+        risk_lock = "CAUTION"
+
+    elif (
+        r1_bias["state"] == "EXTREME"
+        and r2_position["state"] == "PRESSURE"
+    ):
+        risk_state = "READY"
+        risk_level = "HIGH"
+        risk_lock = "CAUTION"
+
+    elif r4_decision_position["state"] == "CONFLICT":
+        risk_state = "READY"
+        risk_level = "HIGH"
+        risk_lock = "CAUTION"
+
+    elif (
+        r1_bias["state"] in {"EXTENDED", "EXTREME"}
+        or r3_conflict["state"] == "MEDIUM"
+        or r4_decision_position["state"] == "CAUTION"
+    ):
+        risk_state = "READY"
+        risk_level = "MEDIUM"
+        risk_lock = "CAUTION"
+
+    else:
+        risk_state = "READY"
+        risk_level = "LOW"
+        risk_lock = "CLEAR"
+    return {
+        "version": "V14_RISK_V1",
+        "state": risk_state,
+        "level": risk_level,
+        "lock": risk_lock,
+        "factors": {
+            "R1_BIAS": r1_bias,
+            "R2_POSITION": r2_position,
+            "R3_CONFLICT": r3_conflict,
+            "R4_DECISION_POSITION": r4_decision_position,
+            "R5_VOLUME_PRICE": r5_volume_price,
+        },
+        "evidence": {},
+        "reasons": [
+            "V14 Risk Engine V1 implementation pending"
+        ],
+        "missing_inputs": [],
+    }
+
+
 def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
     """
     V14 Unified Core Engine entry point.
@@ -781,6 +1115,13 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         if isinstance(data, pd.DataFrame)
         else {}
     )
+    risk = calculate_risk(
+        decision=decision,
+        six_buy=six_buy,
+        six_sell=six_sell,
+        technical=technical,
+        position=position,
+    )
     clean_market_input = {
         key: value
         for key, value in market_input.items()
@@ -796,10 +1137,7 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         position=position,
         decision=decision,
         ranking=ranking,
-        risk={
-            "state": "SPEC_PENDING",
-            "reason": "V14 Risk Engine not implemented",
-        },
+        risk=risk,
         action={
             "state": ACTION_SPEC_PENDING,
             "reason": "V14 Action Engine not implemented",

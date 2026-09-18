@@ -1,0 +1,198 @@
+{
+  "contract_version": "V14_RISK_V1",
+  "spec_status": "FROZEN",
+  "cases": [
+    {
+      "id": "G01",
+      "description": "Bullish aligned with support and normal bias",
+      "input": {
+        "decision": "看多",
+        "buy_score": 5,
+        "sell_score": 1,
+        "bias_pct": 3.0,
+        "position_context": "SUPPORT"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "LOW",
+        "lock": "CLEAR"
+      }
+    },
+    {
+      "id": "G02",
+      "description": "Bullish neutral position and normal bias",
+      "input": {
+        "decision": "看多",
+        "buy_score": 5,
+        "sell_score": 1,
+        "bias_pct": 3.0,
+        "position_context": "NEUTRAL"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "LOW",
+        "lock": "CLEAR"
+      }
+    },
+    {
+      "id": "G03",
+      "description": "Bullish with extended bias at pressure",
+      "input": {
+        "decision": "看多",
+        "buy_score": 5,
+        "sell_score": 1,
+        "bias_pct": 8.0,
+        "position_context": "PRESSURE"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "MEDIUM",
+        "lock": "CAUTION"
+      }
+    },
+    {
+      "id": "G04",
+      "description": "Bullish decision with high buy sell structural conflict",
+      "input": {
+        "decision": "看多",
+        "buy_score": 4,
+        "sell_score": 4,
+        "bias_pct": 3.0,
+        "position_context": "PRESSURE"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "HIGH",
+        "lock": "CAUTION"
+      }
+    },
+    {
+      "id": "G05",
+      "description": "Bullish with extreme bias at pressure",
+      "input": {
+        "decision": "看多",
+        "buy_score": 5,
+        "sell_score": 1,
+        "bias_pct": 16.0,
+        "position_context": "PRESSURE"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "HIGH",
+        "lock": "CAUTION"
+      }
+    },
+    {
+      "id": "G06",
+      "description": "Full bullish conduction breakout with extreme bias",
+      "input": {
+        "decision": "全導通",
+        "buy_score": 6,
+        "sell_score": 0,
+        "bias_pct": 16.0,
+        "position_context": "BREAKOUT"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "MEDIUM",
+        "lock": "CAUTION"
+      }
+    },
+    {
+      "id": "G07",
+      "description": "Bearish aligned with pressure and normal bias",
+      "input": {
+        "decision": "看空",
+        "buy_score": 1,
+        "sell_score": 5,
+        "bias_pct": -3.0,
+        "position_context": "PRESSURE"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "LOW",
+        "lock": "CLEAR"
+      }
+    },
+    {
+      "id": "G08",
+      "description": "Bearish direction meeting support with extended bias",
+      "input": {
+        "decision": "看空",
+        "buy_score": 1,
+        "sell_score": 5,
+        "bias_pct": -8.0,
+        "position_context": "SUPPORT"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "MEDIUM",
+        "lock": "CAUTION"
+      }
+    },
+    {
+      "id": "G09",
+      "description": "Bearish decision with high buy sell structural conflict",
+      "input": {
+        "decision": "看空",
+        "buy_score": 4,
+        "sell_score": 4,
+        "bias_pct": -3.0,
+        "position_context": "SUPPORT"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "HIGH",
+        "lock": "CAUTION"
+      }
+    },
+    {
+      "id": "G10",
+      "description": "Neutral decision with medium conflict",
+      "input": {
+        "decision": "觀望",
+        "buy_score": 3,
+        "sell_score": 3,
+        "bias_pct": 3.0,
+        "position_context": "NEUTRAL"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "MEDIUM",
+        "lock": "CAUTION"
+      }
+    },
+    {
+      "id": "G11",
+      "description": "Neutral decision with low conviction not high conflict",
+      "input": {
+        "decision": "觀望",
+        "buy_score": 2,
+        "sell_score": 2,
+        "bias_pct": 3.0,
+        "position_context": "NEUTRAL"
+      },
+      "expected": {
+        "state": "READY",
+        "level": "LOW",
+        "lock": "CLEAR"
+      }
+    },
+    {
+      "id": "G12",
+      "description": "Missing risk inputs must not be interpreted as low risk",
+      "input": {
+        "decision": "觀望",
+        "buy_score": 2,
+        "sell_score": 2,
+        "bias_pct": null,
+        "position_context": "UNKNOWN"
+      },
+      "expected": {
+        "state": "PARTIAL",
+        "level": "UNKNOWN",
+        "lock": "CAUTION"
+      }
+    }
+  ]
+}
