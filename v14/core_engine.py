@@ -523,6 +523,203 @@ def calculate_decision(
     return {
         "core_decision": core_decision,
     }
+
+def calculate_ranking_metrics(
+    data: pd.DataFrame,
+) -> Dict[str, Any]:
+    """
+    V13.100 DAVID Score V1 technical metrics.
+
+    Metrics only.
+    No DAVID Score calculation here.
+    """
+
+    m = {
+        "ret1": 0.0,
+        "ret5": 0.0,
+        "ret20": 0.0,
+        "vol_ratio": 1.0,
+        "new20": False,
+        "macd_flip": False,
+        "ma_cross": False,
+    }
+
+    if data is None or data.empty or len(data) < 25:
+        return m
+
+    try:
+        close = data["Close"].astype(float)
+        vol = data["Volume"].astype(float)
+
+        m["ret1"] = (
+            (close.iloc[-1] / close.iloc[-2] - 1) * 100
+            if close.iloc[-2]
+            else 0.0
+        )
+
+        m["ret5"] = (
+            (close.iloc[-1] / close.iloc[-6] - 1) * 100
+            if close.iloc[-6]
+            else 0.0
+        )
+
+        m["ret20"] = (
+            (close.iloc[-1] / close.iloc[-21] - 1) * 100
+            if close.iloc[-21]
+            else 0.0
+        )
+
+        vm20 = float(vol.rolling(20).mean().iloc[-1])
+
+        m["vol_ratio"] = (
+            float(vol.iloc[-1] / vm20)
+            if vm20 > 0
+            else 1.0
+        )
+
+        prior20_high = float(
+            close.iloc[-21:-1].max()
+        )
+
+        m["new20"] = (
+            float(close.iloc[-1]) >= prior20_high
+        )
+
+        macd = calculate_macd(close)
+
+        m["macd_flip"] = bool(
+            macd.iloc[-1] > 0
+            and macd.iloc[-2] <= 0
+        )
+
+        ma5 = close.rolling(5).mean()
+        ma20 = close.rolling(20).mean()
+
+        m["ma_cross"] = bool(
+            ma5.iloc[-1] > ma20.iloc[-1]
+            and ma5.iloc[-2] <= ma20.iloc[-2]
+        )
+
+    except Exception:
+        pass
+
+    return m
+def calculate_ranking(
+    data: pd.DataFrame,
+    technical: Dict[str, Any],
+    status: Dict[str, Any],
+    six_buy: Dict[str, Any],
+    six_sell: Dict[str, Any],
+    position: Dict[str, Any],
+    decision: Dict[str, Any],
+) -> Dict[str, Any]:
+    """
+    V13.100 DAVID Score V1 migration.
+    Ranking domain only.
+    """
+
+    if (
+        data is None
+        or data.empty
+        or not technical
+        or not status
+        or not six_buy
+        or not six_sell
+        or not position
+        or not decision
+    ):
+        return {}
+
+    tech = calculate_ranking_metrics(data)
+
+    buy = float(six_buy["score"])
+    sell = float(six_sell["score"])
+
+    vr = round(float(technical["volume_ratio_raw"]), 1)
+    bias = abs(round(float(technical["bias20_raw"]), 1))
+
+    fib = str(position["fib_position"])
+    core_decision = str(decision["core_decision"])
+
+    score = (
+        buy / 6 * 30
+        + max(0.0, 6 - sell) / 6 * 15
+    )
+
+    score += (
+        15
+        if (
+            str(status["momentum"]) == "\u653e\u91cf"
+            or tech["ret5"] > 3
+        )
+        else 6
+    )
+
+    score += min(max(vr, 0), 2.0) / 2.0 * 10
+
+    score += (
+        10
+        if str(status["cost"]) == "\u7ad9\u7a69"
+        else 0
+    )
+
+    score += max(
+        0.0,
+        5 - max(0.0, bias - 5) * 0.5
+    )
+
+    if any(
+        k in fib
+        for k in [
+            "\u7a81\u7834\u524d\u9ad8",
+            "\u8fd1\u524d\u9ad8",
+            "0.382\u652f\u6490",
+        ]
+    ):
+        score += 10
+
+    elif any(
+        k in fib
+        for k in ["0.500", "0.618"]
+    ):
+        score += 6
+
+    else:
+        score += 2
+
+    score += (
+        5
+        if tech["ret5"] > 0 and tech["ret20"] > 0
+        else 0
+    )
+
+    if core_decision in (
+        "\u5f37\u529b\u8cb7\u9032",
+        "\u504f\u591a",
+    ):
+        score += 3
+
+    if bias > 15:
+        score -= min(
+            8,
+            (bias - 15) * 0.6
+        )
+
+    david = max(
+        0.0,
+        min(100.0, score)
+    )
+
+    return {
+        "david_score_v1": david,
+        "ret1": tech["ret1"],
+        "ret5": tech["ret5"],
+        "ret20": tech["ret20"],
+        "technical_volume_ratio": tech["vol_ratio"],
+        "new20": tech["new20"],
+        "macd_flip": tech["macd_flip"],
+        "ma_cross": tech["ma_cross"],
+    }
 def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
     """
     V14 Unified Core Engine entry point.
@@ -571,6 +768,19 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         six_buy,
         six_sell,
     )
+    ranking = (
+        calculate_ranking(
+            data,
+            technical,
+            status,
+            six_buy,
+            six_sell,
+            position,
+            decision,
+        )
+        if isinstance(data, pd.DataFrame)
+        else {}
+    )
     clean_market_input = {
         key: value
         for key, value in market_input.items()
@@ -585,7 +795,7 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         six_sell=six_sell,
         position=position,
         decision=decision,
-        ranking={},
+        ranking=ranking,
         risk={
             "state": "SPEC_PENDING",
             "reason": "V14 Risk Engine not implemented",
