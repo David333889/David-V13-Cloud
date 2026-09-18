@@ -1052,6 +1052,198 @@ def calculate_risk(
         ],
         "missing_inputs": [],
     }
+def calculate_action(
+    decision: Any,
+    risk: Dict[str, Any],
+    position_context: Any = None,
+    six_buy: Any = None,
+    six_sell: Any = None,
+) -> Dict[str, Any]:
+    """
+    V14 Gate 5 Action Engine V1.
+
+    Golden Contract: V14_ACTION_V1
+
+    Action consumes upstream results only.
+    It does not recalculate Gate 3 or Gate 4 domains.
+    """
+
+    def _result(
+        signal: str,
+        reason: str,
+        risk_guard: str,
+        confidence: str,
+        state: str = "READY",
+    ) -> Dict[str, Any]:
+        return {
+            "version": "V14_ACTION_V1",
+            "state": state,
+            "signal": signal,
+            "reason": reason,
+            "risk_guard": risk_guard,
+            "confidence": confidence,
+        }
+
+    decision_map = {
+        "全導通": "BULLISH",
+        "看多": "BULLISH",
+        "全空破": "BEARISH",
+        "看空": "BEARISH",
+        "觀望": "NEUTRAL",
+        "BULLISH": "BULLISH",
+        "BEARISH": "BEARISH",
+        "NEUTRAL": "NEUTRAL",
+    }
+
+    normalized_decision = decision_map.get(decision, decision)
+    # P0 - Contract validity
+    if decision is None or not isinstance(risk, dict):
+        return _result(
+            "BLOCKED",
+            "MISSING_REQUIRED_INPUT",
+            "CAUTION",
+            "UNKNOWN",
+            "PARTIAL",
+        )
+
+    risk_state = risk.get("state")
+    risk_level = risk.get("level")
+    risk_lock = risk.get("lock")
+
+    if risk_state is None or risk_level is None or risk_lock is None:
+        return _result(
+            "BLOCKED",
+            "MISSING_RISK_CONTRACT",
+            "CAUTION",
+            "UNKNOWN",
+            "PARTIAL",
+        )
+
+    # P1 - Risk readiness guard
+    if risk_state != "READY" or risk_level == "UNKNOWN":
+        return _result(
+            "BLOCKED",
+            "RISK_NOT_READY",
+            "CAUTION",
+            "UNKNOWN",
+            "PARTIAL",
+        )
+
+    # P2 - HIGH risk always blocks active action in V1
+    if risk_level == "HIGH":
+        return _result(
+            "BLOCKED",
+            "HIGH_RISK_GUARD",
+            "CAUTION",
+            "LOW",
+        )
+
+    factors = risk.get("factors") or {}
+
+    r3 = factors.get("R3_CONFLICT") or {}
+    r4 = factors.get("R4_DECISION_POSITION") or {}
+    r5 = factors.get("R5_VOLUME_PRICE") or {}
+
+    r3_level = r3.get("level")
+    r4_state = r4.get("state")
+    r5_state = r5.get("state")
+
+    # P3 - Neutral decision does not create direction
+    if normalized_decision == "NEUTRAL":
+        return _result(
+            "WAIT",
+            "NEUTRAL_DECISION",
+            risk_lock,
+            "LOW",
+        )
+
+    # P4 - Bullish action path
+    if normalized_decision == "BULLISH":
+        if risk_level == "MEDIUM":
+            return _result(
+                "WAIT",
+                "BULLISH_MEDIUM_RISK",
+                risk_lock,
+                "NORMAL",
+            )
+
+        if position_context == "PRESSURE":
+            return _result(
+                "WAIT",
+                "BULLISH_AT_PRESSURE",
+                risk_lock,
+                "NORMAL",
+            )
+
+        if (
+            risk_level == "LOW"
+            and position_context == "SUPPORT"
+            and r3_level != "HIGH"
+            and r4_state != "CONFLICT"
+        ):
+            if r5_state == "VOLUME_WEAKNESS":
+                return _result(
+                    "WAIT",
+                    "BULLISH_SUPPORT_VOLUME_WEAKNESS",
+                    risk_lock,
+                    "NORMAL",
+                )
+
+            return _result(
+                "ENTER_ALLOWED",
+                "BULLISH_LOW_RISK_SUPPORT",
+                risk_lock,
+                "NORMAL",
+            )
+
+        return _result(
+            "WAIT",
+            "BULLISH_CONDITIONS_INCOMPLETE",
+            risk_lock,
+            "LOW",
+        )
+
+    # P5 - Bearish action path
+    if normalized_decision == "BEARISH":
+        if risk_level == "MEDIUM":
+            return _result(
+                "REDUCE_BIAS",
+                "BEARISH_MEDIUM_RISK",
+                risk_lock,
+                "NORMAL",
+            )
+
+        if risk_level == "LOW" and position_context == "PRESSURE":
+            return _result(
+                "EXIT_BIAS",
+                "BEARISH_LOW_RISK_PRESSURE",
+                risk_lock,
+                "NORMAL",
+            )
+
+        if risk_level == "LOW" and position_context == "SUPPORT":
+            return _result(
+                "WAIT",
+                "BEARISH_AT_SUPPORT",
+                risk_lock,
+                "NORMAL",
+            )
+
+        return _result(
+            "WAIT",
+            "BEARISH_CONDITIONS_INCOMPLETE",
+            risk_lock,
+            "LOW",
+        )
+
+    # P6 - Unsupported decision is blocked
+    return _result(
+        "BLOCKED",
+        "UNSUPPORTED_DECISION",
+        "CAUTION",
+        "UNKNOWN",
+        "PARTIAL",
+    )
 
 
 def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
@@ -1122,12 +1314,27 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         technical=technical,
         position=position,
     )
+    action_position_context = (
+        risk.get("factors", {})
+        .get("R2_POSITION", {})
+        .get("state")
+    )
+
+    action = calculate_action(
+        decision=decision.get(
+            "core_decision",
+            decision.get("decision"),
+        ),
+        risk=risk,
+        position_context=action_position_context,
+        six_buy=six_buy,
+        six_sell=six_sell,
+    )
     clean_market_input = {
         key: value
         for key, value in market_input.items()
         if key != "_data"
     }
-
     return CoreEngineResult(
         market_input=clean_market_input,
         technical=technical,
@@ -1138,20 +1345,14 @@ def run_core(market_input: Dict[str, Any]) -> CoreEngineResult:
         decision=decision,
         ranking=ranking,
         risk=risk,
-        action={
-            "state": ACTION_SPEC_PENDING,
-            "reason": "V14 Action Engine not implemented",
-        },
+        action=action,
     )
-
-
 def engine_contract() -> Dict[str, Any]:
     """
     Return the V14 Core Engine contract.
 
     This function intentionally contains no trading logic.
     """
-
     return {
         "engine_version": V14_ENGINE_VERSION,
         "baseline_version": V13_BASELINE_VERSION,
