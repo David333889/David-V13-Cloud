@@ -45,7 +45,12 @@ def main():
             [sys.executable, "-m", "tests.action.compare_action_v1"],
         )
     )
-
+    results.append(
+        run_gate(
+            "E2E - FULL CORE WIRING",
+            [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
+        )
+    )
     print()
     print("=" * 70)
     print("V14 REGRESSION SUMMARY")
@@ -55,6 +60,7 @@ def main():
         "GATE 3 - CORE BASELINE",
         "GATE 4 - RISK ENGINE",
         "GATE 5 - ACTION ENGINE",
+        "E2E - FULL CORE WIRING",
     ]
 
     for name, passed in zip(gate_names, results):
