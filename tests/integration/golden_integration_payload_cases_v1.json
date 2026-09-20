@@ -1,0 +1,77 @@
+{
+    "contract_version": "V14_INTEGRATION_PAYLOAD_V1",
+    "spec_status": "FROZEN",
+    "description": "DAVID V14 Integration Payload V1 Golden Contract",
+    "cases": [
+        {
+            "id": "I01",
+            "description": "Valid V14 result and READY consumer boundary produce integration payload",
+            "mode": "VALID_READY",
+            "expected_state": "READY",
+            "expected_reason": "PAYLOAD_OK"
+        },
+        {
+            "id": "I02",
+            "description": "Invalid core result type must be blocked",
+            "mode": "INVALID_RESULT_TYPE",
+            "expected_state": "BLOCKED",
+            "expected_reason": "INVALID_RESULT_TYPE"
+        },
+        {
+            "id": "I03",
+            "description": "Consumer boundary BLOCKED must block integration payload",
+            "mode": "CONSUMER_BLOCKED",
+            "expected_state": "BLOCKED",
+            "expected_reason": "CONSUMER_NOT_READY"
+        },
+        {
+            "id": "I04",
+            "description": "Missing identity metadata must block payload",
+            "mode": "IDENTITY_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "IDENTITY_MISSING"
+        },
+        {
+            "id": "I05",
+            "description": "Missing Six Buy score must block payload",
+            "mode": "BUY_SCORE_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "CORE_MAPPING_MISSING"
+        },
+        {
+            "id": "I06",
+            "description": "Missing Six Sell score must block payload",
+            "mode": "SELL_SCORE_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "CORE_MAPPING_MISSING"
+        },
+        {
+            "id": "I07",
+            "description": "Missing Fib position must block payload",
+            "mode": "FIB_POSITION_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "CORE_MAPPING_MISSING"
+        },
+        {
+            "id": "I08",
+            "description": "Missing Core Decision must block payload",
+            "mode": "DECISION_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "CORE_MAPPING_MISSING"
+        },
+        {
+            "id": "I09",
+            "description": "Missing Risk minimum mapping must block payload",
+            "mode": "RISK_MAPPING_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "SAFETY_MAPPING_MISSING"
+        },
+        {
+            "id": "I10",
+            "description": "Missing Action minimum mapping must block payload",
+            "mode": "ACTION_MAPPING_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "SAFETY_MAPPING_MISSING"
+        }
+    ]
+}
