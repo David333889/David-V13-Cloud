@@ -51,6 +51,14 @@ def main():
             [sys.executable, "-m", "tests.action.compare_action_boundary_v1"],
         )
     )
+
+    results.append(
+        run_gate(
+            "CONTRACT REGISTRY V1",
+            [sys.executable, "-m", "tests.contracts.verify_contract_registry_v1"],
+        )
+    )
+
     results.append(
         run_gate(
             "E2E - FULL CORE WIRING",
@@ -67,6 +75,7 @@ def main():
         "GATE 4 - RISK ENGINE",
         "GATE 5 - ACTION ENGINE",
         "ACTION BOUNDARY V1",
+        "CONTRACT REGISTRY V1",
         "E2E - FULL CORE WIRING",
     ]
 

@@ -1,0 +1,28 @@
+{
+    "registry_version": "V14_CONTRACT_REGISTRY_V1",
+    "spec_status": "FROZEN",
+    "description": "DAVID V14 Contract Registry V1",
+    "contracts": [
+        {
+            "name": "RISK_V1",
+            "contract_version": "V14_RISK_V1",
+            "type": "GOLDEN_CONTRACT",
+            "contract_path": "tests/risk/golden_risk_cases_v1.json",
+            "comparator_path": "tests/risk/compare_risk_v1.py"
+        },
+        {
+            "name": "ACTION_V1",
+            "contract_version": "V14_ACTION_V1",
+            "type": "GOLDEN_CONTRACT",
+            "contract_path": "tests/action/golden_action_cases_v1.json",
+            "comparator_path": "tests/action/compare_action_v1.py"
+        },
+        {
+            "name": "ACTION_BOUNDARY_V1",
+            "contract_version": "V14_ACTION_BOUNDARY_V1",
+            "type": "DEFENSIVE_CONTRACT",
+            "contract_path": "tests/action/golden_action_boundary_cases_v1.json",
+            "comparator_path": "tests/action/compare_action_boundary_v1.py"
+        }
+    ]
+}
