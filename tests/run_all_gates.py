@@ -47,6 +47,12 @@ def main():
     )
     results.append(
         run_gate(
+            "ACTION BOUNDARY V1",
+            [sys.executable, "-m", "tests.action.compare_action_boundary_v1"],
+        )
+    )
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -60,6 +66,7 @@ def main():
         "GATE 3 - CORE BASELINE",
         "GATE 4 - RISK ENGINE",
         "GATE 5 - ACTION ENGINE",
+        "ACTION BOUNDARY V1",
         "E2E - FULL CORE WIRING",
     ]
 

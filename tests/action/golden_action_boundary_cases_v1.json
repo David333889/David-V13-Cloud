@@ -1,0 +1,30 @@
+{
+  "contract_version": "V14_ACTION_BOUNDARY_V1",
+  "description": "DAVID V14 Gate 5 Action Engine Defensive Boundary Contract",
+  "cases": [
+    {
+      "id": "B01",
+      "description": "Unsupported decision must be blocked",
+      "mode": "UNKNOWN_DECISION",
+      "expected_state": "PARTIAL",
+      "expected_signal": "BLOCKED",
+      "expected_reason": "UNSUPPORTED_DECISION"
+    },
+    {
+      "id": "B02",
+      "description": "Missing risk object must be blocked",
+      "mode": "RISK_NONE",
+      "expected_state": "PARTIAL",
+      "expected_signal": "BLOCKED",
+      "expected_reason": "MISSING_REQUIRED_INPUT"
+    },
+    {
+      "id": "B03",
+      "description": "Empty risk contract must be blocked",
+      "mode": "RISK_EMPTY",
+      "expected_state": "PARTIAL",
+      "expected_signal": "BLOCKED",
+      "expected_reason": "MISSING_RISK_CONTRACT"
+    }
+  ]
+}
