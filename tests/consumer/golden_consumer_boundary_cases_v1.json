@@ -1,0 +1,63 @@
+{
+    "contract_version": "V14_CONSUMER_BOUNDARY_V1",
+    "spec_status": "FROZEN",
+    "description": "DAVID V14 Gate 6 Consumer Boundary V1 Golden Contract",
+    "cases": [
+        {
+            "id": "C01",
+            "description": "Complete valid CoreEngineResult must be consumer ready",
+            "mode": "VALID_RESULT",
+            "expected_state": "READY",
+            "expected_reason": "CONTRACT_OK"
+        },
+        {
+            "id": "C02",
+            "description": "Invalid result type must be blocked",
+            "mode": "INVALID_RESULT_TYPE",
+            "expected_state": "BLOCKED",
+            "expected_reason": "INVALID_RESULT_TYPE"
+        },
+        {
+            "id": "C03",
+            "description": "Missing version metadata must be blocked",
+            "mode": "VERSION_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "VERSION_MISSING"
+        },
+        {
+            "id": "C04",
+            "description": "Missing required V13 domain must be blocked",
+            "mode": "REQUIRED_DOMAIN_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "REQUIRED_DOMAIN_MISSING"
+        },
+        {
+            "id": "C05",
+            "description": "Missing risk contract must be blocked",
+            "mode": "RISK_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "RISK_CONTRACT_MISSING"
+        },
+        {
+            "id": "C06",
+            "description": "Incomplete risk schema must be blocked",
+            "mode": "RISK_INVALID",
+            "expected_state": "BLOCKED",
+            "expected_reason": "INVALID_RISK_CONTRACT"
+        },
+        {
+            "id": "C07",
+            "description": "Missing action contract must be blocked",
+            "mode": "ACTION_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "ACTION_CONTRACT_MISSING"
+        },
+        {
+            "id": "C08",
+            "description": "Incomplete action schema must be blocked",
+            "mode": "ACTION_INVALID",
+            "expected_state": "BLOCKED",
+            "expected_reason": "INVALID_ACTION_CONTRACT"
+        }
+    ]
+}

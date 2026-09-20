@@ -61,6 +61,13 @@ def main():
 
     results.append(
         run_gate(
+            "GATE 6 - CONSUMER BOUNDARY",
+            [sys.executable, "-m", "tests.consumer.compare_consumer_boundary_v1"],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -76,6 +83,7 @@ def main():
         "GATE 5 - ACTION ENGINE",
         "ACTION BOUNDARY V1",
         "CONTRACT REGISTRY V1",
+        "GATE 6 - CONSUMER BOUNDARY",
         "E2E - FULL CORE WIRING",
     ]
 

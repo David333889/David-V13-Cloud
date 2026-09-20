@@ -23,6 +23,13 @@
             "type": "DEFENSIVE_CONTRACT",
             "contract_path": "tests/action/golden_action_boundary_cases_v1.json",
             "comparator_path": "tests/action/compare_action_boundary_v1.py"
+        },
+        {
+            "name": "CONSUMER_BOUNDARY_V1",
+            "contract_version": "V14_CONSUMER_BOUNDARY_V1",
+            "type": "CONSUMER_BOUNDARY_CONTRACT",
+            "contract_path": "tests/consumer/golden_consumer_boundary_cases_v1.json",
+            "comparator_path": "tests/consumer/compare_consumer_boundary_v1.py"
         }
     ]
 }
