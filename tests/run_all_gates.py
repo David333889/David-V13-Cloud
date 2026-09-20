@@ -79,6 +79,18 @@ def main():
 
     results.append(
         run_gate(
+            "STORAGE RECORD V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.storage.compare_storage_record_v1",
+            ],
+        )
+    )
+
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -96,6 +108,7 @@ def main():
         "CONTRACT REGISTRY V1",
         "GATE 6 - CONSUMER BOUNDARY",
         "INTEGRATION PAYLOAD V1",
+        "STORAGE RECORD V1",
         "E2E - FULL CORE WIRING",
     ]
 

@@ -1,0 +1,64 @@
+{
+    "contract_version": "V14_STORAGE_RECORD_V1",
+    "spec_status": "FROZEN",
+    "source_contract": "V14_INTEGRATION_PAYLOAD_V1",
+    "description": "DAVID V14 Storage Record V1 Golden Contract",
+    "cases": [
+        {
+            "id": "S01",
+            "description": "Valid READY integration result produces storage record",
+            "mode": "VALID_READY",
+            "expected_state": "READY",
+            "expected_reason": "STORAGE_RECORD_OK"
+        },
+        {
+            "id": "S02",
+            "description": "Invalid integration result type must be blocked",
+            "mode": "INVALID_RESULT_TYPE",
+            "expected_state": "BLOCKED",
+            "expected_reason": "INVALID_INTEGRATION_RESULT"
+        },
+        {
+            "id": "S03",
+            "description": "Non READY integration result must be blocked",
+            "mode": "INTEGRATION_NOT_READY",
+            "expected_state": "BLOCKED",
+            "expected_reason": "INTEGRATION_NOT_READY"
+        },
+        {
+            "id": "S04",
+            "description": "Missing payload must be blocked",
+            "mode": "PAYLOAD_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "PAYLOAD_MISSING"
+        },
+        {
+            "id": "S05",
+            "description": "Missing metadata mapping must be blocked",
+            "mode": "METADATA_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "STORAGE_MAPPING_MISSING"
+        },
+        {
+            "id": "S06",
+            "description": "Missing identity mapping must be blocked",
+            "mode": "IDENTITY_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "STORAGE_MAPPING_MISSING"
+        },
+        {
+            "id": "S07",
+            "description": "Missing core mapping must be blocked",
+            "mode": "CORE_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "STORAGE_MAPPING_MISSING"
+        },
+        {
+            "id": "S08",
+            "description": "Missing safety mapping must be blocked",
+            "mode": "SAFETY_MISSING",
+            "expected_state": "BLOCKED",
+            "expected_reason": "STORAGE_MAPPING_MISSING"
+        }
+    ]
+}

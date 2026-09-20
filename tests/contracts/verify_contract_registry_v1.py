@@ -9,7 +9,7 @@ REGISTRY = ROOT / "tests" / "contracts" / "contract_registry_v1.json"
 
 EXPECTED_REGISTRY_VERSION = "V14_CONTRACT_REGISTRY_V1"
 EXPECTED_SPEC_STATUS = "FROZEN"
-EXPECTED_CONTRACT_COUNT = 5
+EXPECTED_CONTRACT_COUNT = 6
 
 
 def fail(message):

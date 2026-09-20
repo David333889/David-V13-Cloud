@@ -37,6 +37,13 @@
             "type": "INTEGRATION_PAYLOAD_CONTRACT",
             "contract_path": "tests/integration/golden_integration_payload_cases_v1.json",
             "comparator_path": "tests/integration/compare_integration_payload_v1.py"
+        },
+        {
+            "name": "STORAGE_RECORD_V1",
+            "contract_version": "V14_STORAGE_RECORD_V1",
+            "type": "STORAGE_RECORD_CONTRACT",
+            "contract_path": "tests/storage/golden_storage_record_cases_v1.json",
+            "comparator_path": "tests/storage/compare_storage_record_v1.py"
         }
     ]
 }
