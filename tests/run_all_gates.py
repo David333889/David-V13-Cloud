@@ -123,6 +123,17 @@ def main():
 
     results.append(
         run_gate(
+            "APP MARKET INPUT ADAPTER V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.app_adapter.compare_app_market_input_adapter_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "SUPABASE SCHEMA MIGRATION V1",
             [
                 sys.executable,
@@ -166,6 +177,7 @@ def main():
         "SUPABASE PERSISTENCE V1",
         "RUNTIME PIPELINE V1",
         "RUNTIME WRITER V1",
+        "APP MARKET INPUT ADAPTER V1",
         "SUPABASE SCHEMA MIGRATION V1",
         "SUPABASE WRITER V1",
         "E2E - FULL CORE WIRING",
