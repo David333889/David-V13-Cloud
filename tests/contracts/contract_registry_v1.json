@@ -44,6 +44,13 @@
             "type": "STORAGE_RECORD_CONTRACT",
             "contract_path": "tests/storage/golden_storage_record_cases_v1.json",
             "comparator_path": "tests/storage/compare_storage_record_v1.py"
+        },
+        {
+            "name": "SUPABASE_PERSISTENCE_V1",
+            "contract_version": "V14_SUPABASE_PERSISTENCE_V1",
+            "type": "SUPABASE_PERSISTENCE_CONTRACT",
+            "contract_path": "tests/persistence/golden_supabase_persistence_cases_v1.json",
+            "comparator_path": "tests/persistence/compare_supabase_persistence_v1.py"
         }
     ]
 }

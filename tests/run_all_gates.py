@@ -88,6 +88,17 @@ def main():
         )
     )
 
+    results.append(
+        run_gate(
+            "SUPABASE PERSISTENCE V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.persistence.compare_supabase_persistence_v1",
+            ],
+        )
+    )
+
 
     results.append(
         run_gate(
@@ -109,6 +120,7 @@ def main():
         "GATE 6 - CONSUMER BOUNDARY",
         "INTEGRATION PAYLOAD V1",
         "STORAGE RECORD V1",
+        "SUPABASE PERSISTENCE V1",
         "E2E - FULL CORE WIRING",
     ]
 

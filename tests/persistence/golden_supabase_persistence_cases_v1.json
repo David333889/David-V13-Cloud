@@ -1,0 +1,121 @@
+{
+  "contract_version": "V14_SUPABASE_PERSISTENCE_V1",
+  "spec_status": "FROZEN",
+  "source_contract": "V14_STORAGE_RECORD_V1",
+  "target": "public.stock_history",
+  "mode": "MAPPING_ONLY_NO_NETWORK_IO",
+
+  "rules": {
+    "accept_storage_record_v1_only": true,
+    "conflict_keys": [
+      "trade_date",
+      "code"
+    ],
+    "must_not_recalculate_core": true,
+    "must_not_recalculate_risk": true,
+    "must_not_recalculate_action": true,
+    "must_not_import_core_engine": true,
+    "must_not_connect_supabase": true,
+    "must_not_execute_sql": true,
+    "must_not_modify_schema": true,
+    "market_snapshot_status": "DEFERRED"
+  },
+
+  "required_identity_fields": [
+    "trade_date",
+    "code",
+    "name",
+    "market",
+    "symbol"
+  ],
+
+  "required_core_fields": [
+    "buy_score",
+    "sell_score",
+    "fib_position",
+    "decision"
+  ],
+
+  "required_version_fields": [
+    "payload_version",
+    "engine_version",
+    "baseline_version"
+  ],
+
+  "required_safety_fields": [
+    "risk_state",
+    "risk_level",
+    "risk_lock",
+    "action_state",
+    "action_signal",
+    "action_reason",
+    "action_risk_guard",
+    "action_confidence",
+    "consumer_state"
+  ],
+
+  "deferred_market_snapshot_fields": [
+    "prev_close",
+    "open_price",
+    "close_price",
+    "change_value",
+    "change_pct",
+    "volume_ratio",
+    "bias_pct",
+    "morning",
+    "momentum",
+    "cost",
+    "strength"
+  ],
+
+  "cases": [
+    {
+      "id": "P01",
+      "description": "READY Storage Record with complete V14 fields",
+      "expected_state": "READY",
+      "expected_reason": "PERSISTENCE_ROW_OK"
+    },
+    {
+      "id": "P02",
+      "description": "Reject non-dict storage record",
+      "expected_state": "BLOCKED",
+      "expected_reason": "INVALID_STORAGE_RECORD_TYPE"
+    },
+    {
+      "id": "P03",
+      "description": "Reject missing trade_date",
+      "expected_state": "BLOCKED",
+      "expected_reason": "MISSING_REQUIRED_FIELD"
+    },
+    {
+      "id": "P04",
+      "description": "Reject missing code",
+      "expected_state": "BLOCKED",
+      "expected_reason": "MISSING_REQUIRED_FIELD"
+    },
+    {
+      "id": "P05",
+      "description": "Preserve Core fields without recalculation",
+      "expected_state": "READY",
+      "expected_reason": "PERSISTENCE_ROW_OK"
+    },
+    {
+      "id": "P06",
+      "description": "Preserve Version fields",
+      "expected_state": "READY",
+      "expected_reason": "PERSISTENCE_ROW_OK"
+    },
+    {
+      "id": "P07",
+      "description": "Preserve Safety fields without recalculation",
+      "expected_state": "READY",
+      "expected_reason": "PERSISTENCE_ROW_OK"
+    },
+    {
+      "id": "P08",
+      "description": "Legacy Market Snapshot remains deferred",
+      "expected_state": "READY",
+      "expected_reason": "PERSISTENCE_ROW_OK"
+    }
+  ]
+}
