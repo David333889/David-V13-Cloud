@@ -134,6 +134,17 @@ def main():
 
     results.append(
         run_gate(
+            "APP DRY-RUN PIPELINE V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.app_dry_run.compare_app_dry_run_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "SUPABASE SCHEMA MIGRATION V1",
             [
                 sys.executable,
@@ -178,6 +189,7 @@ def main():
         "RUNTIME PIPELINE V1",
         "RUNTIME WRITER V1",
         "APP MARKET INPUT ADAPTER V1",
+        "APP DRY-RUN PIPELINE V1",
         "SUPABASE SCHEMA MIGRATION V1",
         "SUPABASE WRITER V1",
         "E2E - FULL CORE WIRING",
