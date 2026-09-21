@@ -101,6 +101,17 @@ def main():
 
     results.append(
         run_gate(
+            "RUNTIME PIPELINE V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.runtime.compare_runtime_pipeline_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "SUPABASE SCHEMA MIGRATION V1",
             [
                 sys.executable,
@@ -142,6 +153,7 @@ def main():
         "INTEGRATION PAYLOAD V1",
         "STORAGE RECORD V1",
         "SUPABASE PERSISTENCE V1",
+        "RUNTIME PIPELINE V1",
         "SUPABASE SCHEMA MIGRATION V1",
         "SUPABASE WRITER V1",
         "E2E - FULL CORE WIRING",
