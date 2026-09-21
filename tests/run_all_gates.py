@@ -112,6 +112,17 @@ def main():
 
     results.append(
         run_gate(
+            "RUNTIME WRITER V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.runtime_writer.compare_runtime_writer_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "SUPABASE SCHEMA MIGRATION V1",
             [
                 sys.executable,
@@ -154,6 +165,7 @@ def main():
         "STORAGE RECORD V1",
         "SUPABASE PERSISTENCE V1",
         "RUNTIME PIPELINE V1",
+        "RUNTIME WRITER V1",
         "SUPABASE SCHEMA MIGRATION V1",
         "SUPABASE WRITER V1",
         "E2E - FULL CORE WIRING",
