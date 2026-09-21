@@ -99,6 +99,16 @@ def main():
         )
     )
 
+    results.append(
+        run_gate(
+            "SUPABASE SCHEMA MIGRATION V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.schema.verify_supabase_schema_migration_v1",
+            ],
+        )
+    )
 
     results.append(
         run_gate(
@@ -121,6 +131,7 @@ def main():
         "INTEGRATION PAYLOAD V1",
         "STORAGE RECORD V1",
         "SUPABASE PERSISTENCE V1",
+        "SUPABASE SCHEMA MIGRATION V1",
         "E2E - FULL CORE WIRING",
     ]
 

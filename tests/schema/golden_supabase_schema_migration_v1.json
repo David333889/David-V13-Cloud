@@ -1,0 +1,31 @@
+{
+  "contract_version": "V14_SUPABASE_SCHEMA_MIGRATION_V1",
+  "spec_status": "FROZEN",
+  "description": "DAVID V14 Supabase Schema Migration V1 Contract",
+  "target": "public.stock_history",
+  "migration_file": "supabase_migration_v14_persistence_v1.sql",
+  "migration_mode": "ADDITIVE_IDEMPOTENT_NO_EXECUTION",
+  "required_columns": {
+    "payload_version": "text",
+    "engine_version": "text",
+    "baseline_version": "text",
+    "risk_state": "text",
+    "risk_level": "text",
+    "risk_lock": "boolean",
+    "action_state": "text",
+    "action_signal": "text",
+    "action_reason": "text",
+    "action_risk_guard": "text",
+    "action_confidence": "text",
+    "consumer_state": "text"
+  },
+  "safety_rules": {
+    "target_table": "public.stock_history",
+    "additive_only": true,
+    "idempotent": true,
+    "legacy_rows_nullable": true,
+    "data_backfill": false,
+    "database_execution": false,
+    "destructive_sql_allowed": false
+  }
+}
