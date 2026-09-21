@@ -58,6 +58,13 @@
             "type": "SUPABASE_SCHEMA_MIGRATION_CONTRACT",
             "contract_path": "tests/schema/golden_supabase_schema_migration_v1.json",
             "comparator_path": "tests/schema/verify_supabase_schema_migration_v1.py"
+        },
+        {
+            "name": "SUPABASE_WRITER_V1",
+            "contract_version": "V14_SUPABASE_WRITER_V1",
+            "type": "SUPABASE_WRITER_CONTRACT",
+            "contract_path": "tests/writer/golden_supabase_writer_cases_v1.json",
+            "comparator_path": "tests/writer/compare_supabase_writer_v1.py"
         }
 
     ]

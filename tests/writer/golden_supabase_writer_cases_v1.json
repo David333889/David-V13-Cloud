@@ -1,0 +1,68 @@
+{
+  "contract_version": "V14_SUPABASE_WRITER_V1",
+  "spec_status": "FROZEN",
+  "source_contract": "V14_SUPABASE_PERSISTENCE_V1",
+  "target_table": "stock_history",
+  "conflict_key": "trade_date,code",
+  "mode": "INJECTED_CLIENT_ONLY",
+  "rules": {
+    "accept_ready_persistence_result_only": true,
+    "client_must_be_injected": true,
+    "must_not_create_supabase_client": true,
+    "must_not_recalculate_core": true,
+    "must_not_recalculate_risk": true,
+    "must_not_recalculate_action": true,
+    "must_not_modify_schema": true,
+    "test_network_io": false
+  },
+  "cases": [
+    {
+      "id": "W01",
+      "description": "READY persistence row performs one stock_history upsert",
+      "expected_state": "SAVED",
+      "expected_reason": "UPSERT_OK"
+    },
+    {
+      "id": "W02",
+      "description": "Non-dict persistence result must be blocked",
+      "expected_state": "BLOCKED",
+      "expected_reason": "INVALID_PERSISTENCE_RESULT"
+    },
+    {
+      "id": "W03",
+      "description": "Non-READY persistence result must be blocked",
+      "expected_state": "BLOCKED",
+      "expected_reason": "PERSISTENCE_NOT_READY"
+    },
+    {
+      "id": "W04",
+      "description": "Missing persistence row must be blocked",
+      "expected_state": "BLOCKED",
+      "expected_reason": "ROW_MISSING"
+    },
+    {
+      "id": "W05",
+      "description": "Missing injected client must be blocked",
+      "expected_state": "BLOCKED",
+      "expected_reason": "CLIENT_MISSING"
+    },
+    {
+      "id": "W06",
+      "description": "Writer must target stock_history",
+      "expected_state": "SAVED",
+      "expected_reason": "UPSERT_OK"
+    },
+    {
+      "id": "W07",
+      "description": "Writer must use trade_date,code conflict key",
+      "expected_state": "SAVED",
+      "expected_reason": "UPSERT_OK"
+    },
+    {
+      "id": "W08",
+      "description": "Writer must preserve persistence row without recalculation",
+      "expected_state": "SAVED",
+      "expected_reason": "UPSERT_OK"
+    }
+  ]
+}

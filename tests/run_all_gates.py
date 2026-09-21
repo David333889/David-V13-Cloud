@@ -112,6 +112,17 @@ def main():
 
     results.append(
         run_gate(
+            "SUPABASE WRITER V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.writer.compare_supabase_writer_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -132,6 +143,7 @@ def main():
         "STORAGE RECORD V1",
         "SUPABASE PERSISTENCE V1",
         "SUPABASE SCHEMA MIGRATION V1",
+        "SUPABASE WRITER V1",
         "E2E - FULL CORE WIRING",
     ]
 
