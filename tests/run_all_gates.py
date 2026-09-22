@@ -198,6 +198,12 @@ def main():
             [sys.executable, "-m", "tests.chip.compare_chip_evidence_v1"],
         )
     )
+    results.append(
+        run_gate(
+            "CHIP SOURCE MAPPING V1",
+            [sys.executable, "-m", "tests.source_mapping.compare_chip_source_mapping_v1"],
+        )
+    )
 
     results.append(
         run_gate(
@@ -230,6 +236,7 @@ def main():
         "APP SHADOW WIRING V1",
         "NORMALIZED CHIP DATA CONTRACT V1",
         "CHIP EVIDENCE CONTRACT V1",
+        "CHIP SOURCE MAPPING V1",
         "E2E - FULL CORE WIRING",
     ]
 
