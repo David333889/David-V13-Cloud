@@ -167,6 +167,27 @@ def main():
 
     results.append(
         run_gate(
+            "APP SHADOW DRY-RUN WIRING V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.app_shadow.compare_app_shadow_dry_run_v1",
+            ],
+        )
+    )
+    results.append(
+        run_gate(
+            "APP SHADOW WIRING V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.app_shadow.compare_app_shadow_wiring_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -192,6 +213,8 @@ def main():
         "APP DRY-RUN PIPELINE V1",
         "SUPABASE SCHEMA MIGRATION V1",
         "SUPABASE WRITER V1",
+        "APP SHADOW DRY-RUN WIRING V1",
+        "APP SHADOW WIRING V1",
         "E2E - FULL CORE WIRING",
     ]
 

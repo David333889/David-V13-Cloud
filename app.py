@@ -8,6 +8,9 @@ import os
 from datetime import date, datetime, time as dt_time
 from zoneinfo import ZoneInfo
 from pathlib import Path
+from v14.app_shadow import run_app_shadow_dry_run
+
+V14_APP_SHADOW_ENABLED = False
 
 
 # ============================================================
@@ -1994,7 +1997,18 @@ else:
             code = item["code"]
             symbol = f"{code}.{item['market']}"
             try:
-                results.append(analyze_stock(code, item["name"], batch_data.get(symbol, pd.DataFrame()), symbol))
+                market_data = batch_data.get(symbol, pd.DataFrame())
+                legacy_result = analyze_stock(code, item["name"], market_data, symbol)
+                results.append(legacy_result)
+                run_app_shadow_dry_run(
+                    enabled=V14_APP_SHADOW_ENABLED,
+                    legacy_result=legacy_result,
+                    data=market_data,
+                    code=code,
+                    name=item["name"],
+                    market=item["market"],
+                    symbol=symbol,
+                )
             except Exception as e:
                 print(f"{code} 分析錯誤：{e}")
                 results.append({
