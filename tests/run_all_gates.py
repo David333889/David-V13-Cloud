@@ -188,6 +188,19 @@ def main():
 
     results.append(
         run_gate(
+            "NORMALIZED CHIP DATA CONTRACT V1",
+            [sys.executable, "-m", "tests.chip.compare_chip_contract_v1"],
+        )
+    )
+    results.append(
+        run_gate(
+            "CHIP EVIDENCE CONTRACT V1",
+            [sys.executable, "-m", "tests.chip.compare_chip_evidence_v1"],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -215,6 +228,8 @@ def main():
         "SUPABASE WRITER V1",
         "APP SHADOW DRY-RUN WIRING V1",
         "APP SHADOW WIRING V1",
+        "NORMALIZED CHIP DATA CONTRACT V1",
+        "CHIP EVIDENCE CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
