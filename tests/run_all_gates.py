@@ -221,6 +221,13 @@ def main():
 
     results.append(
         run_gate(
+            "CHIP UNIT EVIDENCE CONTRACT V1",
+            [sys.executable, "-m", "tests.unit_evidence.compare_chip_unit_evidence_v1"],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -253,6 +260,7 @@ def main():
         "CHIP SOURCE MAPPING V1",
         "CHIP SOURCE ADAPTER V1",
         "CHIP SOURCE COMPATIBILITY CONTRACT V1",
+        "CHIP UNIT EVIDENCE CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
