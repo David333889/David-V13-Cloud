@@ -338,6 +338,17 @@ def main():
 
     results.append(
         run_gate(
+            "REAL SESSION FACTORY CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_real_session_factory_contract_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -381,6 +392,7 @@ def main():
         "FINMIND LIVE BACKEND CONTRACT V1",
         "LIVE SESSION BOUNDARY V1",
         "CONTROLLED LIVE FETCH ORCHESTRATOR V1",
+        "REAL SESSION FACTORY CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
