@@ -316,6 +316,17 @@ def main():
 
     results.append(
         run_gate(
+            "LIVE SESSION BOUNDARY V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_live_session_boundary_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -357,6 +368,7 @@ def main():
         "READ-ONLY TRANSPORT CONTRACT V1",
         "SECRET RUNTIME BOUNDARY V1",
         "FINMIND LIVE BACKEND CONTRACT V1",
+        "LIVE SESSION BOUNDARY V1",
         "E2E - FULL CORE WIRING",
     ]
 
