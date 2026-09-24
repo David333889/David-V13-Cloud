@@ -294,6 +294,17 @@ def main():
 
     results.append(
         run_gate(
+            "SECRET RUNTIME BOUNDARY V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_secret_runtime_boundary_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -333,6 +344,7 @@ def main():
         "LIVE REQUEST SAFETY CONTRACT V1",
         "PROVIDER REQUEST SAFETY INTEGRATION V1",
         "READ-ONLY TRANSPORT CONTRACT V1",
+        "SECRET RUNTIME BOUNDARY V1",
         "E2E - FULL CORE WIRING",
     ]
 
