@@ -250,6 +250,17 @@ def main():
 
     results.append(
         run_gate(
+            "PROVIDER CLIENT SKELETON V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_provider_client_skeleton_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -285,6 +296,7 @@ def main():
         "CHIP UNIT EVIDENCE CONTRACT V1",
         "LIVE SOURCE READ-ONLY BOUNDARY V1",
         "LIVE FETCH SAFETY CONTRACT V1",
+        "PROVIDER CLIENT SKELETON V1",
         "E2E - FULL CORE WIRING",
     ]
 
