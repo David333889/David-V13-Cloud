@@ -305,6 +305,17 @@ def main():
 
     results.append(
         run_gate(
+            "FINMIND LIVE BACKEND CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_finmind_live_backend_contract_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -345,6 +356,7 @@ def main():
         "PROVIDER REQUEST SAFETY INTEGRATION V1",
         "READ-ONLY TRANSPORT CONTRACT V1",
         "SECRET RUNTIME BOUNDARY V1",
+        "FINMIND LIVE BACKEND CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
