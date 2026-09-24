@@ -272,6 +272,17 @@ def main():
 
     results.append(
         run_gate(
+            "PROVIDER REQUEST SAFETY INTEGRATION V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_provider_request_safety_integration_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -309,6 +320,7 @@ def main():
         "LIVE FETCH SAFETY CONTRACT V1",
         "PROVIDER CLIENT SKELETON V1",
         "LIVE REQUEST SAFETY CONTRACT V1",
+        "PROVIDER REQUEST SAFETY INTEGRATION V1",
         "E2E - FULL CORE WIRING",
     ]
 
