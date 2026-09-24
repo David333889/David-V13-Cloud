@@ -327,6 +327,17 @@ def main():
 
     results.append(
         run_gate(
+            "CONTROLLED LIVE FETCH ORCHESTRATOR V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_controlled_live_fetch_orchestrator_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -369,6 +380,7 @@ def main():
         "SECRET RUNTIME BOUNDARY V1",
         "FINMIND LIVE BACKEND CONTRACT V1",
         "LIVE SESSION BOUNDARY V1",
+        "CONTROLLED LIVE FETCH ORCHESTRATOR V1",
         "E2E - FULL CORE WIRING",
     ]
 
