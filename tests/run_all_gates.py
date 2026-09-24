@@ -239,6 +239,17 @@ def main():
 
     results.append(
         run_gate(
+            "LIVE FETCH SAFETY CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_live_fetch_safety_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -273,6 +284,7 @@ def main():
         "CHIP SOURCE COMPATIBILITY CONTRACT V1",
         "CHIP UNIT EVIDENCE CONTRACT V1",
         "LIVE SOURCE READ-ONLY BOUNDARY V1",
+        "LIVE FETCH SAFETY CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
