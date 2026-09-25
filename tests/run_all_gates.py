@@ -382,6 +382,17 @@ def main():
 
     results.append(
         run_gate(
+            "ONE-SHOT LIVE FETCH INTEGRATION CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_one_shot_live_fetch_integration_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -429,6 +440,7 @@ def main():
         "INTERNET CROSSING PREFLIGHT V1",
         "FINMIND LIVE REQUEST PARAMETERS CONTRACT V1",
         "FINMIND GOLDEN EVIDENCE CONTRACT V1",
+        "ONE-SHOT LIVE FETCH INTEGRATION CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
