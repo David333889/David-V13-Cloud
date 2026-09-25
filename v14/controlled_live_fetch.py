@@ -90,19 +90,25 @@ def execute_controlled_fetch(
         session=session,
     )
 
-    # 5. Exactly one GET path.
+    # 5. Build transport-only query parameters.
+    #
+    # The runtime secret is appended only at the HTTP transport
+    # boundary. It does not enter the validated business params
+    # contract or any public evidence.
+    transport_params = dict(params or {})
+    transport_params["token"] = token
+
+    # 6. Exactly one GET path.
     evidence = backend.get(
         url=url,
-        headers={
-            "Authorization": f"Bearer {token}",
-        },
+        headers={},
         timeout=timeout,
-        params=params,
+        params=transport_params,
         allow_redirects=False,
         max_bytes=max_bytes,
     )
 
-    # 6. Public result contains evidence only, never token.
+    # 7. Public result contains evidence only, never token.
     return {
         "allowed": True,
         "evidence": evidence,
