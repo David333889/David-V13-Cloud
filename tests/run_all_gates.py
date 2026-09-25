@@ -349,6 +349,17 @@ def main():
 
     results.append(
         run_gate(
+            "INTERNET CROSSING PREFLIGHT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_internet_crossing_preflight_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -393,6 +404,7 @@ def main():
         "LIVE SESSION BOUNDARY V1",
         "CONTROLLED LIVE FETCH ORCHESTRATOR V1",
         "REAL SESSION FACTORY CONTRACT V1",
+        "INTERNET CROSSING PREFLIGHT V1",
         "E2E - FULL CORE WIRING",
     ]
 
