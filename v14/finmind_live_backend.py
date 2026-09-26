@@ -108,8 +108,6 @@ class FinMindReadOnlyBackend:
             {},
         )
 
-        if not isinstance(headers_map, dict):
-            headers_map = {}
 
         content_type = headers_map.get(
             "Content-Type",
