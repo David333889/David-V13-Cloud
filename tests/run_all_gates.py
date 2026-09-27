@@ -481,6 +481,17 @@ def main():
 
     results.append(
         run_gate(
+            "LEGACY YAHOO MARKET SOURCE PROVENANCE CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_legacy_yahoo_market_source_provenance_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -537,6 +548,7 @@ def main():
         "YAHOO / FINMIND MARKET COMPATIBILITY READINESS CONTRACT V1",
         "FINMIND MARKET SOURCE ADAPTER BOUNDARY CONTRACT V1",
         "MARKET DATA EVIDENCE COMPARE CONTRACT V1",
+        "LEGACY YAHOO MARKET SOURCE PROVENANCE CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
