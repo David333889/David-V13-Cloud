@@ -492,6 +492,17 @@ def main():
 
     results.append(
         run_gate(
+            "FINMIND BASELINE EVIDENCE OBSERVATION CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_finmind_baseline_evidence_observation_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -549,6 +560,7 @@ def main():
         "FINMIND MARKET SOURCE ADAPTER BOUNDARY CONTRACT V1",
         "MARKET DATA EVIDENCE COMPARE CONTRACT V1",
         "LEGACY YAHOO MARKET SOURCE PROVENANCE CONTRACT V1",
+        "FINMIND BASELINE EVIDENCE OBSERVATION CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
