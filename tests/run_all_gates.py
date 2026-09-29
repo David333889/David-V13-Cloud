@@ -547,6 +547,17 @@ def main():
 
     results.append(
         run_gate(
+            "CONTROLLED REAL INTERNET CROSSING EXECUTION CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_controlled_real_internet_crossing_execution_contract_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -609,6 +620,7 @@ def main():
         "CONTROLLED REAL SAMPLE ACQUISITION CONTRACT V1",
         "CONTROLLED REAL SAMPLE ACQUISITION IMPLEMENTATION V1",
         "CONTROLLED REAL SAMPLE ENTRY CONTRACT V1",
+        "CONTROLLED REAL INTERNET CROSSING EXECUTION CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
