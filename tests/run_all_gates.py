@@ -613,6 +613,17 @@ def main():
 
     results.append(
         run_gate(
+            "CONTROLLED REAL REQUEST VALIDATION INTEGRATION V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_controlled_real_request_validation_integration_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -681,6 +692,7 @@ def main():
         "CONTROLLED REAL ACQUISITION ADAPTER BOUNDARY V1",
         "CONTROLLED REAL ACQUISITION WIRING V1",
         "CONTROLLED REAL FETCH COMPOSITION V1",
+        "CONTROLLED REAL REQUEST VALIDATION INTEGRATION V1",
         "E2E - FULL CORE WIRING",
     ]
 
