@@ -591,6 +591,17 @@ def main():
 
     results.append(
         run_gate(
+            "CONTROLLED REAL ACQUISITION WIRING V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_controlled_real_acquisition_wiring_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -657,6 +668,7 @@ def main():
         "CONTROLLED REAL INTERNET CROSSING ONE-SHOT ENFORCEMENT V1",
         "CONTROLLED REAL INTERNET CROSSING ONE-SHOT INTEGRATION V1",
         "CONTROLLED REAL ACQUISITION ADAPTER BOUNDARY V1",
+        "CONTROLLED REAL ACQUISITION WIRING V1",
         "E2E - FULL CORE WIRING",
     ]
 
