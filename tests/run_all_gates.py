@@ -635,6 +635,17 @@ def main():
 
     results.append(
         run_gate(
+            "CONTROLLED REAL EXECUTION AUTHORIZATION INTEGRATION V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_controlled_real_execution_authorization_integration_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -705,6 +716,7 @@ def main():
         "CONTROLLED REAL FETCH COMPOSITION V1",
         "CONTROLLED REAL REQUEST VALIDATION INTEGRATION V1",
         "CONTROLLED REAL PREFLIGHT INTEGRATION V1",
+        "CONTROLLED REAL EXECUTION AUTHORIZATION INTEGRATION V1",
         "E2E - FULL CORE WIRING",
     ]
 
