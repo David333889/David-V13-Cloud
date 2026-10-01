@@ -745,6 +745,17 @@ def main():
 
     results.append(
         run_gate(
+            "RUNTIME TOKEN CONFIGURATION ACTIVATION V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_runtime_token_configuration_activation_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -825,6 +836,7 @@ def main():
         "CONTROLLED RUNTIME DEPENDENCY ACTIVATION BOUNDARY V1",
         "RUNTIME TOKEN AVAILABILITY ACTIVATION V1",
         "RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY V1",
+        "RUNTIME TOKEN CONFIGURATION ACTIVATION V1",
         "E2E - FULL CORE WIRING",
     ]
 
