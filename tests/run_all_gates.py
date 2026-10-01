@@ -756,6 +756,17 @@ def main():
 
     results.append(
         run_gate(
+            "CONTROLLED REAL SESSION CREATION ACTIVATION V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_controlled_real_session_creation_activation_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -837,6 +848,7 @@ def main():
         "RUNTIME TOKEN AVAILABILITY ACTIVATION V1",
         "RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY V1",
         "RUNTIME TOKEN CONFIGURATION ACTIVATION V1",
+        "CONTROLLED REAL SESSION CREATION ACTIVATION V1",
         "E2E - FULL CORE WIRING",
     ]
 
