@@ -778,6 +778,17 @@ def main():
 
     results.append(
         run_gate(
+            "REAL INTERNET CROSSING UNIQUE EXECUTION CHAIN FINAL AUDIT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_real_internet_crossing_unique_execution_chain_final_audit_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -861,6 +872,7 @@ def main():
         "RUNTIME TOKEN CONFIGURATION ACTIVATION V1",
         "CONTROLLED REAL SESSION CREATION ACTIVATION V1",
         "CONTROLLED REAL REQUEST EXECUTION ACTIVATION BOUNDARY V1",
+        "REAL INTERNET CROSSING UNIQUE EXECUTION CHAIN FINAL AUDIT V1",
         "E2E - FULL CORE WIRING",
     ]
 
