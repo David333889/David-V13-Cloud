@@ -800,6 +800,17 @@ def main():
 
     results.append(
         run_gate(
+            "FIRST CONTROLLED REAL GET EXECUTION GATE V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_first_controlled_real_get_execution_gate_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -885,6 +896,7 @@ def main():
         "CONTROLLED REAL REQUEST EXECUTION ACTIVATION BOUNDARY V1",
         "REAL INTERNET CROSSING UNIQUE EXECUTION CHAIN FINAL AUDIT V1",
         "FIRST CONTROLLED REAL GET EXECUTION PLAN V1",
+        "FIRST CONTROLLED REAL GET EXECUTION GATE V1",
         "E2E - FULL CORE WIRING",
     ]
 
