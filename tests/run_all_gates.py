@@ -690,6 +690,17 @@ def main():
 
     results.append(
         run_gate(
+            "CONTROLLED REAL INTERNET CROSSING UNIQUE EXECUTION PATH CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_controlled_real_internet_crossing_unique_execution_path_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -765,6 +776,7 @@ def main():
         "CONTROLLED RUNTIME ENVIRONMENT INTEGRATION V1",
         "CONTROLLED RUNTIME ENTRY INTEGRATION V1",
         "FINAL CONTROLLED REAL INTERNET CROSSING READINESS AUDIT V1",
+        "CONTROLLED REAL INTERNET CROSSING UNIQUE EXECUTION PATH CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
