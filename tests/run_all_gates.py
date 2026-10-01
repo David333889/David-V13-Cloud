@@ -734,6 +734,17 @@ def main():
 
     results.append(
         run_gate(
+            "RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_runtime_token_safe_configuration_boundary_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -813,6 +824,7 @@ def main():
         "CONTROLLED REAL INTERNET CROSSING PRE-EXECUTION DRY-RUN CONTRACT V1",
         "CONTROLLED RUNTIME DEPENDENCY ACTIVATION BOUNDARY V1",
         "RUNTIME TOKEN AVAILABILITY ACTIVATION V1",
+        "RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY V1",
         "E2E - FULL CORE WIRING",
     ]
 
