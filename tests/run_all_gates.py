@@ -855,6 +855,17 @@ def main():
 
     results.append(
         run_gate(
+            "PROTECTED RUNTIME GOLDEN EVIDENCE ENTRY COMPOSITION CONTRACT V1",
+            [
+                sys.executable,
+                "-m",
+                "tests.live_source.compare_protected_runtime_golden_evidence_entry_composition_contract_v1",
+            ],
+        )
+    )
+
+    results.append(
+        run_gate(
             "E2E - FULL CORE WIRING",
             [sys.executable, "-m", "tests.e2e.compare_e2e_v1"],
         )
@@ -945,6 +956,7 @@ def main():
         "REAL GET -> GOLDEN EVIDENCE INTEGRATION CONTRACT V1",
         "PROTECTED ONE-SHOT GOLDEN EVIDENCE COMPOSITION CONTRACT V1",
         "PROTECTED RUNTIME GOLDEN EVIDENCE WIRING CONTRACT V1",
+        "PROTECTED RUNTIME GOLDEN EVIDENCE ENTRY COMPOSITION CONTRACT V1",
         "E2E - FULL CORE WIRING",
     ]
 
