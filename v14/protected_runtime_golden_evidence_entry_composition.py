@@ -59,7 +59,10 @@ def execute_runtime_entry_golden_evidence(
     if not callable(runtime_executor):
         return _deny("RUNTIME_EXECUTOR_REQUIRED")
 
-    execution = runtime_executor()
+    try:
+        execution = runtime_executor()
+    except Exception:
+        return _deny("RUNTIME_EXECUTION_FAILURE")
 
     if not isinstance(execution, dict):
         return _deny("RUNTIME_EXECUTION_INVALID")
