@@ -44,7 +44,13 @@ def build_real_get_golden_evidence(
     raw payload or secret material.
     """
 
-    return build_finmind_golden_evidence(
-        evidence=evidence,
-        params=params,
-    )
+    try:
+        return build_finmind_golden_evidence(
+            evidence=evidence,
+            params=params,
+        )
+    except Exception:
+        return {
+            "allowed": False,
+            "reason": "GOLDEN_EVIDENCE_FAILURE",
+        }
