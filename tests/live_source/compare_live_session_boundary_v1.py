@@ -184,6 +184,45 @@ def main():
 
     print("[PASS] timeout upper bound enforced")
 
+    # Reject invalid values before any session or GET is created.
+    invalid_timeouts = (
+        True, False, float("nan"), float("inf"), float("-inf"),
+        0, -1, None, "5", (5, 10), 30.0001, 10 ** 400,
+    )
+    for timeout in invalid_timeouts:
+        rejected = validate_target(
+            url="https://api.finmindtrade.com/api/v4/data",
+            timeout=timeout,
+        )
+        assert rejected == {
+            "allowed": False, "reason": "TIMEOUT_OUT_OF_RANGE",
+        }, repr(timeout)
+    print("[PASS] invalid timeout types and non-finite values rejected")
+
+    for timeout in (0.001, 1, 5.5, 30):
+        assert validate_target(
+            url="https://api.finmindtrade.com/api/v4/data",
+            timeout=timeout,
+        ).get("allowed") is True, repr(timeout)
+    print("[PASS] finite positive timeout boundaries preserved")
+
+    orchestrator = importlib.import_module("v14.controlled_live_fetch")
+    secret_name = importlib.import_module("v14.secret_runtime").DEFAULT_TOKEN_ENV_NAME
+    for timeout in invalid_timeouts:
+        rejected_factory = FakeSessionFactory()
+        rejected = orchestrator.execute_controlled_fetch(
+            env={secret_name: "TEST_TOKEN_ONLY"},
+            session_factory=rejected_factory,
+            url="https://api.finmindtrade.com/api/v4/data",
+            timeout=timeout,
+        )
+        assert rejected == {
+            "allowed": False, "reason": "TIMEOUT_OUT_OF_RANGE",
+        }, repr(timeout)
+        assert rejected_factory.calls == 0
+        assert rejected_factory.sessions == []
+    print("[PASS] invalid timeouts stop before session creation and GET")
+
     missing_factory = create_session(
         session_factory=None,
     )

@@ -1,4 +1,5 @@
-﻿from urllib.parse import urlsplit
+﻿from math import isfinite
+from urllib.parse import urlsplit
 
 
 # Gate 28C.2 live-session boundary.
@@ -89,10 +90,10 @@ def validate_live_target(
     if host.lower() != FINMIND_HOST:
         return _deny("HOST_NOT_ALLOWED")
 
-    if not isinstance(timeout, (int, float)):
+    if isinstance(timeout, bool) or not isinstance(timeout, (int, float)):
         return _deny("TIMEOUT_OUT_OF_RANGE")
 
-    if timeout <= 0 or timeout > MAX_TIMEOUT_SECONDS:
+    if not 0 < timeout <= MAX_TIMEOUT_SECONDS or not isfinite(timeout):
         return _deny("TIMEOUT_OUT_OF_RANGE")
 
     return {
