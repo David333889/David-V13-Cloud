@@ -11,11 +11,12 @@ test_invalid_date_formats_rejected (research.test_wp4_relative_strength.Candidat
 test_middle_observation_is_validated_even_when_endpoints_match (research.test_wp4_relative_strength.CandidateMetricsTests.test_middle_observation_is_validated_even_when_endpoints_match) ... ok
 test_missing_window_is_not_padded (research.test_wp4_relative_strength.CandidateMetricsTests.test_missing_window_is_not_padded) ... ok
 test_real_input_and_adjustment_mismatch_rejected (research.test_wp4_relative_strength.CandidateMetricsTests.test_real_input_and_adjustment_mismatch_rejected) ... ok
+test_relative_ratio_underflow_is_rejected (research.test_wp4_relative_strength.CandidateMetricsTests.test_relative_ratio_underflow_is_rejected) ... ok
 test_scale_invariance (research.test_wp4_relative_strength.CandidateMetricsTests.test_scale_invariance) ... ok
 test_underflow_does_not_manufacture_complete_loss (research.test_wp4_relative_strength.CandidateMetricsTests.test_underflow_does_not_manufacture_complete_loss) ... ok
 test_underperformance_and_flat_benchmark (research.test_wp4_relative_strength.CandidateMetricsTests.test_underperformance_and_flat_benchmark) ... ok
 
 ----------------------------------------------------------------------
-Ran 16 tests in 0.003s
+Ran 17 tests in 0.003s
 
 OK

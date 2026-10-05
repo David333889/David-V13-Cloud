@@ -73,7 +73,10 @@ def compare_candidate_metrics(stock, benchmark, lookback):
         if stock_gross <= 0 or benchmark_gross <= 0:
             return _deny("METRIC_NOT_FINITE")
         difference = stock_gross - benchmark_gross
-        gross_relative = stock_gross / benchmark_gross - 1
+        relative_gross = stock_gross / benchmark_gross
+        if relative_gross <= 0:
+            return _deny("METRIC_NOT_FINITE")
+        gross_relative = relative_gross - 1
     except (OverflowError, ZeroDivisionError):
         return _deny("METRIC_NOT_FINITE")
     if not all(isfinite(x) for x in (stock_gross, benchmark_gross, difference, gross_relative)):

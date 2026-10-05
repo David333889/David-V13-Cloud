@@ -112,6 +112,10 @@ class CandidateMetricsTests(unittest.TestCase):
         for a, b in ((extreme, normal), (normal, extreme)):
             self.assertEqual(compare_candidate_metrics(a, b, 1)["reason"], "METRIC_NOT_FINITE")
 
+    def test_relative_ratio_underflow_is_rejected(self):
+        result = compare_candidate_metrics(series(1, 1e-200), series(1, 1e200), 1)
+        self.assertEqual(result["reason"], "METRIC_NOT_FINITE")
+
     def test_middle_observation_is_validated_even_when_endpoints_match(self):
         a, b = series(100, 110), series(100, 105)
         a["records"].insert(1, {"trading_date": "2026-09-01", "close": 101})
