@@ -1,0 +1,64 @@
+{
+  "sources": [
+    {
+      "url": "https://isin.twse.com.tw/isin/C_public.jsp?strMode=11",
+      "retrieved_at": "2026-10-05T18:03:11.454763+08:00",
+      "sha256": "cef4b7b17c0d700665b31b138eef2ed98f3476a4072388eadb2cff61ec069ba4",
+      "output_file": "TWSE_Index_Identity_20261005.html",
+      "target_reference_rows": [
+        [
+          "IX0001 臺股指數",
+          "TW000IX00010",
+          "2009/01/19",
+          "TIECMX",
+          ""
+        ]
+      ]
+    },
+    {
+      "url": "https://eshop.twse.com.tw/zh/product/detail/cfec9a1470e448ec91bfde006db361e8",
+      "retrieved_at": "2026-10-05T18:03:11.571257+08:00",
+      "sha256": "5de1c2006b984553575de4f0696e48cad63406c418467dc10467c22953cbbfdd",
+      "output_file": "TWSE_A05_Product_Metadata_20261005.html",
+      "format_links": [
+        {
+          "title": "格式說明-A05+-每日收盤行情+.docx",
+          "url": "https://eshop.twse.com.tw/uploadFile/upload/000000006e0bbe8d016f3aefddf00377.docx"
+        }
+      ]
+    }
+  ],
+  "format_document": {
+    "url": "https://eshop.twse.com.tw/uploadFile/upload/000000006e0bbe8d016f3aefddf00377.docx",
+    "sha256": "ebc6b18c63bfaaf42b2a16c364ece3e4d882febfa0d63f0f1e745544ffe265fa",
+    "document_name": "Index Summary A05+",
+    "file_names": [
+      "BFIGUU",
+      "BFIGVU",
+      "BFIGWU"
+    ],
+    "record_length_bytes": 120,
+    "date_field_type": "9(08)",
+    "date_field_position_length": "1-8",
+    "scope": "FIXED_WIDTH_PRODUCT_FORMAT_NOT_WEB_JSON_API",
+    "revision_dates": [
+      "2019/04/29",
+      "2019/12/16"
+    ]
+  },
+  "market_data_endpoint_calls": 0,
+  "candidate_runtime_identity": "NOT_ESTABLISHED",
+  "search_scope": {
+    "domain": "twse.com.tw",
+    "query_count": 8,
+    "topics": [
+      "afterTrading MI_INDEX fields",
+      "MI_INDEX API date",
+      "A05+ date fields",
+      "MI_INDEX tables TAIEX",
+      "domestic index ISIN",
+      "MI_INDEX non-trading day"
+    ],
+    "outcome": "No sufficient exact web candidate response-scope contract found in this bounded search; not proof of absence"
+  }
+}
