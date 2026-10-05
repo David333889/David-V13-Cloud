@@ -1,0 +1,67 @@
+{
+  "scope": "STATIC_CANDIDATE_REVIEW_ONLY",
+  "pages": [
+    {
+      "identity": "taiex_history",
+      "url": "https://www.twse.com.tw/zh/indices/taiex/mi-5min-hist.html",
+      "retrieved_at": "2026-10-05T17:50:44.654306+08:00",
+      "sha256": "517cb2b26945d1899584ab158cb5efee9c454f7cc783f22a774f8fb64302c9d3",
+      "output_file": "taiex_history_20261005.html",
+      "javascript_executed": false,
+      "market_api_called": false,
+      "form_route": "/TAIEX/MI_5MINS_HIST",
+      "date_configuration": "b:1999,e:0,f:M"
+    },
+    {
+      "identity": "daily_close",
+      "url": "https://www.twse.com.tw/zh/trading/historical/mi-index.html",
+      "retrieved_at": "2026-10-05T17:50:44.654306+08:00",
+      "sha256": "677e9962c8b949c19bb5792376bef85374ff60cbc76565b4e6a0b6522d8d0b09",
+      "output_file": "daily_close_20261005.html",
+      "javascript_executed": false,
+      "market_api_called": false,
+      "form_route": "/afterTrading/MI_INDEX",
+      "date_configuration": "b:2004,e:0,f:D"
+    }
+  ],
+  "script_manifest": [
+    {
+      "url": "https://www.twse.com.tw/res/js/web-report.js",
+      "retrieved_at": "2026-10-05T17:51:17.010838+08:00",
+      "sha256": "fb42365f6eb8a1516408e7604f502c134c5e54de0c4f6449c6e10c2915685058",
+      "javascript_executed": false
+    },
+    {
+      "url": "https://www.twse.com.tw/res/js/web.js",
+      "retrieved_at": "2026-10-05T17:51:17.010838+08:00",
+      "sha256": "9c1dbb81dd7d16d6b95a7e45fcbc5f561e3a1f764ff526f7936320b22c5ce993",
+      "javascript_executed": false
+    }
+  ],
+  "additional_asset_manifest": [
+    {
+      "url": "https://www.twse.com.tw/res/css/web-report.css",
+      "sha256": "d19ca39036b4689efb3c2eb1b23a1d52c72e517c80f0ee4d24de2b33ac9be8f3",
+      "retrieved_at": "2026-10-05T17:52:29.217385+08:00",
+      "executed": false
+    },
+    {
+      "url": "https://www.twse.com.tw/res/js/main.js",
+      "sha256": "e904e5819a818a414c893d4f878e8f13fd745a14418666c849f2975020349252",
+      "retrieved_at": "2026-10-05T17:52:29.281806+08:00",
+      "executed": false
+    }
+  ],
+  "derived_candidate_route": "/rwd/zh/afterTrading/MI_INDEX",
+  "route_status": "DERIVED_FROM_OFFICIAL_STATIC_UI_NOT_EXECUTED",
+  "openapi_MI_INDEX_properties": [
+    "日期",
+    "指數",
+    "收盤指數",
+    "漲跌",
+    "漲跌點數",
+    "漲跌百分比",
+    "特殊處理註記"
+  ],
+  "market_data_endpoint_calls": 0
+}
