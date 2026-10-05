@@ -1,0 +1,21 @@
+test_absolute_loss_can_have_positive_relative_performance (research.test_wp4_relative_strength.CandidateMetricsTests.test_absolute_loss_can_have_positive_relative_performance) ... ok
+test_derived_overflow_is_not_a_valid_metric (research.test_wp4_relative_strength.CandidateMetricsTests.test_derived_overflow_is_not_a_valid_metric) ... ok
+test_duplicates_and_reverse_dates_rejected (research.test_wp4_relative_strength.CandidateMetricsTests.test_duplicates_and_reverse_dates_rejected) ... ok
+test_equal_performance_at_different_price_scales (research.test_wp4_relative_strength.CandidateMetricsTests.test_equal_performance_at_different_price_scales) ... ok
+test_every_observation_date_must_align (research.test_wp4_relative_strength.CandidateMetricsTests.test_every_observation_date_must_align) ... ok
+test_explicit_lookback_required (research.test_wp4_relative_strength.CandidateMetricsTests.test_explicit_lookback_required) ... ok
+test_formula_candidates_have_different_magnitudes (research.test_wp4_relative_strength.CandidateMetricsTests.test_formula_candidates_have_different_magnitudes) ... ok
+test_input_not_mutated (research.test_wp4_relative_strength.CandidateMetricsTests.test_input_not_mutated) ... ok
+test_invalid_close_values_rejected_in_both_series (research.test_wp4_relative_strength.CandidateMetricsTests.test_invalid_close_values_rejected_in_both_series) ... ok
+test_invalid_date_formats_rejected (research.test_wp4_relative_strength.CandidateMetricsTests.test_invalid_date_formats_rejected) ... ok
+test_middle_observation_is_validated_even_when_endpoints_match (research.test_wp4_relative_strength.CandidateMetricsTests.test_middle_observation_is_validated_even_when_endpoints_match) ... ok
+test_missing_window_is_not_padded (research.test_wp4_relative_strength.CandidateMetricsTests.test_missing_window_is_not_padded) ... ok
+test_real_input_and_adjustment_mismatch_rejected (research.test_wp4_relative_strength.CandidateMetricsTests.test_real_input_and_adjustment_mismatch_rejected) ... ok
+test_scale_invariance (research.test_wp4_relative_strength.CandidateMetricsTests.test_scale_invariance) ... ok
+test_underflow_does_not_manufacture_complete_loss (research.test_wp4_relative_strength.CandidateMetricsTests.test_underflow_does_not_manufacture_complete_loss) ... ok
+test_underperformance_and_flat_benchmark (research.test_wp4_relative_strength.CandidateMetricsTests.test_underperformance_and_flat_benchmark) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.003s
+
+OK

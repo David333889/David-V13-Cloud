@@ -1,0 +1,37 @@
+{
+  "data_origin": "invented_synthetic_values",
+  "cases": {
+    "up_vs_up": {
+      "allowed": true,
+      "research_only": true,
+      "synthetic_only": true,
+      "spec_status": "CANDIDATE_COMPARISON_ONLY",
+      "lookback_intervals": 1,
+      "start_date": "2026-09-01",
+      "end_date": "2026-09-02",
+      "stock_return": 0.10000000000000009,
+      "benchmark_return": 0.050000000000000044,
+      "return_difference": 0.050000000000000044,
+      "gross_relative_return": 0.04761904761904767,
+      "signal_emitted": false,
+      "ranking_emitted": false,
+      "market_state_emitted": false
+    },
+    "loss_vs_larger_loss": {
+      "allowed": true,
+      "research_only": true,
+      "synthetic_only": true,
+      "spec_status": "CANDIDATE_COMPARISON_ONLY",
+      "lookback_intervals": 1,
+      "start_date": "2026-09-01",
+      "end_date": "2026-09-02",
+      "stock_return": -0.09999999999999998,
+      "benchmark_return": -0.19999999999999996,
+      "return_difference": 0.09999999999999998,
+      "gross_relative_return": 0.125,
+      "signal_emitted": false,
+      "ranking_emitted": false,
+      "market_state_emitted": false
+    }
+  }
+}

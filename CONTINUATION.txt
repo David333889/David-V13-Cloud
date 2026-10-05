@@ -31,3 +31,6 @@ single-date、classifier及execution readiness仍BLOCKED。不要直接呼叫市
 本次先完成新工作位置與完整回歸保存。接續時可在本目錄繼續實作，不再受原目錄寫入限制。
 TWSE前進依賴官方契約或取得計畫決策；其餘工作可依既有WP traceability與實際規格獨立安排。
 新Git接續SHA與完整bundle由本次安全節點報告及任務outputs接續紀錄保存。
+
+新增研究節點：R23 兩種相對強弱候選算法完成合成資料比較，16項研究測試通過。
+規格見docs/V14_WP4_RS_CANDIDATE_COMPARISON_20261005.md。公式、來源與門檻未鎖定；不產生交易訊號。
