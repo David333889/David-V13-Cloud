@@ -1,6 +1,6 @@
 ﻿requirement_id,requirement,current_state,needed_evidence,received_artifact,review_result
 S01,基準唯一身分,REFERENCE_ONLY,精確接口欄位與唯一基準ID映射,,NOT_REVIEWED
-S02,基準報酬定義,PENDING,官方價格或總報酬定義與對應序列,,NOT_REVIEWED
+S02,基準報酬定義,PARTIAL,官方價格或總報酬定義與對應序列,docs/V14_WP4_BENCHMARK_BASIS_OFFICIAL_REVIEW_20261005.md；官方編製要點第二、四、五點,PARTIAL：官方類型定義已證實，精確序列欄位映射未證实；2026-10-05
 S03,個股來源及調整,PENDING,公司行動、股利及調整方式文件,,NOT_REVIEWED
 S04,日期及完整回應範圍,BLOCKED,精確接口參數與完整回應契約,,NOT_REVIEWED
 S05,缺值停牌與非交易日,PENDING,官方規則及可重現樣本,,NOT_REVIEWED
