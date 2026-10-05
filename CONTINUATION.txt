@@ -1,0 +1,33 @@
+DAVID V14 後續工作專案
+日期 2026-10-05 台灣時間
+
+本副本已作為後續開發位置，承接原版本與已驗證的逾時修補。
+位置 C:\Users\Administrator\Documents\Codex\2026-10-05\new-chat\outputs\DAVID_V14_Active_Project
+工作分支 codex/v14-continuation
+原始基準 a0143836f70d4a981beefbff731c1cd3bc5ccd1f
+程式與審查基準 dca39549d38d065e49cebce5040160ae8953f841
+
+現況
+逾時檢查已拒絕bool及NaN等非法值，原始FinMind主機與30秒上限保持既有契約。
+完整回歸tests/run_all_gates.py已於此副本的相同程式版本執行，87項gate全部通過，包含E2E，exit0。
+原始測試位置為同一任務work中的副本；搬入outputs後Git基準保持相同，僅新增本交接文件與測試證據。
+測試版本與log hash位於docs/evidence/V14_ACTIVE_WORKSPACE_FULL_REGRESSION_RESULTS_20261005.json；原始log同目录留存。
+回歸通過不代表TWSE readiness完成，也不是市場行情取得或DB復原驗證。
+
+接續原則
+後續檔案變更以本目錄為準，原C:\David戰情室\V14_Unified目前沒有套用這些變更。
+每次接續先讀本檔、確認branch/HEAD/status，再查看最新docs及缺口判定。
+本副本未配置remote或沿用原專案憑證，沒有自動push設定。
+後續若需GitHub整合，先核對目標與分支，再決定推送或PR，不將本地保存誤報遠端封存。
+
+TWSE待閉合
+候選/rwd/zh/afterTrading/MI_INDEX只有靜態UI來源，尚未建立精確官方response/date scope/identity契約。
+公開搜尋已完成有界查證但不足；取得確切官方契約或明確修訂取得計畫，才會改變證據狀態。
+Date-only樣本目的不等於OHLC/benchmark資料來源。
+timeout候選5/10/20秒未啟用，正式TWSE transport與取消機制待驗證。
+single-date、classifier及execution readiness仍BLOCKED。不要直接呼叫市場API或production write。
+
+下一步
+本次先完成新工作位置與完整回歸保存。接續時可在本目錄繼續實作，不再受原目錄寫入限制。
+TWSE前進依賴官方契約或取得計畫決策；其餘工作可依既有WP traceability與實際規格獨立安排。
+新Git接續SHA與完整bundle由本次安全節點報告及任務outputs接續紀錄保存。

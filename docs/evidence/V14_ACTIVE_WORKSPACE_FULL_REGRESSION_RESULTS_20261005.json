@@ -1,0 +1,11 @@
+{
+  "tested_commit": "dca39549d38d065e49cebce5040160ae8953f841",
+  "runner": "tests/run_all_gates.py",
+  "exit_code": 0,
+  "gate_count": 87,
+  "failed_gate_count": 0,
+  "final_result": "PASS",
+  "log_sha256": "8c5f55d7c737f6b9ec7d41a3e1e536282728042375dcdb7457ff78d836d1b711",
+  "scope": "OFFLINE_REGRESSION_AT_NEW_WORKSPACE",
+  "twse_execution_readiness": "BLOCKED"
+}
