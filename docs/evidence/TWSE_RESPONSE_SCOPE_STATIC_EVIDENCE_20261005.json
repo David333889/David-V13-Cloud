@@ -1,0 +1,48 @@
+{
+  "source_url": "https://openapi.twse.com.tw/v1/swagger.json",
+  "retrieved_at": "2026-10-05T17:45:02.267158+08:00",
+  "sha256": "06e1cea82448361e733a0ad1ae16e52f5d5d6b71905acd078472f852c32c0eb0",
+  "endpoint_path": "/indicesReport/MI_5MINS_HIST",
+  "operation": {
+    "tags": [
+      "指數"
+    ],
+    "summary": "發行量加權股價指數歷史資料",
+    "description": "發行量加權股價指數歷史資料",
+    "produces": [
+      "application/json",
+      "text/csv"
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "Date": {
+              "type": "string",
+              "description": "日期"
+            },
+            "OpeningIndex": {
+              "type": "string",
+              "description": "開盤指數"
+            },
+            "HighestIndex": {
+              "type": "string",
+              "description": "最高指數"
+            },
+            "LowestIndex": {
+              "type": "string",
+              "description": "最低指數"
+            },
+            "ClosingIndex": {
+              "type": "string",
+              "description": "收盤指數"
+            }
+          }
+        }
+      }
+    }
+  },
+  "market_data_endpoint_called": false
+}
