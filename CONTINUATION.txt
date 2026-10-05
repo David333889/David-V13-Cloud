@@ -36,3 +36,5 @@ TWSE前進依賴官方契約或取得計畫決策；其餘工作可依既有WP t
 規格見docs/V14_WP4_RS_CANDIDATE_COMPARISON_20261005.md。公式、來源與門檻未鎖定；不產生交易訊號。
 
 最新研究：比較口徑決策提案見docs/V14_WP4_RS_DECISION_PROPOSAL_20261005.md。補強相對比值下溢拒絕，研究測試17項通過。來源與正式規格仍待證據，不接入交易。
+
+最新接續：docs/V14_WP4_SOURCE_INTAKE_GUIDE_20261005.md及12項來源驗收CSV已建立。3份既有來源快照與hash manifest納入備份。沒有新行情或來源契約；優先補齊S01–S03。

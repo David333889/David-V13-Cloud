@@ -1,0 +1,20 @@
+[
+  {
+    "file": "docs/evidence/source_intake/TWSE_Official_Swagger_20261005.json",
+    "bytes": 309960,
+    "sha256": "06e1cea82448361e733a0ad1ae16e52f5d5d6b71905acd078472f852c32c0eb0",
+    "scope": "existing_snapshot_not_new_online_verification"
+  },
+  {
+    "file": "docs/evidence/source_intake/TWSE_Index_Identity_20261005.html",
+    "bytes": 69568,
+    "sha256": "cef4b7b17c0d700665b31b138eef2ed98f3476a4072388eadb2cff61ec069ba4",
+    "scope": "existing_snapshot_not_new_online_verification"
+  },
+  {
+    "file": "docs/evidence/source_intake/TWSE_Candidate_Contract_Search_Evidence_20261005.json",
+    "bytes": 2126,
+    "sha256": "f4dbeb0c1eed15c4980e86eec3687566c54ed8376bd4e03bce6b8be9bc4df900",
+    "scope": "existing_snapshot_not_new_online_verification"
+  }
+]

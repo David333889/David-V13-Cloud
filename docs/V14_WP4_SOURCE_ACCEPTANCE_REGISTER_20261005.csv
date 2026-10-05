@@ -1,0 +1,13 @@
+﻿requirement_id,requirement,current_state,needed_evidence,received_artifact,review_result
+S01,基準唯一身分,REFERENCE_ONLY,精確接口欄位與唯一基準ID映射,,NOT_REVIEWED
+S02,基準報酬定義,PENDING,官方價格或總報酬定義與對應序列,,NOT_REVIEWED
+S03,個股來源及調整,PENDING,公司行動、股利及調整方式文件,,NOT_REVIEWED
+S04,日期及完整回應範圍,BLOCKED,精確接口參數與完整回應契約,,NOT_REVIEWED
+S05,缺值停牌與非交易日,PENDING,官方規則及可重現樣本,,NOT_REVIEWED
+S06,時點時區與幣別,PENDING,两端欄位定義及對照,,NOT_REVIEWED
+S07,日曆與窗口,PENDING,有來源的日曆及明訂缺值政策,,NOT_REVIEWED
+S08,精確回應格式,PENDING,容器、欄位、型別、版本與原始樣本,,NOT_REVIEWED
+S09,發布修訂及新鮮度,PENDING,精確接口發布與修訂規則,,NOT_REVIEWED
+S10,期間及公式,PROPOSED,可追溯規格決策與觀測窗口,,NOT_REVIEWED
+S11,排名母體及門檻,PENDING,母體日期、排除政策、用途與門檻,,NOT_REVIEWED
+S12,傳輸及正式接入,BLOCKED,取得計畫、邊界驗證與接入審查,,NOT_REVIEWED
