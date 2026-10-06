@@ -1,0 +1,101 @@
+{
+  "version": "LOCAL_EVIDENCE_INTAKE_V2",
+  "entries": [
+    {
+      "artifact_id": "TWSE_SWAGGER",
+      "kind": "ORIGINAL_SNAPSHOT",
+      "source_url": "https://openapi.twse.com.tw/v1/swagger.json",
+      "retrieved_at": "2026-10-05T17:45:02.267158+08:00",
+      "locator": {
+        "type": "JSON_POINTER",
+        "value": "/paths/~1indicesReport~1MI_5MINS_HIST/get"
+      },
+      "claim": "Stored endpoint documentation",
+      "limitations": "Historical retrieval time recovered from matching-hash prior review; no fresh online verification",
+      "path": "docs/evidence/source_intake/TWSE_Official_Swagger_20261005.json",
+      "sha256": "06e1cea82448361e733a0ad1ae16e52f5d5d6b71905acd078472f852c32c0eb0",
+      "bytes": 309960
+    },
+    {
+      "artifact_id": "TWSE_IDENTITY",
+      "kind": "ORIGINAL_SNAPSHOT",
+      "source_url": "https://isin.twse.com.tw/isin/C_public.jsp?strMode=11",
+      "retrieved_at": "2026-10-05T18:03:11.454763+08:00",
+      "locator": {
+        "type": "TEXT",
+        "value": "IX0001",
+        "encoding": "cp950"
+      },
+      "claim": "Identity reference",
+      "limitations": "Does not map the candidate JSON to this official identity",
+      "path": "docs/evidence/source_intake/TWSE_Index_Identity_20261005.html",
+      "sha256": "cef4b7b17c0d700665b31b138eef2ed98f3476a4072388eadb2cff61ec069ba4",
+      "bytes": 69568
+    },
+    {
+      "artifact_id": "TWSE_SEARCH_REVIEW",
+      "kind": "REVIEW_RECORD",
+      "source_url": "https://isin.twse.com.tw/isin/C_public.jsp?strMode=11",
+      "retrieved_at": null,
+      "locator": {
+        "type": "JSON_POINTER",
+        "value": "/sources/0/retrieved_at"
+      },
+      "claim": "Prior review records original identity retrieval time",
+      "limitations": "Review compilation timestamp unknown; not original source HTML",
+      "path": "docs/evidence/source_intake/TWSE_Candidate_Contract_Search_Evidence_20261005.json",
+      "sha256": "f4dbeb0c1eed15c4980e86eec3687566c54ed8376bd4e03bce6b8be9bc4df900",
+      "bytes": 2126
+    },
+    {
+      "artifact_id": "FINMIND_BROWSER_REVIEW",
+      "kind": "REVIEW_RECORD",
+      "source_url": "https://finmind.github.io/tutor/TaiwanMarket/Technical/",
+      "retrieved_at": null,
+      "path": "docs/evidence/V14_S01_S03_DOCUMENTATION_REVIEW_20261006.json",
+      "sha256": "4499a9d90f2f62b314ff05f5da29d122b53f3899e5dded6c99795dd8eff1cdf1",
+      "bytes": 2257,
+      "locator": {
+        "type": "JSON_POINTER",
+        "value": "/retrieved_original_html"
+      },
+      "claim": "Browser review explicitly records absence of original HTML",
+      "limitations": "Hash established at intake; prior original HTML and exact retrieval time unavailable"
+    },
+    {
+      "artifact_id": "FINMIND_PINNED_TECHNICAL",
+      "kind": "ORIGINAL_SNAPSHOT",
+      "source_url": "https://github.com/FinMind/FinMind.github.io/blob/8d43d0b1b2a7c73129509a095494f2b1cda6fd1f/tutor/TaiwanMarket/Technical/index.html",
+      "retrieved_at": "2026-10-06T01:26:15+00:00",
+      "path": "docs/evidence/source_capture_20261006/FinMind_Technical_Pinned_20261006.html",
+      "sha256": "6f8747b5fbaa9ba13708bf1a546f7368e460fc59ccd86bd5c78690c10aa52ea5",
+      "bytes": 542919,
+      "locator": {
+        "type": "TEXT",
+        "value": "TaiwanStockPriceAdj"
+      },
+      "claim": "Pinned original official repository artifact",
+      "limitations": "Document version, not as-of historical market data or factor verification",
+      "source_revision": "8d43d0b1b2a7c73129509a095494f2b1cda6fd1f",
+      "git_blob_sha": "20ec730ed10284a642b6ddb13d415b6d85315d9f"
+    },
+    {
+      "artifact_id": "FINMIND_PINNED_SDK",
+      "kind": "ORIGINAL_SNAPSHOT",
+      "source_url": "https://github.com/FinMind/FinMind/blob/55954194649ec9f220a47f93336cec11da15d22d/FinMind/data/data_loader.py",
+      "retrieved_at": "2026-10-06T01:26:24+00:00",
+      "path": "docs/evidence/source_capture_20261006/FinMind_DataLoader_Pinned_20261006.py.txt",
+      "sha256": "dc94473f65602459cf50b2c523d5cf38f0b3133760330669112f7ff679233edc",
+      "bytes": 145318,
+      "locator": {
+        "type": "TEXT",
+        "value": "def taiwan_stock_daily_adj("
+      },
+      "claim": "Pinned original official repository artifact",
+      "limitations": "Document version, not as-of historical market data or factor verification",
+      "source_revision": "55954194649ec9f220a47f93336cec11da15d22d",
+      "git_blob_sha": "ef7517121f12c9bf32fa01281413b69a94a93cd1"
+    }
+  ],
+  "source_promotion": false
+}

@@ -1,0 +1,47 @@
+DAVID V14 官方原始文件固定版本與歷史取得時間查核
+2026年10月6日 台灣時間
+
+本次結論
+已補存兩份FinMind官方儲存庫原始檔案，固定上游commit並核對Git blob SHA；另找回TWSE Swagger精確歷史取得時間，其紀錄內SHA256與現有快照相符。六份收件的檔案完整性均通過，四份metadata齊全；兩份舊查核紀錄的精確形成時間仍未知，整體intake_valid保持False。
+新原始檔案提升可追溯性，未補齊經濟口徑全部證據。S01至S03仍PARTIAL，正式行情接入仍BLOCKED。本次無新研究程式、行情資料取得或資料庫操作。
+
+原始檔案與固定版本
+文件儲存庫 FinMind/FinMind.github.io
+commit 8d43d0b1b2a7c73129509a095494f2b1cda6fd1f
+原始路徑 tutor/TaiwanMarket/Technical/index.html
+Git blob 20ec730ed10284a642b6ddb13d415b6d85315d9f
+保存 docs/evidence/source_capture_20261006/FinMind_Technical_Pinned_20261006.html
+https://github.com/FinMind/FinMind.github.io/blob/8d43d0b1b2a7c73129509a095494f2b1cda6fd1f/tutor/TaiwanMarket/Technical/index.html
+
+SDK儲存庫 FinMind/FinMind
+commit 55954194649ec9f220a47f93336cec11da15d22d
+原始路徑 FinMind/data/data_loader.py
+Git blob ef7517121f12c9bf32fa01281413b69a94a93cd1
+保存 docs/evidence/source_capture_20261006/FinMind_DataLoader_Pinned_20261006.py.txt
+https://github.com/FinMind/FinMind/blob/55954194649ec9f220a47f93336cec11da15d22d/FinMind/data/data_loader.py
+
+取得方式為GitHub connector fetch_file base64，解碼原始bytes後以Git blob規則SHA1驗證，另計SHA256。沒有執行下載的SDK或HTML。Git blob驗證支持取得檔案與GitHub回傳的blob ID一致；不證明provider市場資料或說明內容全部正確。
+這是固定儲存庫檔案快照，不是宣稱另行下載並驗證網站HTTP回應body，也不是歷史行情as-of快照。
+本次精確取得時間與檔案長度、SHA256見source_capture_20261006/capture_manifest.json。取得時間是本次連接器回覆完成後的UTC紀錄，可依時區換算；不回填舊查核時間。
+
+內容支持範圍與定位
+技術文件第2937行：說明特定無公告價情境可能使用沿用還原價。
+第3792至3795行：說明回溯調整、事件範圍與生效時點。
+第5362行起TaiwanStockTotalReturnIndex段落：總報酬候選的文件身分與欄位。
+SDK第124至160行taiwan_stock_daily_adj：取回指定dataset，未於此函數計算還原因子；第1906至1922行總報酬方法與身分欄位對照。
+以上為此固定檔案版本的行號，不是瀏覽器浮動行號。精確因子公式、再投資價格與稅費、可取回的歷史固定版本仍待可定位證據。所讀函數未揭露公式，不代表整個provider沒有此資訊。
+
+TWSE Swagger歷史時間恢復
+找到原10月5日TWSE_Response_Scope_Static_Evidence_20261005.json，source_url為https://openapi.twse.com.tw/v1/swagger.json，retrieved_at為2026-10-05T17:45:02.267158+08:00。
+紀錄內SHA256 06e1cea82448361e733a0ad1ae16e52f5d5d6b71905acd078472f852c32c0eb0與現有Swagger快照一致，因此將這項歷史紀錄綁入新版manifest。來源紀錄原始bytes也保存於source_capture_20261006。
+這是恢復可追溯的既有紀錄，不是本次重新對TWSE線上查證或證明獨立時間戳。旧收件manifest保留，最新為V14_PINNED_SOURCE_INTAKE_MANIFEST_20261006.json。
+
+實際驗收與保存
+沿用既有audit_intake檢查六份檔案：完整性6/6，metadata完整4/6；未知時間剩TWSE_SEARCH_REVIEW與舊FINMIND_BROWSER_REVIEW兩份。新保存的FinMind原始檔案可取代後續只憑瀏覽摘要的引用用途，但不抹去舊紀錄缺口。
+結果見docs/evidence/V14_PINNED_SOURCE_INTAKE_AUDIT_20261006.json。capture目錄設定-text，保存原始位元組，Git備份復原需逐檔SHA256一致。
+本次沒有修改研究或production程式，未重跑55項研究測試與完整回歸；沿用96035f3之前相同程式內容的測試紀錄，不宣稱新HEAD重新測試。
+
+下一個可推進工作
+依固定版本的原文，逐項對公司行動因子、再投資、as-of可得性與品質旗標作supported/partial/pending判定；未找到的項目保留問題與定位，避免繼續以合成測試累積取代來源驗收。必要的來源澄清草稿可以先完成，但不自動對外寄送。
+新來源文件不改變TWSE完整回應日期、精確格式、classifier或正式transport readiness；仍不啟用Core、Score、Decision、交易或資料庫寫入。
+本階段完成提交、完整歷史bundle驗證、空白目錄復原及六份收件與三份新原檔的bytes核對後保存安全接續点。

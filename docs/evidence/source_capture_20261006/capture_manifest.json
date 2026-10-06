@@ -1,0 +1,41 @@
+{
+  "version": "PINNED_SOURCE_CAPTURE_V1",
+  "files": [
+    {
+      "repo": "FinMind/FinMind.github.io",
+      "path": "tutor/TaiwanMarket/Technical/index.html",
+      "sha": "8d43d0b1b2a7c73129509a095494f2b1cda6fd1f",
+      "name": "FinMind_Technical_Pinned_20261006.html",
+      "blob_sha": "20ec730ed10284a642b6ddb13d415b6d85315d9f",
+      "retrieved_at_utc": "2026-10-06 01:26:15 UTC",
+      "transport": "GitHub connector fetch_file base64 at pinned commit",
+      "byte_preservation": "decoded original repository blob; not browser rendered DOM",
+      "source_url": "https://github.com/FinMind/FinMind.github.io/blob/8d43d0b1b2a7c73129509a095494f2b1cda6fd1f/tutor/TaiwanMarket/Technical/index.html",
+      "bytes": 542919,
+      "sha256": "6f8747b5fbaa9ba13708bf1a546f7368e460fc59ccd86bd5c78690c10aa52ea5",
+      "retrieved_at": "2026-10-06T01:26:15+00:00",
+      "blob_hash_verified": true
+    },
+    {
+      "repo": "FinMind/FinMind",
+      "path": "FinMind/data/data_loader.py",
+      "sha": "55954194649ec9f220a47f93336cec11da15d22d",
+      "name": "FinMind_DataLoader_Pinned_20261006.py.txt",
+      "blob_sha": "ef7517121f12c9bf32fa01281413b69a94a93cd1",
+      "retrieved_at_utc": "2026-10-06 01:26:24 UTC",
+      "transport": "GitHub connector fetch_file base64 at pinned commit",
+      "byte_preservation": "decoded original repository blob; not browser rendered DOM",
+      "source_url": "https://github.com/FinMind/FinMind/blob/55954194649ec9f220a47f93336cec11da15d22d/FinMind/data/data_loader.py",
+      "bytes": 145318,
+      "sha256": "dc94473f65602459cf50b2c523d5cf38f0b3133760330669112f7ff679233edc",
+      "retrieved_at": "2026-10-06T01:26:24+00:00",
+      "blob_hash_verified": true
+    }
+  ],
+  "historical_swagger_provenance": {
+    "file": "TWSE_Response_Scope_Static_Evidence_20261005.json",
+    "sha256": "08c04b0ad5889b9294a150e31034b1240daaafffbfb5e45f4d76f819dae58414",
+    "matching_snapshot_sha256": "06e1cea82448361e733a0ad1ae16e52f5d5d6b71905acd078472f852c32c0eb0",
+    "retrieved_at": "2026-10-05T17:45:02.267158+08:00"
+  }
+}

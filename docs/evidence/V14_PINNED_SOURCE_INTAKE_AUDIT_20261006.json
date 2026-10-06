@@ -1,0 +1,84 @@
+{
+  "intake_valid": false,
+  "issues": [],
+  "artifacts": [
+    {
+      "integrity_valid": true,
+      "integrity_issues": [],
+      "metadata_issues": [],
+      "source_verified": false,
+      "execution_readiness": "BLOCKED",
+      "artifact_id": "TWSE_SWAGGER",
+      "actual_bytes": 309960,
+      "actual_sha256": "06e1cea82448361e733a0ad1ae16e52f5d5d6b71905acd078472f852c32c0eb0",
+      "metadata_complete": true,
+      "artifact_kind": "ORIGINAL_SNAPSHOT"
+    },
+    {
+      "integrity_valid": true,
+      "integrity_issues": [],
+      "metadata_issues": [],
+      "source_verified": false,
+      "execution_readiness": "BLOCKED",
+      "artifact_id": "TWSE_IDENTITY",
+      "actual_bytes": 69568,
+      "actual_sha256": "cef4b7b17c0d700665b31b138eef2ed98f3476a4072388eadb2cff61ec069ba4",
+      "metadata_complete": true,
+      "artifact_kind": "ORIGINAL_SNAPSHOT"
+    },
+    {
+      "integrity_valid": true,
+      "integrity_issues": [],
+      "metadata_issues": [
+        "RETRIEVAL_TIME_UNKNOWN"
+      ],
+      "source_verified": false,
+      "execution_readiness": "BLOCKED",
+      "artifact_id": "TWSE_SEARCH_REVIEW",
+      "actual_bytes": 2126,
+      "actual_sha256": "f4dbeb0c1eed15c4980e86eec3687566c54ed8376bd4e03bce6b8be9bc4df900",
+      "metadata_complete": false,
+      "artifact_kind": "REVIEW_RECORD"
+    },
+    {
+      "integrity_valid": true,
+      "integrity_issues": [],
+      "metadata_issues": [
+        "RETRIEVAL_TIME_UNKNOWN"
+      ],
+      "source_verified": false,
+      "execution_readiness": "BLOCKED",
+      "artifact_id": "FINMIND_BROWSER_REVIEW",
+      "actual_bytes": 2257,
+      "actual_sha256": "4499a9d90f2f62b314ff05f5da29d122b53f3899e5dded6c99795dd8eff1cdf1",
+      "metadata_complete": false,
+      "artifact_kind": "REVIEW_RECORD"
+    },
+    {
+      "integrity_valid": true,
+      "integrity_issues": [],
+      "metadata_issues": [],
+      "source_verified": false,
+      "execution_readiness": "BLOCKED",
+      "artifact_id": "FINMIND_PINNED_TECHNICAL",
+      "actual_bytes": 542919,
+      "actual_sha256": "6f8747b5fbaa9ba13708bf1a546f7368e460fc59ccd86bd5c78690c10aa52ea5",
+      "metadata_complete": true,
+      "artifact_kind": "ORIGINAL_SNAPSHOT"
+    },
+    {
+      "integrity_valid": true,
+      "integrity_issues": [],
+      "metadata_issues": [],
+      "source_verified": false,
+      "execution_readiness": "BLOCKED",
+      "artifact_id": "FINMIND_PINNED_SDK",
+      "actual_bytes": 145318,
+      "actual_sha256": "dc94473f65602459cf50b2c523d5cf38f0b3133760330669112f7ff679233edc",
+      "metadata_complete": true,
+      "artifact_kind": "ORIGINAL_SNAPSHOT"
+    }
+  ],
+  "source_verified": false,
+  "execution_readiness": "BLOCKED"
+}
