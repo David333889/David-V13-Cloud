@@ -1,0 +1,49 @@
+DAVID V14 S01至S03來源與比較口徑審查
+2026年10月6日 台灣時間
+
+決策
+完成文件層級查核，S01及S03進展為PARTIAL；S02維持PARTIAL。尚未選定正式序列、鎖定公式或開放行情接入。新版驗收表與本文件取代10月5日表的現況用途，舊表保留歷史。
+
+新證據
+FinMind技術文件列出TaiwanStockTotalReturnIndex，TAIEX請求對應price、stock_id、date；SDK把stock_id改名index_id。還原股價採回溯係數，涵蓋除權息、減資、分割與面額變更；無公告價日可能沿用前日還原價。
+來源 https://finmind.github.io/tutor/TaiwanMarket/Technical/
+定位 TaiwanStockPrice、TaiwanStockPriceAdj、TaiwanStockTotalReturnIndex三節。
+SDK對照 https://github.com/FinMind/FinMind/blob/master/FinMind/data/data_loader.py
+定位 taiwan_stock_total_return_index。master為可变動來源，未固定上游commit。
+證據摘要 docs/evidence/V14_S01_S03_DOCUMENTATION_REVIEW_20261006.json
+這是瀏覽文件所得的查核紀錄，沒有保存原始HTML，沒有呼叫行情接口；不是RAW_EVIDENCE或實際樣本驗收。
+
+S01 精確身分
+FinMind報酬候選已能建立provider、endpoint、dataset、data_id及欄位的文件層映射，因此由REFERENCE_ONLY改PARTIAL。此狀態只支持TAIEX總報酬候選；TWSE價格指數候選與其唯一ID映射仍待確認，TPEx需獨立驗收，不自動共用結論。
+請求data_id、raw stock_id、SDK index_id與官方指數代碼須分開記錄。不能用001、IX0001或IR0001直接替換另一命名空間的請求身分。
+完成前仍需樣本身分一致性、官方序列對照與正式選用決策。
+
+S02 比較口徑
+總報酬候選字段已有文件支持，但市場趨勢價格指數與RS用途尚未定案。保留兩條路線：價格研究須明訂公司行動處理；總報酬研究須證明股利再投資等經濟口徑一致。TaiwanStockPriceAdj不能僅因名稱含還原就當成總報酬。
+本次選擇繼續調查總報酬候選的可比性，不取代既有TWSE價格指數工作或切換provider。S02仍PARTIAL。
+
+S03 個股調整
+由PENDING更新PARTIAL：已取得事件範圍、回溯調整及更新時點的文件支持；尚缺還原因子公式、股利再投資方式、稅費處理、減資現金與新股處理及歷史資料版本可重現性。
+原始與還原close均需保留來源身分與品質狀態。正有限值檢查無法辨識沿用價，不應讓沿用價自動冒充當日實際收盤觀測。
+
+下一工作單元的具體規格
+1 個股調整證據欄位：provider、dataset、stock_id、return_basis、adjustment_method、cash_dividend_policy、corporate_action_policy、adjustment_anchor、as_of_time、revision_id、price_observation_status、raw_reference、evidence_status。
+2 基準欄位：provider、endpoint、dataset、request_id、raw_id_field、raw_id_value、market、index_type、value_field、date_field、official_identity_reference。
+3 缺值政策候選：公告價缺失或沿用價先拒絕RS計算；不自動刪列、不填補、不重縮窗口。此為待實作設計，不聲稱現有原型已辨識沿用价。
+4 回測資料須凍結取得版本及as-of；不能以今日回溯修订序列宣稱過去當時可取得。
+5 正式允許條件須同時包含來源證據、身分映射、口徑一致、日期與日曆、品質、精度、傳輸與取得授權；單一synthetic_only或adjustment_type字串不能替代證據。
+
+需取得的精確澄清
+A 還原因子對現金股利、股票股利、分割、減資及面額變更的各自公式與計算順序？
+B 現金股利是否按除息日再投資，稅費與再投資價格如何處理？
+C 調整基準日是查詢終日還是全資料最新日，能否取得固定as-of版本？
+D 無公告價或停牌的沿用價能否提供明確旗標或由原始表可重現辨識？
+E 更正後原資料是否留存版本、發布時點與修訂原因？
+F TAIEX總報酬候選与官方精確序列的對照、差異容許值及修訂處理？
+問題已保存，尚未對外寄送。
+
+後續驗證案例
+待因子公式有證據後，才對股利、分割、減資、停牌沿用、版本修訂、錯誤序列身分及價格總報酬混配建立離線案例。合成案例可以檢查拒絕邏輯，但不能證明provider歷史價格或算法正確。
+
+本階段範圍
+程式未變更，不重跑既有87 gate或17項研究測試；歷史測試維持原tested commit。S04至S12維持既有狀態，TWSE readiness仍BLOCKED。完成文件提交、完整bundle保存與空白儲存庫復原核對後，記錄新接續SHA。

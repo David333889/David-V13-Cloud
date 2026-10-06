@@ -1,0 +1,70 @@
+{
+  "review_date_taipei": "2026-10-06",
+  "evidence_kind": "BROWSER_DOCUMENTATION_REVIEW_NOT_RAW_MARKET_EVIDENCE",
+  "retrieved_original_html": false,
+  "sources": [
+    {
+      "url": "https://finmind.github.io/tutor/TaiwanMarket/Technical/",
+      "sections": [
+        "TaiwanStockPrice",
+        "TaiwanStockPriceAdj",
+        "TaiwanStockTotalReturnIndex"
+      ],
+      "browser_line_ranges": [
+        "451-481",
+        "987-997",
+        "1899-1978"
+      ],
+      "note": "Browser line numbers are retrieval locators, not stable document paragraph IDs."
+    },
+    {
+      "url": "https://github.com/FinMind/FinMind/blob/master/FinMind/data/data_loader.py",
+      "symbol": "taiwan_stock_total_return_index",
+      "revision_pinned": false
+    }
+  ],
+  "facts": {
+    "total_return": {
+      "endpoint": "https://api.finmindtrade.com/api/v4/data",
+      "dataset": "TaiwanStockTotalReturnIndex",
+      "data_id": "TAIEX",
+      "value_field": "price",
+      "raw_identity_field": "stock_id",
+      "date_field": "date",
+      "sdk_identity_field": "index_id",
+      "type": "DOCUMENTED_TOTAL_RETURN_CANDIDATE"
+    },
+    "adjusted_stock": {
+      "dataset": "TaiwanStockPriceAdj",
+      "value_field": "close",
+      "basis": "BACKWARD_ADJUSTED_CANDIDATE_NOT_PROVEN_TOTAL_RETURN",
+      "event_types_documented": [
+        "ex-right/ex-dividend",
+        "capital reduction",
+        "stock split",
+        "par value change"
+      ],
+      "history_anchor": "latest trading day in data",
+      "missing_announced_price": "documented previous adjusted price carry",
+      "exact_factors_verified": false
+    }
+  },
+  "decisions": {
+    "S01": "PARTIAL_FINMIND_TOTAL_RETURN_CANDIDATE_ONLY_TWSE_MAPPING_OPEN",
+    "S02": "PARTIAL",
+    "S03": "PARTIAL",
+    "candidate_selected": false,
+    "transport_enabled": false,
+    "twse_readiness": "BLOCKED"
+  },
+  "gaps": [
+    "provider factor equations and cash dividend reinvestment equivalence",
+    "price vs total-return basis decision",
+    "point-in-time historical revision policy",
+    "corporate-action and carry quality flags",
+    "TWSE exact series mapping",
+    "TPEx independent full review",
+    "authorized sample and official verification",
+    "subscription and use eligibility"
+  ]
+}
