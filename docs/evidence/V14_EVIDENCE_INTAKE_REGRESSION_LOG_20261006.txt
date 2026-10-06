@@ -1,0 +1,1514 @@
+========================================================================
+DAVID V14 - GATE 3 CORE BASELINE COMPARATOR
+========================================================================
+
+[PASS] V13.100 Golden Expected Oracle loaded
+[PASS] Golden Fixture loaded: 200 rows
+[PASS] V14 Core Engine imported
+[INFO] V14 Engine Version: V14_UNIFIED
+[INFO] V13 Baseline Version: V13.100
+
+
+========================================================================
+GATE 3 - TECHNICAL DOMAIN CHECK
+========================================================================
+[PASS] Technical domain
+V13.100 Golden Oracle == V14 Technical
+========================================================================
+
+
+========================================================================
+GATE 3 - STATUS DOMAIN CHECK
+========================================================================
+[PASS] Status domain
+V13.100 Golden Oracle == V14 Status
+========================================================================
+
+
+========================================================================
+GATE 3 - SIX BUY DOMAIN CHECK
+========================================================================
+[PASS] Six Buy domain
+V13.100 Golden Oracle == V14 Six Buy
+========================================================================
+
+
+========================================================================
+GATE 3 - SIX SELL DOMAIN CHECK
+========================================================================
+[PASS] Six Sell domain
+V13.100 Golden Oracle == V14 Six Sell
+========================================================================
+
+
+========================================================================
+GATE 3 - POSITION DOMAIN CHECK
+========================================================================
+[PASS] Position domain
+V13.100 Golden Oracle == V14 Position
+========================================================================
+
+
+========================================================================
+GATE 3 - DECISION DOMAIN CHECK
+========================================================================
+[PASS] Decision domain
+V13.100 Golden Oracle == V14 Decision
+========================================================================
+
+
+========================================================================
+GATE 3 RESULT: PASS
+========================================================================
+
+V13.100 Golden Oracle == V14 Core Engine
+ABS_TOL = 1e-08
+
+CORE BASELINE COMPATIBILITY: VERIFIED
+SAFE TO CONTINUE TO NEXT MIGRATION STAGE
+========================================================================
+DAVID V14 - GATE 4 RISK GOLDEN COMPARATOR
+========================================================================
+[PASS] Golden Risk Contract loaded: V14_RISK_V1
+[PASS] 12 Golden Risk Cases loaded
+[PASS] calculate_risk() detected
+
+[PASS] G01
+[PASS] G02
+[PASS] G03
+[PASS] G04
+[PASS] G05
+[PASS] G06
+[PASS] G07
+[PASS] G08
+[PASS] G09
+[PASS] G10
+[PASS] G11
+[PASS] G12
+
+------------------------------------------------------------------------
+RESULT: 12/12 PASS | 0/12 FAIL
+------------------------------------------------------------------------
+GATE 4 RESULT: PASS
+V14_RISK_V1 GOLDEN CONTRACT VERIFIED
+========================================================================
+DAVID V14 - GATE 5 ACTION GOLDEN COMPARATOR
+========================================================================
+[PASS] Golden Action Contract loaded: V14_ACTION_V1
+[PASS] 18 Golden Action Cases loaded
+[PASS] calculate_action() detected
+
+[PASS] A01
+[PASS] A02
+[PASS] A03
+[PASS] A04
+[PASS] A05
+[PASS] A06
+[PASS] A07
+[PASS] A08
+[PASS] A09
+[PASS] A10
+[PASS] A11
+[PASS] A12
+[PASS] A13
+[PASS] A14
+[PASS] A15
+[PASS] A16
+[PASS] A17
+[PASS] A18
+
+------------------------------------------------------------------------
+RESULT: 18/18 PASS | 0/18 FAIL
+------------------------------------------------------------------------
+GATE 5 RESULT: PASS
+V14_ACTION_V1 GOLDEN CONTRACT VERIFIED
+========================================================================
+DAVID V14 - ACTION BOUNDARY V1 COMPARATOR
+========================================================================
+[PASS] Boundary Contract loaded: V14_ACTION_BOUNDARY_V1
+[PASS] 3 Boundary Cases loaded
+[PASS] calculate_action() detected
+
+[PASS] B01
+[PASS] B02
+[PASS] B03
+
+------------------------------------------------------------------------
+RESULT: 3/3 PASS | 0/3 FAIL
+------------------------------------------------------------------------
+ACTION BOUNDARY V1 RESULT: PASS
+V14_ACTION_BOUNDARY_V1 CONTRACT VERIFIED
+========================================================================
+DAVID V14 - CONTRACT REGISTRY V1 VERIFIER
+========================================================================
+[INFO] Registry path: C:\Users\Administrator\Documents\Codex\2026-10-05\new-chat\outputs\DAVID_V14_Active_Project\tests\contracts\contract_registry_v1.json
+[PASS] Contract Registry V1 detected
+[PASS] Registry JSON loaded
+[PASS] Registry Version = V14_CONTRACT_REGISTRY_V1
+[PASS] Spec Status = FROZEN
+[PASS] Contract Count = 9
+------------------------------------------------------------------------
+[CHECK] RISK_V1
+[PASS] RISK_V1: contract file exists
+[PASS] RISK_V1: comparator file exists
+[PASS] RISK_V1: version match = V14_RISK_V1
+------------------------------------------------------------------------
+[CHECK] ACTION_V1
+[PASS] ACTION_V1: contract file exists
+[PASS] ACTION_V1: comparator file exists
+[PASS] ACTION_V1: version match = V14_ACTION_V1
+------------------------------------------------------------------------
+[CHECK] ACTION_BOUNDARY_V1
+[PASS] ACTION_BOUNDARY_V1: contract file exists
+[PASS] ACTION_BOUNDARY_V1: comparator file exists
+[PASS] ACTION_BOUNDARY_V1: version match = V14_ACTION_BOUNDARY_V1
+------------------------------------------------------------------------
+[CHECK] CONSUMER_BOUNDARY_V1
+[PASS] CONSUMER_BOUNDARY_V1: contract file exists
+[PASS] CONSUMER_BOUNDARY_V1: comparator file exists
+[PASS] CONSUMER_BOUNDARY_V1: version match = V14_CONSUMER_BOUNDARY_V1
+------------------------------------------------------------------------
+[CHECK] INTEGRATION_PAYLOAD_V1
+[PASS] INTEGRATION_PAYLOAD_V1: contract file exists
+[PASS] INTEGRATION_PAYLOAD_V1: comparator file exists
+[PASS] INTEGRATION_PAYLOAD_V1: version match = V14_INTEGRATION_PAYLOAD_V1
+------------------------------------------------------------------------
+[CHECK] STORAGE_RECORD_V1
+[PASS] STORAGE_RECORD_V1: contract file exists
+[PASS] STORAGE_RECORD_V1: comparator file exists
+[PASS] STORAGE_RECORD_V1: version match = V14_STORAGE_RECORD_V1
+------------------------------------------------------------------------
+[CHECK] SUPABASE_PERSISTENCE_V1
+[PASS] SUPABASE_PERSISTENCE_V1: contract file exists
+[PASS] SUPABASE_PERSISTENCE_V1: comparator file exists
+[PASS] SUPABASE_PERSISTENCE_V1: version match = V14_SUPABASE_PERSISTENCE_V1
+------------------------------------------------------------------------
+[CHECK] SUPABASE_SCHEMA_MIGRATION_V1
+[PASS] SUPABASE_SCHEMA_MIGRATION_V1: contract file exists
+[PASS] SUPABASE_SCHEMA_MIGRATION_V1: comparator file exists
+[PASS] SUPABASE_SCHEMA_MIGRATION_V1: version match = V14_SUPABASE_SCHEMA_MIGRATION_V1
+------------------------------------------------------------------------
+[CHECK] SUPABASE_WRITER_V1
+[PASS] SUPABASE_WRITER_V1: contract file exists
+[PASS] SUPABASE_WRITER_V1: comparator file exists
+[PASS] SUPABASE_WRITER_V1: version match = V14_SUPABASE_WRITER_V1
+========================================================================
+CONTRACT REGISTRY V1 RESULT: PASS
+[PASS] CONTRACT REGISTRY V1 VERIFIED
+========================================================================
+DAVID V14 - GATE 6 CONSUMER BOUNDARY V1 COMPARATOR
+========================================================================
+[PASS] Golden Consumer Contract loaded: V14_CONSUMER_BOUNDARY_V1
+[PASS] Spec Status = FROZEN
+[PASS] 8 Golden Consumer Boundary Cases loaded
+[PASS] evaluate_consumer_boundary() detected
+------------------------------------------------------------------------
+[PASS] C01
+[PASS] C02
+[PASS] C03
+[PASS] C04
+[PASS] C05
+[PASS] C06
+[PASS] C07
+[PASS] C08
+------------------------------------------------------------------------
+RESULT: 8/8 PASS | 0/8 FAIL
+------------------------------------------------------------------------
+GATE 6 RESULT: PASS
+V14_CONSUMER_BOUNDARY_V1 CONTRACT VERIFIED
+========================================================================
+DAVID V14 - INTEGRATION PAYLOAD V1 COMPARATOR
+========================================================================
+[PASS] Golden Integration Contract loaded: V14_INTEGRATION_PAYLOAD_V1
+[PASS] Spec Status = FROZEN
+[PASS] 10 Golden Integration Payload Cases loaded
+[PASS] build_integration_payload() detected
+------------------------------------------------------------------------
+[PASS] I01
+[PASS] I02
+[PASS] I03
+[PASS] I04
+[PASS] I05
+[PASS] I06
+[PASS] I07
+[PASS] I08
+[PASS] I09
+[PASS] I10
+------------------------------------------------------------------------
+RESULT: 10/10 PASS | 0/10 FAIL
+------------------------------------------------------------------------
+INTEGRATION PAYLOAD V1 RESULT: PASS
+V14_INTEGRATION_PAYLOAD_V1 CONTRACT VERIFIED
+========================================================================
+DAVID V14 - STORAGE RECORD V1 COMPARATOR
+========================================================================
+[PASS] Golden Storage Contract loaded: V14_STORAGE_RECORD_V1
+[PASS] Spec Status = FROZEN
+[PASS] Source Contract = V14_INTEGRATION_PAYLOAD_V1
+[PASS] 8 Golden Storage Record Cases loaded
+[PASS] build_storage_record() detected
+------------------------------------------------------------------------
+[PASS] S01
+[PASS] S02
+[PASS] S03
+[PASS] S04
+[PASS] S05
+[PASS] S06
+[PASS] S07
+[PASS] S08
+------------------------------------------------------------------------
+RESULT: 8/8 PASS | 0/8 FAIL
+------------------------------------------------------------------------
+STORAGE RECORD V1 RESULT: PASS
+V14_STORAGE_RECORD_V1 CONTRACT VERIFIED
+========================================================================
+DAVID V14 - SUPABASE PERSISTENCE V1 COMPARATOR
+========================================================================
+[PASS] Golden Persistence Contract Loaded: V14_SUPABASE_PERSISTENCE_V1
+[PASS] Spec Status = FROZEN
+[PASS] Source Contract = V14_STORAGE_RECORD_V1
+[PASS] Target = public.stock_history
+[PASS] 8 Golden Persistence Cases loaded
+[PASS] build_supabase_row() detected
+------------------------------------------------------------------------
+[PASS] P01
+[PASS] P02
+[PASS] P03
+[PASS] P04
+[PASS] P05
+[PASS] P06
+[PASS] P07
+[PASS] P08
+------------------------------------------------------------------------
+RESULT: 8/8 PASS | 0/8 FAIL
+------------------------------------------------------------------------
+
+SUPABASE PERSISTENCE V1 RESULT: PASS
+V14_SUPABASE_PERSISTENCE_V1 CONTRACT VERIFIED
+========================================================================
+DAVID V14 - RUNTIME PIPELINE V1 COMPARATOR
+========================================================================
+[PASS] build_runtime_persistence() detected
+[PASS] Runtime Pipeline State = READY
+[PASS] Runtime Pipeline Reason = PERSISTENCE_ROW_OK
+[PASS] Persistence Row detected
+[PASS] Identity preserved
+[PASS] Version/Safety fields detected
+------------------------------------------------------------------------
+RUNTIME PIPELINE V1 RESULT: PASS
+NO WRITER | NO CLIENT | NO NETWORK I/O
+========================================================================
+DAVID V14 - RUNTIME WRITER WIRING V1 COMPARATOR
+========================================================================
+[PASS] write_runtime_result() detected
+[PASS] Runtime Writer State = SAVED
+[PASS] Runtime Writer Reason = UPSERT_OK
+[PASS] Exactly one table/upsert/execute
+[PASS] Target Table = stock_history
+[PASS] Conflict Key = trade_date,code
+[PASS] Persistence Row reached Writer unchanged
+[PASS] Missing Client = BLOCKED / CLIENT_MISSING
+[PASS] Pipeline BLOCKED = zero Writer calls
+------------------------------------------------------------------------
+RUNTIME WRITER V1 RESULT: PASS
+MOCK CLIENT ONLY | NO PRODUCTION NETWORK I/O
+========================================================================
+DAVID V14 - APP MARKET INPUT ADAPTER V1 COMPARATOR
+========================================================================
+[PASS] build_app_market_input() detected
+[PASS] Golden Market Mapping preserved
+[PASS] _data DataFrame preserved
+[PASS] Exact market_input contract
+[PASS] Invalid legacy result type rejected
+[PASS] Missing legacy field rejected
+[PASS] Invalid data type rejected
+[PASS] Empty DataFrame rejected
+[PASS] Missing market column rejected
+------------------------------------------------------------------------
+APP MARKET INPUT ADAPTER V1 RESULT: PASS
+PURE MAPPING | NO APP.PY | NO WRITER | NO NETWORK I/O
+========================================================================
+DAVID V14 - APP DRY-RUN PIPELINE V1 COMPARATOR
+========================================================================
+[PASS] run_app_dry_run() detected
+[PASS] Dry-Run State = READY
+[PASS] Dry-Run Reason = PERSISTENCE_ROW_OK
+[PASS] Persistence Row detected
+[PASS] Identity derived correctly
+[PASS] Version/Safety fields detected
+[PASS] Invalid Data = BLOCKED / INVALID_DATA_TYPE
+[PASS] Empty Data = BLOCKED / EMPTY_DATA
+[PASS] Invalid Trade Date = BLOCKED / INVALID_TRADE_DATE
+[PASS] Missing Identity = BLOCKED / IDENTITY_CODE_MISSING
+------------------------------------------------------------------------
+APP DRY-RUN PIPELINE V1 RESULT: PASS
+NO APP.PY | NO WRITER | NO CLIENT | NO NETWORK I/O
+========================================================================
+DAVID V14 - SUPABASE SCHEMA MIGRATION V1 VERIFIER
+========================================================================
+[PASS] Migration Version = V14_SUPABASE_SCHEMA_MIGRATION_V1
+[PASS] Target = public.stock_history
+[PASS] Required V14 Columns = 12
+[PASS] Target table verified
+[PASS] 12 V14 Persistence columns verified
+[PASS] Required SQL types verified
+[PASS] No destructive SQL detected
+
+SUPABASE SCHEMA MIGRATION V1 RESULT: PASS
+V14_SUPABASE_SCHEMA_MIGRATION_V1 CONTRACT VERIFIED
+========================================================================
+DAVID V14 - SUPABASE WRITER V1 COMPARATOR
+========================================================================
+[PASS] Golden Writer Contract Loaded: V14_SUPABASE_WRITER_V1
+[PASS] Spec Status = FROZEN
+[PASS] Source Contract = V14_SUPABASE_PERSISTENCE_V1
+[PASS] Target Table = stock_history
+[PASS] Conflict Key = trade_date,code
+[PASS] 8 Golden Writer Cases loaded
+[PASS] write_supabase_row() detected
+------------------------------------------------------------------------
+[PASS] W01
+[PASS] W02
+[PASS] W03
+[PASS] W04
+[PASS] W05
+[PASS] W06
+[PASS] W07
+[PASS] W08
+------------------------------------------------------------------------
+RESULT: 8/8 PASS | 0/8 FAIL
+------------------------------------------------------------------------
+
+SUPABASE WRITER V1 RESULT: PASS
+V14_SUPABASE_WRITER_V1 CONTRACT VERIFIED
+MOCK CLIENT ONLY - NO PRODUCTION NETWORK I/O
+=== GATE 20 - APP SHADOW DRY-RUN WIRING V1 ===
+[PASS] Shadow OFF - calls / SKIPPED
+[PASS] Shadow ON - one dry-run call
+[PASS] Shadow input passthrough preserved
+[PASS] Shadow exception isolated
+=== GATE 20 RESULT: PASS ===
+=== GATE 20 - APP SHADOW WIRING V1 ===
+[PASS] shadow import
+[PASS] shadow default OFF
+[PASS] legacy result variable
+[PASS] legacy append preserved
+[PASS] shadow call
+[PASS] shadow enabled flag
+=== GATE 20 WIRING RESULT: PASS ===
+=== GATE 22 - NORMALIZED CHIP DATA CONTRACT V1 ===
+[PASS] identity preserved
+[PASS] institutional categories preserved
+[PASS] metadata contract preserved
+[PASS] missing != zero != neutral
+[PASS] raw evidence / derived-signal boundary preserved
+[PASS] Core / Risk / Action boundary preserved
+=== GATE 22 RESULT: PASS ===
+=== GATE 22 - CHIP EVIDENCE CONTRACT V1 ===
+[PASS] financing evidence preserved
+[PASS] securities lending transaction evidence preserved
+[PASS] day-trade evidence preserved
+[PASS] derived metrics remain outside contract layer
+[PASS] financing / lending / day-trade missing != zero
+=== GATE 22 CHIP EVIDENCE RESULT: PASS ===
+=== GATE 23 - CHIP SOURCE MAPPING V1 ===
+[PASS] required mapping sections present
+[PASS] official dataset mappings present
+[PASS] source protection rules preserved
+[PASS] institutional compatibility categories preserved
+[PASS] unsupported completion claims blocked
+=== GATE 23 SOURCE MAPPING RESULT: PASS ===
+=== GATE 24 - CHIP SOURCE ADAPTER V1 ===
+[PASS] canonical raw top-level structure preserved
+[PASS] institutional source categories mapped
+[PASS] real zero preserved
+[PASS] financing raw evidence preserved
+[PASS] lending transaction boundary preserved
+[PASS] day-trading raw evidence preserved
+[PASS] raw / derived boundary preserved
+=== GATE 24 CHIP SOURCE ADAPTER RESULT: PASS ===
+=== GATE 25 - CHIP SOURCE COMPATIBILITY CONTRACT V1 ===
+[PASS] missing dataset != zero
+[PASS] explicit zero preserved
+[PASS] unknown unit remains unconverted
+[PASS] legacy Dealer not falsely classified
+=== GATE 25 CHIP SOURCE COMPATIBILITY RESULT: PASS ===
+=== GATE 26 - CHIP UNIT EVIDENCE CONTRACT V1 ===
+[PASS] unit evidence governance rules present
+[PASS] unit evidence datasets covered
+[PASS] fail-closed unit states preserved
+[PASS] unsupported unit claims blocked
+=== GATE 26 CHIP UNIT EVIDENCE RESULT: PASS ===
+=== GATE 27 - LIVE SOURCE READ-ONLY BOUNDARY V1 ===
+[PASS] live source boundary module exists
+[PASS] live source boundary importable
+[PASS] required public contract present
+[PASS] fail-closed capability flags preserved
+[PASS] failure taxonomy fail-closed
+[PASS] valid response remains raw evidence
+[PASS] explicit zero preserved
+[PASS] token and secret redaction enforced
+[PASS] no core/write wiring detected
+=== GATE 27 LIVE SOURCE READ-ONLY BOUNDARY RESULT: PASS ===
+=== GATE 28A - LIVE FETCH SAFETY CONTRACT V1 ===
+[PASS] capability flags fail closed
+[PASS] rate-limit classified
+[PASS] content-type guarded
+[PASS] valid JSON remains raw evidence
+[PASS] secret redaction contract
+[PASS] raw provenance preserved
+[PASS] no core/write wiring
+=== GATE 28A LIVE FETCH SAFETY RESULT: PASS ===
+=== GATE 28B - PROVIDER CLIENT SKELETON V1 ===
+[PASS] provider capability flags fail closed
+[PASS] mock transport dependency injection
+[PASS] raw fetch evidence preserved without token
+[PASS] Gate 28A safety classification reused
+[PASS] explicit zero preserved
+[PASS] transport failure fails closed and redacts secret
+[PASS] no live/core/write wiring
+=== GATE 28B PROVIDER CLIENT SKELETON RESULT: PASS ===
+=== GATE 28B.1 - LIVE REQUEST SAFETY CONTRACT V1 ===
+[PASS] request safety defaults fail closed
+[PASS] allowed HTTPS request accepted
+[PASS] HTTP rejected
+[PASS] non-allowlisted host rejected
+[PASS] missing allowlist fails closed
+[PASS] timeout upper bound enforced
+[PASS] secret-bearing URL rejected without leakage
+[PASS] response-size limit enforced
+[PASS] no live/core/write wiring
+=== GATE 28B.1 LIVE REQUEST SAFETY RESULT: PASS ===
+=== GATE 28B.2 - PROVIDER REQUEST SAFETY INTEGRATION V1 ===
+[PASS] valid request reaches mock transport once
+[PASS] HTTP blocked before transport
+[PASS] non-allowlisted host blocked before transport
+[PASS] missing allowlist blocked before transport
+[PASS] excessive timeout blocked before transport
+[PASS] secret URL blocked without leakage
+[PASS] no live/core/write wiring
+=== GATE 28B.2 PROVIDER REQUEST SAFETY INTEGRATION RESULT: PASS ===
+=== GATE 28B.3 - READ-ONLY TRANSPORT CONTRACT V1 ===
+[PASS] transport capability flags fail closed
+[PASS] GET-only backend contract enforced
+[PASS] response evidence preserved without token
+[PASS] oversized response fails closed
+[PASS] backend exception fails closed without secret
+[PASS] no real-network/core/write wiring
+=== GATE 28B.3 READ-ONLY TRANSPORT CONTRACT RESULT: PASS ===
+=== GATE 28B.4 - SECRET RUNTIME BOUNDARY V1 ===
+[PASS] secret capability flags fail closed
+[PASS] missing secret fails closed
+[PASS] blank secret fails closed
+[PASS] runtime secret loaded from injected environment
+[PASS] secret excluded from public metadata
+[PASS] runtime error redacts secret
+[PASS] no hardcoded/live/core/write wiring
+=== GATE 28B.4 SECRET RUNTIME BOUNDARY RESULT: PASS ===
+=== GATE 28C.1 - FINMIND LIVE BACKEND CONTRACT V1 ===
+[PASS] backend capability flags fail closed
+[PASS] fake session GET contract enforced
+[PASS] HTTP evidence preserved without token
+[PASS] oversized HTTP response blocks payload
+[PASS] backend exception redacts secret
+[PASS] no write/core wiring
+=== GATE 28C.1 FINMIND LIVE BACKEND CONTRACT RESULT: PASS ===
+=== GATE 28C.2 - LIVE SESSION BOUNDARY V1 ===
+[PASS] session capability flags fail closed
+[PASS] session created only through injected factory
+[PASS] FinMind HTTPS target accepted
+[PASS] HTTP target rejected
+[PASS] non-FinMind host rejected
+[PASS] timeout upper bound enforced
+[PASS] invalid timeout types and non-finite values rejected
+[PASS] finite positive timeout boundaries preserved
+[PASS] invalid timeouts stop before session creation and GET
+[PASS] missing session factory fails closed
+[PASS] no write/core/secret wiring
+=== GATE 28C.2 LIVE SESSION BOUNDARY RESULT: PASS ===
+=== GATE 28C.3 - CONTROLLED LIVE FETCH ORCHESTRATOR V1 ===
+[PASS] orchestrator flags fail closed
+[PASS] missing secret blocks before session
+[PASS] invalid target blocks before session
+[PASS] missing session factory fails closed
+[PASS] safe path permits exactly one fake GET
+[PASS] secret excluded from public result
+[PASS] no direct network/core/write wiring
+=== GATE 28C.3 CONTROLLED LIVE FETCH ORCHESTRATOR RESULT: PASS ===
+=== GATE 28D.0 - REAL SESSION FACTORY CONTRACT V1 ===
+[PASS] factory capability flags fail closed
+[PASS] session factory created from injected dependencies
+[PASS] exactly one session created
+[PASS] session creation performs zero GET calls
+[PASS] retry policy fixed at zero
+[PASS] no persisted authorization or auth
+[PASS] no request/secret/core/write execution
+=== GATE 28D.0 REAL SESSION FACTORY CONTRACT RESULT: PASS ===
+=== GATE 28D.0P - INTERNET CROSSING PREFLIGHT V1 ===
+[PASS] preflight capability flags fail closed
+[PASS] FinMind target contract fixed
+[PASS] TaiwanStockPrice scope fixed
+[PASS] zero network execution
+[PASS] no token required
+=== GATE 28D.0P INTERNET CROSSING PREFLIGHT RESULT: PASS ===
+=== GATE 28D.1A - FINMIND LIVE REQUEST PARAMETERS CONTRACT V1 ===
+[PASS] valid single-day request accepted
+[PASS] unsafe request parameters fail closed
+[PASS] multi-symbol request rejected
+[PASS] single trading-day scope enforced
+[PASS] token/unknown parameters rejected
+=== GATE 28D.1A FINMIND LIVE REQUEST PARAMETERS RESULT: PASS ===
+======================================================================
+DAVID V14 - UNIFIED REGRESSION RUNNER
+======================================================================
+
+======================================================================
+RUNNING: GATE 3 - CORE BASELINE
+======================================================================
+[PASS] GATE 3 - CORE BASELINE
+
+======================================================================
+RUNNING: GATE 4 - RISK ENGINE
+======================================================================
+[PASS] GATE 4 - RISK ENGINE
+
+======================================================================
+RUNNING: GATE 5 - ACTION ENGINE
+======================================================================
+[PASS] GATE 5 - ACTION ENGINE
+
+======================================================================
+RUNNING: ACTION BOUNDARY V1
+======================================================================
+[PASS] ACTION BOUNDARY V1
+
+======================================================================
+RUNNING: CONTRACT REGISTRY V1
+======================================================================
+[PASS] CONTRACT REGISTRY V1
+
+======================================================================
+RUNNING: GATE 6 - CONSUMER BOUNDARY
+======================================================================
+[PASS] GATE 6 - CONSUMER BOUNDARY
+
+======================================================================
+RUNNING: INTEGRATION PAYLOAD V1
+======================================================================
+[PASS] INTEGRATION PAYLOAD V1
+
+======================================================================
+RUNNING: STORAGE RECORD V1
+======================================================================
+[PASS] STORAGE RECORD V1
+
+======================================================================
+RUNNING: SUPABASE PERSISTENCE V1
+======================================================================
+[PASS] SUPABASE PERSISTENCE V1
+
+======================================================================
+RUNNING: RUNTIME PIPELINE V1
+======================================================================
+[PASS] RUNTIME PIPELINE V1
+
+======================================================================
+RUNNING: RUNTIME WRITER V1
+======================================================================
+[PASS] RUNTIME WRITER V1
+
+======================================================================
+RUNNING: APP MARKET INPUT ADAPTER V1
+======================================================================
+[PASS] APP MARKET INPUT ADAPTER V1
+
+======================================================================
+RUNNING: APP DRY-RUN PIPELINE V1
+======================================================================
+[PASS] APP DRY-RUN PIPELINE V1
+
+======================================================================
+RUNNING: SUPABASE SCHEMA MIGRATION V1
+======================================================================
+[PASS] SUPABASE SCHEMA MIGRATION V1
+
+======================================================================
+RUNNING: SUPABASE WRITER V1
+======================================================================
+[PASS] SUPABASE WRITER V1
+
+======================================================================
+RUNNING: APP SHADOW DRY-RUN WIRING V1
+======================================================================
+[PASS] APP SHADOW DRY-RUN WIRING V1
+
+======================================================================
+RUNNING: APP SHADOW WIRING V1
+======================================================================
+[PASS] APP SHADOW WIRING V1
+
+======================================================================
+RUNNING: NORMALIZED CHIP DATA CONTRACT V1
+======================================================================
+[PASS] NORMALIZED CHIP DATA CONTRACT V1
+
+======================================================================
+RUNNING: CHIP EVIDENCE CONTRACT V1
+======================================================================
+[PASS] CHIP EVIDENCE CONTRACT V1
+
+======================================================================
+RUNNING: CHIP SOURCE MAPPING V1
+======================================================================
+[PASS] CHIP SOURCE MAPPING V1
+
+======================================================================
+RUNNING: CHIP SOURCE ADAPTER V1
+======================================================================
+[PASS] CHIP SOURCE ADAPTER V1
+
+======================================================================
+RUNNING: CHIP SOURCE COMPATIBILITY CONTRACT V1
+======================================================================
+[PASS] CHIP SOURCE COMPATIBILITY CONTRACT V1
+
+======================================================================
+RUNNING: CHIP UNIT EVIDENCE CONTRACT V1
+======================================================================
+[PASS] CHIP UNIT EVIDENCE CONTRACT V1
+
+======================================================================
+RUNNING: LIVE SOURCE READ-ONLY BOUNDARY V1
+======================================================================
+[PASS] LIVE SOURCE READ-ONLY BOUNDARY V1
+
+======================================================================
+RUNNING: LIVE FETCH SAFETY CONTRACT V1
+======================================================================
+[PASS] LIVE FETCH SAFETY CONTRACT V1
+
+======================================================================
+RUNNING: PROVIDER CLIENT SKELETON V1
+======================================================================
+[PASS] PROVIDER CLIENT SKELETON V1
+
+======================================================================
+RUNNING: LIVE REQUEST SAFETY CONTRACT V1
+======================================================================
+[PASS] LIVE REQUEST SAFETY CONTRACT V1
+
+======================================================================
+RUNNING: PROVIDER REQUEST SAFETY INTEGRATION V1
+======================================================================
+[PASS] PROVIDER REQUEST SAFETY INTEGRATION V1
+
+======================================================================
+RUNNING: READ-ONLY TRANSPORT CONTRACT V1
+======================================================================
+[PASS] READ-ONLY TRANSPORT CONTRACT V1
+
+======================================================================
+RUNNING: SECRET RUNTIME BOUNDARY V1
+======================================================================
+[PASS] SECRET RUNTIME BOUNDARY V1
+
+======================================================================
+RUNNING: FINMIND LIVE BACKEND CONTRACT V1
+======================================================================
+[PASS] FINMIND LIVE BACKEND CONTRACT V1
+
+======================================================================
+RUNNING: LIVE SESSION BOUNDARY V1
+======================================================================
+[PASS] LIVE SESSION BOUNDARY V1
+
+======================================================================
+RUNNING: CONTROLLED LIVE FETCH ORCHESTRATOR V1
+======================================================================
+[PASS] CONTROLLED LIVE FETCH ORCHESTRATOR V1
+
+======================================================================
+RUNNING: REAL SESSION FACTORY CONTRACT V1
+======================================================================
+[PASS] REAL SESSION FACTORY CONTRACT V1
+
+======================================================================
+RUNNING: INTERNET CROSSING PREFLIGHT V1
+======================================================================
+[PASS] INTERNET CROSSING PREFLIGHT V1
+
+======================================================================
+RUNNING: FINMIND LIVE REQUEST PARAMETERS CONTRACT V1
+======================================================================
+[PASS] FINMIND LIVE REQUEST PARAMETERS CONTRACT V1
+
+======================================================================
+RUNNING: FINMIND GOLDEN EVIDENCE CONTRACT V1
+========================================================================= GATE 28D.1B - FINMIND GOLDEN EVIDENCE CONTRACT V1 ===
+[PASS] golden metadata built
+[PASS] existing payload SHA-256 reused
+[PASS] raw payload excluded
+[PASS] secret/auth fields excluded
+[PASS] non-RAW evidence fails closed
+=== GATE 28D.1B FINMIND GOLDEN EVIDENCE RESULT: PASS ===
+=== GATE 28D.1C - ONE-SHOT LIVE FETCH INTEGRATION CONTRACT V1 ===
+[PASS] invalid params stop before session
+[PASS] missing secret stops before session
+[PASS] exactly one fake GET
+[PASS] golden evidence returned
+[PASS] raw evidence excluded from public result
+[PASS] secret/auth excluded from public result
+=== GATE 28D.1C ONE-SHOT LIVE FETCH INTEGRATION RESULT: PASS ===
+=== GATE 28D.2A - REAL LIVE ENTRY BOUNDARY CONTRACT V1 ===
+[PASS] injected runtime entry accepted
+[PASS] exactly one fake GET
+[PASS] golden metadata only
+[PASS] secret/auth excluded
+=== GATE 28D.2A REAL LIVE ENTRY BOUNDARY RESULT: PASS ===
+=== GATE 28D.2C - FINMIND QUERY TOKEN TRANSPORT CONTRACT V1 ===
+[PASS] runtime token transported as query parameter
+[PASS] Bearer authorization header absent
+[PASS] exactly one fake GET
+[PASS] public evidence excludes runtime secret
+=== GATE 28D.2C FINMIND QUERY TOKEN TRANSPORT RESULT: PASS ===
+=== GATE 28D.2D - REAL RESPONSE HEADERS MAPPING CONTRACT V1 ===
+[PASS] CaseInsensitiveDict accepted
+[PASS] Content-Type preserved
+[PASS] JSON payload preserved
+[PASS] exactly one fake GET
+[PASS] secret excluded from evidence
+=== GATE 28D.2D REAL RESPONSE HEADERS MAPPING RESULT: PASS ===
+=== GATE 28D.2E - FINMIND MARKET SOURCE MAPPING CONTRACT V1 ===
+[PASS] FinMind provider locked
+[PASS] TaiwanStockPrice dataset locked
+[PASS] exactly seven raw fields locked
+[PASS] stock identity locked
+[PASS] price mappings remain pending
+[PASS] Trading_Volume unit remains pending
+[PASS] normalized output blocked
+[PASS] Core / Score / Decision blocked
+[PASS] Supabase / Production write blocked
+=== GATE 28D.2E FINMIND MARKET SOURCE MAPPING RESULT: PASS ===
+=== GATE 28D.2F - FINMIND MARKET SEMANTIC EVIDENCE CONTRACT V1 ===
+[PASS] FinMind volume semantic locked
+[PASS] Yahoo volume compatibility remains pending
+[PASS] FinMind trading-date semantic locked
+[PASS] FinMind timezone remains pending
+[PASS] zero is not treated as missing
+[PASS] positive volume does not prove valid price
+[PASS] open semantic remains market-specific
+[PASS] normalized volume / timestamp blocked
+[PASS] Core / Score / Decision blocked
+[PASS] Supabase / Production write blocked
+=== GATE 28D.2F FINMIND MARKET SEMANTIC EVIDENCE RESULT: PASS ===
+=== GATE 28D.2G - YAHOO / FINMIND MARKET COMPATIBILITY READINESS CONTRACT V1 ===
+[PASS] provider definition / source mapping ready
+[PASS] semantic evidence ready
+[PASS] adapter / normalized output remain blocked
+[PASS] same-stock / same-date compare not executed
+[PASS] OHLCV compare not executed
+[PASS] compatibility dimensions remain pending
+[PASS] zero / missing auto-equivalence blocked
+[PASS] data compare / baseline test not executed
+[PASS] compatibility result not established
+[PASS] provider / V13 Core source switch blocked
+[PASS] Engine Formula change blocked
+[PASS] Core / Score / Decision blocked
+[PASS] Supabase / Production write blocked
+=== GATE 28D.2G YAHOO / FINMIND MARKET COMPATIBILITY READINESS RESULT: PASS ===
+FINMIND MARKET SOURCE ADAPTER BOUNDARY V1: PASS
+MARKET DATA EVIDENCE COMPARE CONTRACT V1: PASS
+LEGACY YAHOO MARKET SOURCE PROVENANCE CONTRACT V1: PASS
+=== GATE 28D.2K-2A - FINMIND BASELINE EVIDENCE OBSERVATION CONTRACT V1 ===
+FINMIND BASELINE EVIDENCE OBSERVATION CONTRACT V1: PASS
+=== GATE 28D.2K-2B - FINMIND BASELINE EVIDENCE OBSERVER V1 ===
+[PASS] RAW_EVIDENCE accepted
+[PASS] exact baseline fields observed
+[PASS] extra raw fields excluded
+[PASS] raw payload excluded
+[PASS] invalid evidence denied
+[PASS] missing baseline record denied
+[PASS] duplicate baseline record denied
+[PASS] missing required field denied
+FINMIND BASELINE EVIDENCE OBSERVER V1: PASS
+=== GATE 28D.2K-2C - CONTROLLED REAL SAMPLE ACQUISITION CONTRACT V1 ===
+CONTROLLED REAL SAMPLE ACQUISITION CONTRACT V1: PASS
+=== GATE 28D.2K-2C - CONTROLLED REAL SAMPLE ACQUISITION IMPLEMENTATION V1 ===
+[PASS] invalid params stop before session
+[PASS] missing secret stops before session
+[PASS] exactly one fake GET
+[PASS] exact seven-field observation returned
+[PASS] extra raw fields excluded
+[PASS] raw evidence excluded from public result
+[PASS] secret/auth excluded from public result
+=== GATE 28D.2K-2C CONTROLLED REAL SAMPLE ACQUISITION IMPLEMENTATION RESULT: PASS ===
+=== GATE 28D.2K-2D - CONTROLLED REAL SAMPLE ENTRY CONTRACT V1 ===
+[PASS] read-only boundary fixed
+[PASS] single stock/date boundary fixed
+[PASS] real session factory capability declared
+[PASS] real GET remains disabled
+[PASS] compatibility/core/write paths remain disabled
+=== GATE 28D.2K-2D CONTROLLED REAL SAMPLE ENTRY CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-2E - CONTROLLED REAL INTERNET CROSSING EXECUTION CONTRACT V1 ===
+[PASS] read-only execution boundary fixed
+[PASS] single stock/date boundary fixed
+[PASS] real session factory allowed
+[PASS] exactly one real GET authorized
+[PASS] compatibility/core/write paths disabled
+=== GATE 28D.2K-2E CONTROLLED REAL INTERNET CROSSING EXECUTION CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-2F - CONTROLLED REAL INTERNET CROSSING ONE-SHOT ENFORCEMENT V1 ===
+[PASS] first execution authorized
+[PASS] second execution denied
+[PASS] retry remains denied
+[PASS] real GET authorization count fixed at one
+[PASS] compatibility/core/write paths disabled
+=== GATE 28D.2K-2F CONTROLLED REAL INTERNET CROSSING ONE-SHOT ENFORCEMENT RESULT: PASS ===
+=== GATE 28D.2K-2G - CONTROLLED REAL INTERNET CROSSING ONE-SHOT INTEGRATION V1 ===
+[PASS] failed execution consumes authorization
+[PASS] failed execution retry denied before executor
+[PASS] first authorization reaches executor once
+[PASS] second execution denied before executor
+[PASS] retry denied before executor
+[PASS] executor call count fixed at one
+[PASS] compatibility/core/write paths disabled
+=== GATE 28D.2K-2G CONTROLLED REAL INTERNET CROSSING ONE-SHOT INTEGRATION RESULT: PASS ===
+=== GATE 28D.2K-2H - CONTROLLED REAL ACQUISITION ADAPTER BOUNDARY V1 ===
+[PASS] adapter creation performs no acquisition
+[PASS] executor delegates acquisition exactly once
+[PASS] stock/date boundary preserved
+[PASS] public result excludes secret/raw evidence
+[PASS] compatibility/core/write paths disabled
+=== GATE 28D.2K-2H CONTROLLED REAL ACQUISITION ADAPTER BOUNDARY RESULT: PASS ===
+=== GATE 28D.2K-2I - CONTROLLED REAL ACQUISITION WIRING V1 ===
+[PASS] wiring build performs no acquisition
+[PASS] first execution reaches injected acquisition once
+[PASS] second execution denied before acquisition
+[PASS] fake acquisition only; no real Internet crossing
+=== GATE 28D.2K-2I CONTROLLED REAL ACQUISITION WIRING RESULT: PASS ===
+=== GATE 28D.2K-2J - CONTROLLED REAL FETCH COMPOSITION V1 ===
+[PASS] stock identity mismatch fails closed
+[PASS] trading-date mismatch fails closed
+[PASS] build performs no session creation
+[PASS] first execution reaches fake GET exactly once
+[PASS] second execution denied before session / GET
+[PASS] fake token only; no real runtime secret
+[PASS] fake session only; no real Internet crossing
+=== GATE 28D.2K-2J CONTROLLED REAL FETCH COMPOSITION RESULT: PASS ===
+=== GATE 28D.2K-2K - CONTROLLED REAL REQUEST VALIDATION INTEGRATION V1 ===
+[PASS] invalid params denied before session / GET
+[PASS] valid params enter protected 2J composition
+[PASS] first execution reaches fake GET exactly once
+[PASS] second execution denied by one-shot guard
+[PASS] fake runtime boundaries only
+=== GATE 28D.2K-2K CONTROLLED REAL REQUEST VALIDATION INTEGRATION RESULT: PASS ===
+=== GATE 28D.2K-2L - CONTROLLED REAL PREFLIGHT INTEGRATION V1 ===
+[PASS] preflight network-executed state denied
+[PASS] preflight live-GET-enabled state denied
+[PASS] preflight not-ready fails closed
+[PASS] denied preflight stops before session / GET
+[PASS] preflight integrated before protected fetch path
+[PASS] build performs no session / GET
+[PASS] first execution reaches fake GET exactly once
+[PASS] second execution denied by one-shot guard
+[PASS] fake runtime boundaries only
+=== GATE 28D.2K-2L CONTROLLED REAL PREFLIGHT INTEGRATION RESULT: PASS ===
+=== GATE 28D.2K-2M - CONTROLLED REAL EXECUTION AUTHORIZATION INTEGRATION V1 ===
+[PASS] invalid real-GET limit fails closed
+[PASS] invalid limit stops before session / GET
+[PASS] denied execution authorization fails closed
+[PASS] denied authorization stops before session / GET
+[PASS] valid authorization enters protected 2L chain
+[PASS] first execution reaches fake GET exactly once
+[PASS] second execution denied by existing one-shot guard
+[PASS] fake runtime boundaries only
+=== GATE 28D.2K-2M CONTROLLED REAL EXECUTION AUTHORIZATION INTEGRATION RESULT: PASS ===
+=== GATE 28D.2K-2N - CONTROLLED REAL SESSION FACTORY INTEGRATION V1 ===
+[PASS] missing requests dependency fails closed
+[PASS] missing adapter dependency fails closed
+[PASS] build creates no session / GET
+[PASS] session factory enters protected 2M chain
+[PASS] first execution creates one fake session
+[PASS] first execution reaches fake GET exactly once
+[PASS] second execution denied before session / GET
+[PASS] fake requests dependencies only
+=== GATE 28D.2K-2N CONTROLLED REAL SESSION FACTORY INTEGRATION RESULT: PASS ===
+=== GATE 28D.2K-2O - CONTROLLED RUNTIME ENVIRONMENT INTEGRATION V1 ===
+[PASS] missing environment reader fails closed
+[PASS] invalid environment mapping fails closed
+[PASS] runtime environment access injected
+[PASS] build creates no session / GET
+[PASS] first execution reaches fake GET once
+[PASS] second execution denied before session / GET
+[PASS] runtime secrets excluded from public result
+[PASS] fake runtime boundaries only
+=== GATE 28D.2K-2O CONTROLLED RUNTIME ENVIRONMENT INTEGRATION RESULT: PASS ===
+=== GATE 28D.2K-2P - CONTROLLED RUNTIME ENTRY INTEGRATION V1 ===
+[PASS] invalid stock fails closed before session / GET
+[PASS] invalid date fails closed before session / GET
+[PASS] runtime entry delegates into protected 2O chain
+[PASS] build creates no session / GET
+[PASS] first execution reaches fake GET exactly once
+[PASS] second execution denied before session / GET
+[PASS] runtime secret excluded from public result
+[PASS] fake runtime boundaries only
+=== GATE 28D.2K-2P CONTROLLED RUNTIME ENTRY INTEGRATION RESULT: PASS ===
+=== GATE 28D.2K-2Q - FINAL CONTROLLED REAL INTERNET CROSSING READINESS AUDIT V1 ===
+[PASS] readiness audit is read-only and audit-only
+[PASS] single stock/date and one-shot boundary fixed
+[PASS] GET/redirect/retry/timeout boundary fixed
+[PASS] secret/core/score/decision/write paths disabled
+[PASS] readiness evidence produced without network execution
+=== GATE 28D.2K-2Q FINAL CONTROLLED REAL INTERNET CROSSING READINESS AUDIT RESULT: PASS ===
+=== GATE 28D.2K-2R - CONTROLLED REAL INTERNET CROSSING UNIQUE EXECUTION PATH CONTRACT V1 ===
+[PASS] unique protected execution path fixed
+[PASS] execution authorization and preflight remain separated
+[PASS] direct HTTP/session/authorization/preflight bypass disabled
+[PASS] single stock/date and one-shot real GET limit fixed
+[PASS] core/score/decision/write paths remain disabled
+[PASS] contract evidence produced without network execution
+=== GATE 28D.2K-2R CONTROLLED REAL INTERNET CROSSING UNIQUE EXECUTION PATH CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-2S - CONTROLLED REAL INTERNET CROSSING PRE-EXECUTION DRY-RUN CONTRACT V1 ===
+[PASS] dry-run performs no environment or secret-value read
+[PASS] dry-run performs no Session creation or network execution
+[PASS] single stock/date and one-shot boundaries fixed
+[PASS] GET/redirect/retry/timeout boundaries fixed
+[PASS] execution authorization and preflight evidence fixed
+[PASS] secret/core/score/decision/write paths remain protected
+=== GATE 28D.2K-2S CONTROLLED REAL INTERNET CROSSING PRE-EXECUTION DRY-RUN CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-2T - CONTROLLED RUNTIME DEPENDENCY ACTIVATION BOUNDARY V1 ===
+[PASS] runtime activation boundary fixed
+[PASS] OS environment direct read remains disabled
+[PASS] Session creation and network execution remain disabled
+[PASS] injected runtime dependencies required
+[PASS] single stock/date and one-shot boundaries preserved
+[PASS] core/score/decision/write paths remain disabled
+=== GATE 28D.2K-2T CONTROLLED RUNTIME DEPENDENCY ACTIVATION BOUNDARY RESULT: PASS ===
+
+[PASS] FINMIND GOLDEN EVIDENCE CONTRACT V1
+
+======================================================================
+RUNNING: ONE-SHOT LIVE FETCH INTEGRATION CONTRACT V1
+======================================================================
+[PASS] ONE-SHOT LIVE FETCH INTEGRATION CONTRACT V1
+
+======================================================================
+RUNNING: REAL LIVE ENTRY BOUNDARY CONTRACT V1
+======================================================================
+[PASS] REAL LIVE ENTRY BOUNDARY CONTRACT V1
+
+======================================================================
+RUNNING: FINMIND QUERY TOKEN TRANSPORT CONTRACT V1
+======================================================================
+[PASS] FINMIND QUERY TOKEN TRANSPORT CONTRACT V1
+
+======================================================================
+RUNNING: REAL RESPONSE HEADERS MAPPING CONTRACT V1
+======================================================================
+[PASS] REAL RESPONSE HEADERS MAPPING CONTRACT V1
+
+======================================================================
+RUNNING: FINMIND MARKET SOURCE MAPPING CONTRACT V1
+======================================================================
+[PASS] FINMIND MARKET SOURCE MAPPING CONTRACT V1
+
+======================================================================
+RUNNING: FINMIND MARKET SEMANTIC EVIDENCE CONTRACT V1
+======================================================================
+[PASS] FINMIND MARKET SEMANTIC EVIDENCE CONTRACT V1
+
+======================================================================
+RUNNING: YAHOO / FINMIND MARKET COMPATIBILITY READINESS CONTRACT V1
+======================================================================
+[PASS] YAHOO / FINMIND MARKET COMPATIBILITY READINESS CONTRACT V1
+
+======================================================================
+RUNNING: FINMIND MARKET SOURCE ADAPTER BOUNDARY CONTRACT V1
+======================================================================
+[PASS] FINMIND MARKET SOURCE ADAPTER BOUNDARY CONTRACT V1
+
+======================================================================
+RUNNING: MARKET DATA EVIDENCE COMPARE CONTRACT V1
+======================================================================
+[PASS] MARKET DATA EVIDENCE COMPARE CONTRACT V1
+
+======================================================================
+RUNNING: LEGACY YAHOO MARKET SOURCE PROVENANCE CONTRACT V1
+======================================================================
+[PASS] LEGACY YAHOO MARKET SOURCE PROVENANCE CONTRACT V1
+
+======================================================================
+RUNNING: FINMIND BASELINE EVIDENCE OBSERVATION CONTRACT V1
+======================================================================
+[PASS] FINMIND BASELINE EVIDENCE OBSERVATION CONTRACT V1
+
+======================================================================
+RUNNING: FINMIND BASELINE EVIDENCE OBSERVER V1
+======================================================================
+[PASS] FINMIND BASELINE EVIDENCE OBSERVER V1
+
+======================================================================
+RUNNING: CONTROLLED REAL SAMPLE ACQUISITION CONTRACT V1
+======================================================================
+[PASS] CONTROLLED REAL SAMPLE ACQUISITION CONTRACT V1
+
+======================================================================
+RUNNING: CONTROLLED REAL SAMPLE ACQUISITION IMPLEMENTATION V1
+======================================================================
+[PASS] CONTROLLED REAL SAMPLE ACQUISITION IMPLEMENTATION V1
+
+======================================================================
+RUNNING: CONTROLLED REAL SAMPLE ENTRY CONTRACT V1
+======================================================================
+[PASS] CONTROLLED REAL SAMPLE ENTRY CONTRACT V1
+
+======================================================================
+RUNNING: CONTROLLED REAL INTERNET CROSSING EXECUTION CONTRACT V1
+======================================================================
+[PASS] CONTROLLED REAL INTERNET CROSSING EXECUTION CONTRACT V1
+
+======================================================================
+RUNNING: CONTROLLED REAL INTERNET CROSSING ONE-SHOT ENFORCEMENT V1
+======================================================================
+[PASS] CONTROLLED REAL INTERNET CROSSING ONE-SHOT ENFORCEMENT V1
+
+======================================================================
+RUNNING: CONTROLLED REAL INTERNET CROSSING ONE-SHOT INTEGRATION V1
+======================================================================
+[PASS] CONTROLLED REAL INTERNET CROSSING ONE-SHOT INTEGRATION V1
+
+======================================================================
+RUNNING: CONTROLLED REAL ACQUISITION ADAPTER BOUNDARY V1
+======================================================================
+[PASS] CONTROLLED REAL ACQUISITION ADAPTER BOUNDARY V1
+
+======================================================================
+RUNNING: CONTROLLED REAL ACQUISITION WIRING V1
+======================================================================
+[PASS] CONTROLLED REAL ACQUISITION WIRING V1
+
+======================================================================
+RUNNING: CONTROLLED REAL FETCH COMPOSITION V1
+======================================================================
+[PASS] CONTROLLED REAL FETCH COMPOSITION V1
+
+======================================================================
+RUNNING: CONTROLLED REAL REQUEST VALIDATION INTEGRATION V1
+======================================================================
+[PASS] CONTROLLED REAL REQUEST VALIDATION INTEGRATION V1
+
+======================================================================
+RUNNING: CONTROLLED REAL PREFLIGHT INTEGRATION V1
+======================================================================
+[PASS] CONTROLLED REAL PREFLIGHT INTEGRATION V1
+
+======================================================================
+RUNNING: CONTROLLED REAL EXECUTION AUTHORIZATION INTEGRATION V1
+======================================================================
+[PASS] CONTROLLED REAL EXECUTION AUTHORIZATION INTEGRATION V1
+
+======================================================================
+RUNNING: CONTROLLED REAL SESSION FACTORY INTEGRATION V1
+======================================================================
+[PASS] CONTROLLED REAL SESSION FACTORY INTEGRATION V1
+
+======================================================================
+RUNNING: CONTROLLED RUNTIME ENVIRONMENT INTEGRATION V1
+======================================================================
+[PASS] CONTROLLED RUNTIME ENVIRONMENT INTEGRATION V1
+
+======================================================================
+RUNNING: CONTROLLED RUNTIME ENTRY INTEGRATION V1
+======================================================================
+[PASS] CONTROLLED RUNTIME ENTRY INTEGRATION V1
+
+======================================================================
+RUNNING: FINAL CONTROLLED REAL INTERNET CROSSING READINESS AUDIT V1
+======================================================================
+[PASS] FINAL CONTROLLED REAL INTERNET CROSSING READINESS AUDIT V1
+
+======================================================================
+RUNNING: CONTROLLED REAL INTERNET CROSSING UNIQUE EXECUTION PATH CONTRACT V1
+======================================================================
+[PASS] CONTROLLED REAL INTERNET CROSSING UNIQUE EXECUTION PATH CONTRACT V1
+
+======================================================================
+RUNNING: CONTROLLED REAL INTERNET CROSSING PRE-EXECUTION DRY-RUN CONTRACT V1
+======================================================================
+[PASS] CONTROLLED REAL INTERNET CROSSING PRE-EXECUTION DRY-RUN CONTRACT V1
+
+======================================================================
+RUNNING: CONTROLLED RUNTIME DEPENDENCY ACTIVATION BOUNDARY V1
+======================================================================
+[PASS] CONTROLLED RUNTIME DEPENDENCY ACTIVATION BOUNDARY V1
+
+========================================================================= GATE 28D.2K-2U - RUNTIME TOKEN AVAILABILITY ACTIVATION V1 ===
+[PASS] OS environment read capability isolated
+[PASS] token availability only
+[PASS] secret value exposure disabled
+[PASS] Session/network execution disabled
+[PASS] one-shot safety boundaries preserved
+[PASS] core/score/decision/write paths disabled
+=== GATE 28D.2K-2U RUNTIME TOKEN AVAILABILITY ACTIVATION RESULT: PASS ===
+=== GATE 28D.2K-2V - RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY V1 ===
+[PASS] process-environment configuration path fixed
+[PASS] file/source/test secret storage disabled
+[PASS] secret logging/public exposure disabled
+[PASS] gitignore secret-file protections required
+[PASS] Session/network execution remains disabled
+[PASS] core/score/decision/write paths remain disabled
+=== GATE 28D.2K-2V RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY RESULT: PASS ===
+=== GATE 28D.2K-2W - RUNTIME TOKEN CONFIGURATION ACTIVATION V1 ===
+[PASS] process-environment token activation path fixed
+[PASS] secret exposure/logging/persistence disabled
+[PASS] Session/network execution remains disabled
+[PASS] core/score/decision/write paths remain disabled
+=== GATE 28D.2K-2W RUNTIME TOKEN CONFIGURATION ACTIVATION RESULT: PASS ===
+=== GATE 28D.2K-2X - CONTROLLED REAL SESSION CREATION ACTIVATION V1 ===
+[PASS] exactly-one Session creation capability isolated
+[PASS] retry policy remains zero
+[PASS] token/auth persistence disabled
+[PASS] HTTP/GET/network execution disabled
+[PASS] core/score/decision/write paths disabled
+=== GATE 28D.2K-2X CONTROLLED REAL SESSION CREATION ACTIVATION RESULT: PASS ===
+=== GATE 28D.2K-2Y - CONTROLLED REAL REQUEST EXECUTION ACTIVATION BOUNDARY V1 ===
+[PASS] GET-only one-shot request boundary fixed
+[PASS] single stock/date boundary fixed
+[PASS] timeout/retry/redirect boundaries fixed
+[PASS] FinMind host/base URL fixed
+[PASS] token availability required without secret exposure
+[PASS] network/core/score/decision/write execution remains disabled
+=== GATE 28D.2K-2Y CONTROLLED REAL REQUEST EXECUTION ACTIVATION BOUNDARY RESULT: PASS ===
+=== GATE 28D.2K-2Z - REAL INTERNET CROSSING UNIQUE EXECUTION CHAIN FINAL AUDIT V1 ===
+[PASS] unique runtime-to-fetch execution chain fixed
+[PASS] unique Session factory and one-shot guard paths fixed
+[PASS] unique controlled-fetch/backend GET path fixed
+[PASS] token remains transport-boundary only
+[PASS] one-shot stock/date/GET boundaries preserved
+[PASS] network/core/score/decision/write execution remains disabled
+=== GATE 28D.2K-2Z REAL INTERNET CROSSING UNIQUE EXECUTION CHAIN FINAL AUDIT RESULT: PASS ===
+=== GATE 28D.2K-3A - FIRST CONTROLLED REAL GET EXECUTION PLAN V1 ===
+[PASS] first real sample fixed to one stock/date
+[PASS] GET/timeout/retry/redirect boundaries fixed
+[PASS] token availability required without secret exposure
+[PASS] execution remains disabled at planning gate
+[PASS] core/score/decision/write paths remain disabled
+=== GATE 28D.2K-3A FIRST CONTROLLED REAL GET EXECUTION PLAN RESULT: PASS ===
+=== GATE 28D.2K-3B - FIRST CONTROLLED REAL GET EXECUTION GATE V1 ===
+[PASS] unique runtime entry fixed
+[PASS] process environment / minimal token mapping fixed
+[PASS] first real sample fixed to one stock/date
+[PASS] exactly-one execution boundary fixed
+[PASS] second execution denial required
+[PASS] real execution remains disabled at gate contract
+[PASS] core/score/decision/write paths remain disabled
+=== GATE 28D.2K-3B FIRST CONTROLLED REAL GET EXECUTION GATE RESULT: PASS ===
+=== GATE 28D.2K-3C - FIRST CONTROLLED REAL GET EXECUTION EVIDENCE V1 ===
+[PASS] first real GET observed facts recorded
+[PASS] evidence keys recorded without payload replay
+[PASS] second execution not attempted
+[PASS] secret/core/decision/write boundaries preserved
+[PASS] post-crossing repository remained clean
+[PASS] unobserved status/payload details remain unknown
+[PASS] no network replay permitted
+=== GATE 28D.2K-3C FIRST CONTROLLED REAL GET EXECUTION EVIDENCE RESULT: PASS ===
+=== GATE 28D.2K-3D - REAL GET -> GOLDEN EVIDENCE INTEGRATION CONTRACT V1 ===
+[PASS] fake RAW_EVIDENCE accepted
+[PASS] existing FinMind golden builder reused
+[PASS] record count preserved as metadata
+[PASS] payload SHA-256 preserved as metadata
+[PASS] raw payload excluded from golden output
+[PASS] secret/auth fields excluded
+[PASS] network/session/real GET remain disabled
+[PASS] core/score/decision/write remain disabled
+[PASS] invalid evidence fails closed
+=== GATE 28D.2K-3D REAL GET -> GOLDEN EVIDENCE INTEGRATION CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-3E - PROTECTED ONE-SHOT GOLDEN EVIDENCE COMPOSITION CONTRACT V1 ===
+[PASS] first authorization accepted
+[PASS] injected evidence executor called once
+[PASS] sanitized golden evidence returned
+[PASS] raw evidence excluded from public result
+[PASS] secret/token excluded from public result
+[PASS] second authorization denied
+[PASS] executor not called a second time
+[PASS] one-shot boundary preserved
+[PASS] network/session/write remain disabled
+=== GATE 28D.2K-3E PROTECTED ONE-SHOT GOLDEN EVIDENCE COMPOSITION CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-3F - PROTECTED RUNTIME GOLDEN EVIDENCE WIRING CONTRACT V1 ===
+[PASS] protected runtime executor accepted
+[PASS] runtime executor called once
+[PASS] sanitized golden evidence returned
+[PASS] raw evidence excluded from public result
+[PASS] secret/token excluded from public result
+[PASS] second authorization denied
+[PASS] runtime executor not called again
+[PASS] unique execution path preserved
+[PASS] network/session/write remain disabled
+=== GATE 28D.2K-3F PROTECTED RUNTIME GOLDEN EVIDENCE WIRING CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-3G - PROTECTED RUNTIME GOLDEN EVIDENCE ENTRY COMPOSITION CONTRACT V1 ===
+[PASS] protected runtime execution accepted
+[PASS] sanitized golden evidence returned
+[PASS] raw evidence excluded from public result
+[PASS] secret/token excluded from public result
+[PASS] existing runtime one-shot denial preserved
+[PASS] no second successful execution
+[PASS] no additional guard introduced
+[PASS] network/session/write remain disabled
+=== GATE 28D.2K-3G PROTECTED RUNTIME GOLDEN EVIDENCE ENTRY COMPOSITION CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-3H - PROTECTED RUNTIME GOLDEN EVIDENCE FAIL-CLOSED CONTRACT V1 ===
+[PASS] non-callable runtime executor fails closed
+[PASS] invalid runtime result fails closed
+[PASS] runtime denial reason preserved
+[PASS] missing evidence fails closed
+[PASS] empty dataset fails closed
+[PASS] missing params fail closed
+[PASS] invalid params fail closed
+[PASS] multi-day params fail closed
+[PASS] no failure result exposes raw evidence
+[PASS] no failure result exposes secret/auth data
+[PASS] network/session/write remain disabled
+=== GATE 28D.2K-3H PROTECTED RUNTIME GOLDEN EVIDENCE FAIL-CLOSED CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-3I - PROTECTED RUNTIME GOLDEN EVIDENCE EXCEPTION BOUNDARY CONTRACT V1 ===
+[PASS] runtime exception fails closed
+[PASS] stable public failure reason returned
+[PASS] raw exception text excluded
+[PASS] secret/token excluded
+[PASS] raw evidence/golden output excluded
+[PASS] network/session/write remain disabled
+=== GATE 28D.2K-3I PROTECTED RUNTIME GOLDEN EVIDENCE EXCEPTION BOUNDARY CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-3J - GOLDEN EVIDENCE INTEGRATION EXCEPTION BOUNDARY CONTRACT V1 ===
+[PASS] golden builder exception fails closed
+[PASS] stable public failure reason returned
+[PASS] raw exception text excluded
+[PASS] secret/token excluded
+[PASS] raw evidence/golden output excluded
+[PASS] network/session/real GET remain disabled
+[PASS] core/score/decision/write remain disabled
+=== GATE 28D.2K-3J GOLDEN EVIDENCE INTEGRATION EXCEPTION BOUNDARY CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-3K - GOLDEN EVIDENCE SEMANTIC OBSERVER COMPOSITION CONTRACT V1 ===
+[PASS] stock mismatch stops before Golden integration
+[PASS] date mismatch stops before Golden integration
+[PASS] duplicate baseline stops before Golden integration
+[PASS] missing required field stops before Golden integration
+[PASS] semantic observer always precedes Golden integration
+[PASS] existing semantic observer reused
+[PASS] matching baseline evidence accepted
+[PASS] existing 3D golden integration reused
+[PASS] sanitized golden evidence returned
+[PASS] raw/observed evidence excluded
+[PASS] network/session/real GET remain disabled
+[PASS] core/score/decision/write remain disabled
+=== GATE 28D.2K-3K GOLDEN EVIDENCE SEMANTIC OBSERVER COMPOSITION CONTRACT RESULT: PASS ===
+=== GATE 28D.2K-3L - PROTECTED RUNTIME SEMANTIC GOLDEN EVIDENCE COMPOSITION CONTRACT V1 ===
+[PASS] runtime denial stops before semantic composition
+[PASS] protected runtime executor reused
+[PASS] existing semantic composition reused
+[PASS] sanitized golden evidence returned
+[PASS] raw/secret evidence excluded
+[PASS] network/session/real GET remain disabled
+[PASS] core/score/decision/write remain disabled
+=== GATE 28D.2K-3L PROTECTED RUNTIME SEMANTIC GOLDEN EVIDENCE COMPOSITION CONTRACT RESULT: PASS ===
+======================================================================
+DAVID V14 - E2E REGRESSION V1
+======================================================================
+[PASS] Golden Fixture loaded: 200 rows
+[PASS] Golden market_input + fixture loaded
+[PASS] run_core() executed
+[PASS] Risk Wired = True
+[PASS] Action Wired = True
+[PASS] Risk Version = V14_RISK_V1
+[PASS] Risk State = READY
+[PASS] Risk Level = LOW
+[PASS] Action Version = V14_ACTION_V1
+[PASS] Action State = READY
+[PASS] Action Signal = WAIT
+[PASS] Action Reason = NEUTRAL_DECISION
+[PASS] Core Decision = �[��
+======================================================================
+E2E RESULT: PASS
+
+RUNNING: RUNTIME TOKEN AVAILABILITY ACTIVATION V1
+======================================================================
+[PASS] RUNTIME TOKEN AVAILABILITY ACTIVATION V1
+
+======================================================================
+RUNNING: RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY V1
+======================================================================
+[PASS] RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY V1
+
+======================================================================
+RUNNING: RUNTIME TOKEN CONFIGURATION ACTIVATION V1
+======================================================================
+[PASS] RUNTIME TOKEN CONFIGURATION ACTIVATION V1
+
+======================================================================
+RUNNING: CONTROLLED REAL SESSION CREATION ACTIVATION V1
+======================================================================
+[PASS] CONTROLLED REAL SESSION CREATION ACTIVATION V1
+
+======================================================================
+RUNNING: CONTROLLED REAL REQUEST EXECUTION ACTIVATION BOUNDARY V1
+======================================================================
+[PASS] CONTROLLED REAL REQUEST EXECUTION ACTIVATION BOUNDARY V1
+
+======================================================================
+RUNNING: REAL INTERNET CROSSING UNIQUE EXECUTION CHAIN FINAL AUDIT V1
+======================================================================
+[PASS] REAL INTERNET CROSSING UNIQUE EXECUTION CHAIN FINAL AUDIT V1
+
+======================================================================
+RUNNING: FIRST CONTROLLED REAL GET EXECUTION PLAN V1
+======================================================================
+[PASS] FIRST CONTROLLED REAL GET EXECUTION PLAN V1
+
+======================================================================
+RUNNING: FIRST CONTROLLED REAL GET EXECUTION GATE V1
+======================================================================
+[PASS] FIRST CONTROLLED REAL GET EXECUTION GATE V1
+
+======================================================================
+RUNNING: FIRST CONTROLLED REAL GET EXECUTION EVIDENCE V1
+======================================================================
+[PASS] FIRST CONTROLLED REAL GET EXECUTION EVIDENCE V1
+
+======================================================================
+RUNNING: REAL GET -> GOLDEN EVIDENCE INTEGRATION CONTRACT V1
+======================================================================
+[PASS] REAL GET -> GOLDEN EVIDENCE INTEGRATION CONTRACT V1
+
+======================================================================
+RUNNING: PROTECTED ONE-SHOT GOLDEN EVIDENCE COMPOSITION CONTRACT V1
+======================================================================
+[PASS] PROTECTED ONE-SHOT GOLDEN EVIDENCE COMPOSITION CONTRACT V1
+
+======================================================================
+RUNNING: PROTECTED RUNTIME GOLDEN EVIDENCE WIRING CONTRACT V1
+======================================================================
+[PASS] PROTECTED RUNTIME GOLDEN EVIDENCE WIRING CONTRACT V1
+
+======================================================================
+RUNNING: PROTECTED RUNTIME GOLDEN EVIDENCE ENTRY COMPOSITION CONTRACT V1
+======================================================================
+[PASS] PROTECTED RUNTIME GOLDEN EVIDENCE ENTRY COMPOSITION CONTRACT V1
+
+======================================================================
+RUNNING: PROTECTED RUNTIME GOLDEN EVIDENCE FAIL-CLOSED CONTRACT V1
+======================================================================
+[PASS] PROTECTED RUNTIME GOLDEN EVIDENCE FAIL-CLOSED CONTRACT V1
+
+======================================================================
+RUNNING: PROTECTED RUNTIME GOLDEN EVIDENCE EXCEPTION BOUNDARY CONTRACT V1
+======================================================================
+[PASS] PROTECTED RUNTIME GOLDEN EVIDENCE EXCEPTION BOUNDARY CONTRACT V1
+
+======================================================================
+RUNNING: GOLDEN EVIDENCE INTEGRATION EXCEPTION BOUNDARY CONTRACT V1
+======================================================================
+[PASS] GOLDEN EVIDENCE INTEGRATION EXCEPTION BOUNDARY CONTRACT V1
+
+======================================================================
+RUNNING: GOLDEN EVIDENCE SEMANTIC OBSERVER COMPOSITION CONTRACT V1
+======================================================================
+[PASS] GOLDEN EVIDENCE SEMANTIC OBSERVER COMPOSITION CONTRACT V1
+
+======================================================================
+RUNNING: PROTECTED RUNTIME SEMANTIC GOLDEN EVIDENCE COMPOSITION CONTRACT V1
+======================================================================
+[PASS] PROTECTED RUNTIME SEMANTIC GOLDEN EVIDENCE COMPOSITION CONTRACT V1
+
+======================================================================
+RUNNING: E2E - FULL CORE WIRING
+======================================================================
+[PASS] E2E - FULL CORE WIRING
+
+======================================================================
+V14 REGRESSION SUMMARY
+======================================================================
+GATE 3 - CORE BASELINE: PASS
+GATE 4 - RISK ENGINE: PASS
+GATE 5 - ACTION ENGINE: PASS
+ACTION BOUNDARY V1: PASS
+CONTRACT REGISTRY V1: PASS
+GATE 6 - CONSUMER BOUNDARY: PASS
+INTEGRATION PAYLOAD V1: PASS
+STORAGE RECORD V1: PASS
+SUPABASE PERSISTENCE V1: PASS
+RUNTIME PIPELINE V1: PASS
+RUNTIME WRITER V1: PASS
+APP MARKET INPUT ADAPTER V1: PASS
+APP DRY-RUN PIPELINE V1: PASS
+SUPABASE SCHEMA MIGRATION V1: PASS
+SUPABASE WRITER V1: PASS
+APP SHADOW DRY-RUN WIRING V1: PASS
+APP SHADOW WIRING V1: PASS
+NORMALIZED CHIP DATA CONTRACT V1: PASS
+CHIP EVIDENCE CONTRACT V1: PASS
+CHIP SOURCE MAPPING V1: PASS
+CHIP SOURCE ADAPTER V1: PASS
+CHIP SOURCE COMPATIBILITY CONTRACT V1: PASS
+CHIP UNIT EVIDENCE CONTRACT V1: PASS
+LIVE SOURCE READ-ONLY BOUNDARY V1: PASS
+LIVE FETCH SAFETY CONTRACT V1: PASS
+PROVIDER CLIENT SKELETON V1: PASS
+LIVE REQUEST SAFETY CONTRACT V1: PASS
+PROVIDER REQUEST SAFETY INTEGRATION V1: PASS
+READ-ONLY TRANSPORT CONTRACT V1: PASS
+SECRET RUNTIME BOUNDARY V1: PASS
+FINMIND LIVE BACKEND CONTRACT V1: PASS
+LIVE SESSION BOUNDARY V1: PASS
+CONTROLLED LIVE FETCH ORCHESTRATOR V1: PASS
+REAL SESSION FACTORY CONTRACT V1: PASS
+INTERNET CROSSING PREFLIGHT V1: PASS
+FINMIND LIVE REQUEST PARAMETERS CONTRACT V1: PASS
+FINMIND GOLDEN EVIDENCE CONTRACT V1: PASS
+ONE-SHOT LIVE FETCH INTEGRATION CONTRACT V1: PASS
+REAL LIVE ENTRY BOUNDARY CONTRACT V1: PASS
+FINMIND QUERY TOKEN TRANSPORT CONTRACT V1: PASS
+REAL RESPONSE HEADERS MAPPING CONTRACT V1: PASS
+FINMIND MARKET SOURCE MAPPING CONTRACT V1: PASS
+FINMIND MARKET SEMANTIC EVIDENCE CONTRACT V1: PASS
+YAHOO / FINMIND MARKET COMPATIBILITY READINESS CONTRACT V1: PASS
+FINMIND MARKET SOURCE ADAPTER BOUNDARY CONTRACT V1: PASS
+MARKET DATA EVIDENCE COMPARE CONTRACT V1: PASS
+LEGACY YAHOO MARKET SOURCE PROVENANCE CONTRACT V1: PASS
+FINMIND BASELINE EVIDENCE OBSERVATION CONTRACT V1: PASS
+FINMIND BASELINE EVIDENCE OBSERVER V1: PASS
+CONTROLLED REAL SAMPLE ACQUISITION CONTRACT V1: PASS
+CONTROLLED REAL SAMPLE ACQUISITION IMPLEMENTATION V1: PASS
+CONTROLLED REAL SAMPLE ENTRY CONTRACT V1: PASS
+CONTROLLED REAL INTERNET CROSSING EXECUTION CONTRACT V1: PASS
+CONTROLLED REAL INTERNET CROSSING ONE-SHOT ENFORCEMENT V1: PASS
+CONTROLLED REAL INTERNET CROSSING ONE-SHOT INTEGRATION V1: PASS
+CONTROLLED REAL ACQUISITION ADAPTER BOUNDARY V1: PASS
+CONTROLLED REAL ACQUISITION WIRING V1: PASS
+CONTROLLED REAL FETCH COMPOSITION V1: PASS
+CONTROLLED REAL REQUEST VALIDATION INTEGRATION V1: PASS
+CONTROLLED REAL PREFLIGHT INTEGRATION V1: PASS
+CONTROLLED REAL EXECUTION AUTHORIZATION INTEGRATION V1: PASS
+CONTROLLED REAL SESSION FACTORY INTEGRATION V1: PASS
+CONTROLLED RUNTIME ENVIRONMENT INTEGRATION V1: PASS
+CONTROLLED RUNTIME ENTRY INTEGRATION V1: PASS
+FINAL CONTROLLED REAL INTERNET CROSSING READINESS AUDIT V1: PASS
+CONTROLLED REAL INTERNET CROSSING UNIQUE EXECUTION PATH CONTRACT V1: PASS
+CONTROLLED REAL INTERNET CROSSING PRE-EXECUTION DRY-RUN CONTRACT V1: PASS
+CONTROLLED RUNTIME DEPENDENCY ACTIVATION BOUNDARY V1: PASS
+RUNTIME TOKEN AVAILABILITY ACTIVATION V1: PASS
+RUNTIME TOKEN SAFE CONFIGURATION BOUNDARY V1: PASS
+RUNTIME TOKEN CONFIGURATION ACTIVATION V1: PASS
+CONTROLLED REAL SESSION CREATION ACTIVATION V1: PASS
+CONTROLLED REAL REQUEST EXECUTION ACTIVATION BOUNDARY V1: PASS
+REAL INTERNET CROSSING UNIQUE EXECUTION CHAIN FINAL AUDIT V1: PASS
+FIRST CONTROLLED REAL GET EXECUTION PLAN V1: PASS
+FIRST CONTROLLED REAL GET EXECUTION GATE V1: PASS
+FIRST CONTROLLED REAL GET EXECUTION EVIDENCE V1: PASS
+REAL GET -> GOLDEN EVIDENCE INTEGRATION CONTRACT V1: PASS
+PROTECTED ONE-SHOT GOLDEN EVIDENCE COMPOSITION CONTRACT V1: PASS
+PROTECTED RUNTIME GOLDEN EVIDENCE WIRING CONTRACT V1: PASS
+PROTECTED RUNTIME GOLDEN EVIDENCE ENTRY COMPOSITION CONTRACT V1: PASS
+PROTECTED RUNTIME GOLDEN EVIDENCE FAIL-CLOSED CONTRACT V1: PASS
+PROTECTED RUNTIME GOLDEN EVIDENCE EXCEPTION BOUNDARY CONTRACT V1: PASS
+GOLDEN EVIDENCE INTEGRATION EXCEPTION BOUNDARY CONTRACT V1: PASS
+GOLDEN EVIDENCE SEMANTIC OBSERVER COMPOSITION CONTRACT V1: PASS
+PROTECTED RUNTIME SEMANTIC GOLDEN EVIDENCE COMPOSITION CONTRACT V1: PASS
+E2E - FULL CORE WIRING: PASS
+======================================================================
+V14 REGRESSION RESULT: PASS

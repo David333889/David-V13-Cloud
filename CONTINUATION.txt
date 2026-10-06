@@ -46,3 +46,5 @@ TWSE前進依賴官方契約或取得計畫決策；其餘工作可依既有WP t
 2026-10-06觀測品質研究：新增research/wp4_observation_quality.py合成品質wrapper與11項測試；舊RS函数未改。review見docs/V14_OBSERVATION_QUALITY_REVIEW_20261006.txt。正值不等於有公告價，聲明不等於來源已驗證。下一步身分、公司行動因子與as-of證據契約；TWSE readiness仍BLOCKED。最新完整SHA見本次outputs安全節點。
 
 2026-10-06證據契約：docs/V14_WP4_EVIDENCE_CONTRACT_CANDIDATE_20261006.json與docs/V14_EVIDENCE_CONTRACT_REVIEW_20261006.txt定義八類證據；research/wp4_evidence_contract.py只檢查合成metadata，不認證來源。新增13項測試，三組研究合計41項。來源狀態保持PARTIAL，readiness保持BLOCKED。下一步證據收件及完整性審查；完整SHA見最新安全節點JSON。
+
+2026-10-06收件審查：docs/V14_EVIDENCE_INTAKE_REVIEW_20261006.txt；manifest與audit見docs/evidence/V14_EVIDENCE_INTAKE_*_20261006.json。四檔完整性通過，三份時間未知，整體intake_valid=False。新增14項，研究合計55項。下一步真正取得可保存的調整與再投資原始文件，不以更多合成測試提升來源驗收。完整接續SHA見最新安全節點JSON。
