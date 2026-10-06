@@ -1,0 +1,77 @@
+{
+  "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+  "files": [
+    {
+      "path": "docs/evidence/public_reply_20261006/FinMind_Issue_203_comments.json",
+      "sha256": "8e320c71acca01b444f6c45d4dde6e37eb6f83e6206d3f1140f6bf2d4ff9c2a2",
+      "bytes": 4971,
+      "source_url": "https://api.github.com/repos/FinMind/FinMind/issues/203/comments?per_page=100",
+      "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+      "kind": "CONNECTOR_RESPONSE_RECORD",
+      "remote_content_mutable": true,
+      "capture_note": "Saved connector-returned JSON text; not an assertion of original HTTP bytes"
+    },
+    {
+      "path": "docs/evidence/public_reply_20261006/FinMind_Issue_203_issue.json",
+      "sha256": "8edc7dbf99b95f411f9cc077b1019b87ee3c6b8cee16fca889de405ca277ef8a",
+      "bytes": 3893,
+      "source_url": "https://api.github.com/repos/FinMind/FinMind/issues/203",
+      "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+      "kind": "CONNECTOR_RESPONSE_RECORD",
+      "remote_content_mutable": true,
+      "capture_note": "Saved connector-returned JSON text; not an assertion of original HTTP bytes"
+    },
+    {
+      "path": "docs/evidence/public_reply_20261006/FinMind_Issue_231_comments.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "source_url": "https://api.github.com/repos/FinMind/FinMind/issues/231/comments?per_page=100",
+      "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+      "kind": "CONNECTOR_RESPONSE_RECORD",
+      "remote_content_mutable": true,
+      "capture_note": "Saved connector-returned JSON text; not an assertion of original HTTP bytes"
+    },
+    {
+      "path": "docs/evidence/public_reply_20261006/FinMind_Issue_231_issue.json",
+      "sha256": "2af4a70390f41afb7341d1e3c23edeaac828cedf095e9a9c55bd1b6c8c9e2c9a",
+      "bytes": 6604,
+      "source_url": "https://api.github.com/repos/FinMind/FinMind/issues/231",
+      "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+      "kind": "CONNECTOR_RESPONSE_RECORD",
+      "remote_content_mutable": true,
+      "capture_note": "Saved connector-returned JSON text; not an assertion of original HTTP bytes"
+    },
+    {
+      "path": "docs/evidence/public_reply_20261006/FinMind_Issue_355_comments.json",
+      "sha256": "a3323ea7cee0e4f2bca1ba28223c8ef94ace32293d4f0fa7fb6f79e61cec0fef",
+      "bytes": 4977,
+      "source_url": "https://api.github.com/repos/FinMind/FinMind/issues/355/comments?per_page=100",
+      "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+      "kind": "CONNECTOR_RESPONSE_RECORD",
+      "remote_content_mutable": true,
+      "capture_note": "Saved connector-returned JSON text; not an assertion of original HTTP bytes"
+    },
+    {
+      "path": "docs/evidence/public_reply_20261006/FinMind_Issue_355_issue.json",
+      "sha256": "789a5f64280fc249e13ea704ad79e005ad6b8fda46783d654bdce6b51028958b",
+      "bytes": 5969,
+      "source_url": "https://api.github.com/repos/FinMind/FinMind/issues/355",
+      "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+      "kind": "CONNECTOR_RESPONSE_RECORD",
+      "remote_content_mutable": true,
+      "capture_note": "Saved connector-returned JSON text; not an assertion of original HTTP bytes"
+    },
+    {
+      "path": "docs/evidence/public_reply_20261006/FinMind_Issue_69_issue.json",
+      "sha256": "ddd0998b69d9a607ce181dd022cea4e2a04aaeede3c42497330e378c332b66ed",
+      "bytes": 5645,
+      "source_url": "https://api.github.com/repos/FinMind/FinMind/issues/69",
+      "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+      "kind": "CONNECTOR_RESPONSE_RECORD",
+      "remote_content_mutable": true,
+      "capture_note": "Saved connector-returned JSON text; not an assertion of original HTTP bytes"
+    }
+  ],
+  "comment_count_check": "PASS",
+  "market_api_calls": 0
+}

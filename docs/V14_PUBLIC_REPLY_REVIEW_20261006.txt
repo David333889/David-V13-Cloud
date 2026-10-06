@@ -1,0 +1,49 @@
+DAVID V14 官方公開答覆查核與修訂驗收決策
+2026年10月6日 台灣時間
+
+結論
+有界查核取得新的歷史維護者答覆：特定公司行動的還原資料曾被修復，以及2022年還原價API開發完成。它們支持歷史修訂與產品演進的紀錄，不支持現行完整因子公式、再投資等價性或可取回的as-of行情。因此既有12項判定與S01至S03狀態保持不變，正式接入仍BLOCKED。
+完成7份issue/comment連接器回覆內容保存、作者關聯及留言數核對，另建立三項公開答覆判定。本次不增加合成測試，不取得市場資料，不對外留言或寄送。
+
+查核範圍
+官方repo FinMind/FinMind。六組query為還原、股利再投資、TaiwanStockPriceAdj、還原公式、還原再投資及還原end_date，每組topn10。完整閱讀issues 231、355、203、69及前三者目前全部留言。
+相關結果及限制見docs/evidence/public_reply_20261006/search_scope.json。查核非全repo或所有issue的窮盡審查；沒有搜尋命中不代表資訊不存在。搜尋結果的議題本文不自動等同維護者答覆。
+
+公開答覆判定
+R01 歷史修復說明
+issue355，machineCYC，GitHub author_association MEMBER。
+comment3172542922，2025-08-10T10:52:46Z，指明4763已修復、3293仍待處理；comment3200629077，2025-08-19T12:49:45Z，補充3293已修復。
+https://github.com/FinMind/FinMind/issues/355#issuecomment-3172542922
+https://github.com/FinMind/FinMind/issues/355#issuecomment-3200629077
+判定SUPPORTED_HISTORICAL_REPLY，僅支持維護者曾發布修復說明；未獨立取得實際修復行情，未驗證現在全系列正確，也不提供因子公式。
+
+R02 歷史API完成說明
+issue203，linsamtw，author_association COLLABORATOR。
+comment1348486078，2022-12-13T12:48:45Z，說明開發完成並連結技術文件。
+https://github.com/FinMind/FinMind/issues/203#issuecomment-1348486078
+判定SUPPORTED_HISTORICAL_REPLY。議題本文提及當時SDK自行計算，不能套用到本次固定2026 SDK；產品架構與年代須分开記錄。
+
+R03 減資數值參照
+issue231由MEMBER提交數值例子，留言數0，議題已關閉。
+https://github.com/FinMind/FinMind/issues/231
+判定REFERENCE_ONLY。單一事件例子、MEMBER身份及closed狀態，不足以當所有減資情境的正式調整因子契約；不將其公式硬套production。
+issue69僅為歷史新增功能議題，留言數0，不用它證明再投資或歷史版本能力。
+
+保存方式與證據層級
+docs/evidence/public_reply_20261006保存連接器回傳的JSON文字、查核範圍與capture_manifest。固定每份檔案SHA256、來源URL、記錄時間，採-text避免Git換行轉換。
+這些為CONNECTOR_RESPONSE_RECORD，不宣稱原始HTTP bytes或不可變上游commit。Issues與comments可被編輯，comment ID及updated_at連同本次保存雜湊共同定位；記錄時間是保存回覆紀錄的UTC時點，不冒稱remote发布时间。
+7份response核對issue編號、三組comments數量與issue目前宣告數相等；檢查兩個MEMBER修復答覆及一個COLLABORATOR完成答覆的ID與關聯。這些GitHub欄位證據不等於独立身分認證或市場內容驗證。
+三項判定見docs/evidence/V14_PUBLIC_REPLY_CLAIM_REVIEW_20261006.json，与既有12項分开計數，不把歷史修復答覆升格成C06因子公式或C10歷史as-of驗收。
+
+新增修訂後重驗要求
+1 來源修改或公司行動補正後建立新snapshot/revision與取得時間，不覆寫舊原檔或沿用舊雜湊。
+2 原始價、還原價及基準資料各自保留來源版本，透過審查封裝ID明確配對，不推定不同產品原生版號相同。
+3 比較新舊版本影響的日期與觀測窗口；關聯結果與基準證據標示需重驗，不讓舊PASS沿用到新內容。
+4 已修復文字只觸發補正驗收，還需同證券同日實際樣本、公式與版本核對，不能直接解除阻擋。
+5 當時可得性須独立證明；今天修復的历史數值不得冒充修復前當時已可取得。
+以上為驗收規格，沒有宣稱正式修訂偵測或計算結果失效功能已整合。現有本地完整性審查可發現期望雜湊與檔案不符，但不自動分析行情更正範圍。
+
+具體接續與現行限制
+來源澄清草稿仍為可使用且未寄送的狀態，補充請供應商針對上述已修復案例說明因子規則及版本。現有文件與公開答覆未閉合C06、C07、C08、C09、C10與C12；需要新正式說明才能提升。
+程式未改，未重跑既有55項研究測試及完整回歸。專案仍使用同一程式內容，保存層與文件新提交分开說明；不宣告所有來源驗收完成。
+本階段完成本地提交、完整歷史備份驗證、空白目錄復原及7份答覆bytes核對後保存接續點。正式行情、provider切換、Core及資料庫寫入維持未啟用。

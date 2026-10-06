@@ -1,0 +1,62 @@
+{
+  "recorded_at_utc": "2026-10-06 05:29:00 UTC",
+  "queries": [
+    {
+      "query": "repo:FinMind/FinMind 還原",
+      "result_numbers": [
+        453,
+        468,
+        419,
+        424,
+        414,
+        355,
+        344,
+        231,
+        69,
+        127
+      ],
+      "limit": 10
+    },
+    {
+      "query": "repo:FinMind/FinMind 股利 再投資",
+      "result_numbers": [],
+      "limit": 10
+    },
+    {
+      "query": "repo:FinMind/FinMind TaiwanStockPriceAdj",
+      "result_numbers": [
+        414,
+        242,
+        229,
+        203
+      ],
+      "limit": 10
+    },
+    {
+      "query": "repo:FinMind/FinMind 還原 公式",
+      "result_numbers": [
+        453
+      ],
+      "limit": 10
+    },
+    {
+      "query": "repo:FinMind/FinMind 還原 再投資",
+      "result_numbers": [],
+      "limit": 10
+    },
+    {
+      "query": "repo:FinMind/FinMind 還原 end_date",
+      "result_numbers": [
+        414
+      ],
+      "limit": 10
+    }
+  ],
+  "scope": "Bounded issue search; no market API calls; absence of matches is not evidence of absence",
+  "issues_fully_read": [
+    231,
+    355,
+    203,
+    69
+  ]
+}

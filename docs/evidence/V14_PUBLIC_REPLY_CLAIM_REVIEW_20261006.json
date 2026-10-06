@@ -1,0 +1,61 @@
+{
+  "claims": [
+    {
+      "id": "R01",
+      "state": "SUPPORTED_HISTORICAL_REPLY",
+      "claim": "Maintainer recorded repair of specified corporate-action examples",
+      "issue": 355,
+      "comment_ids": [
+        3172542922,
+        3200629077
+      ],
+      "authors": [
+        "machineCYC",
+        "machineCYC"
+      ],
+      "author_associations": [
+        "MEMBER",
+        "MEMBER"
+      ],
+      "updated_at": [
+        "2025-08-10T10:52:46Z",
+        "2025-08-19T12:49:45Z"
+      ],
+      "limits": "Historical maintainer assertion only; actual repaired prices, factor equations and current correctness not independently verified"
+    },
+    {
+      "id": "R02",
+      "state": "SUPPORTED_HISTORICAL_REPLY",
+      "claim": "Collaborator announced adjusted-price API development complete in 2022",
+      "issue": 203,
+      "comment_ids": [
+        1348486078
+      ],
+      "authors": [
+        "linsamtw"
+      ],
+      "author_associations": [
+        "COLLABORATOR"
+      ],
+      "updated_at": [
+        "2022-12-13T12:48:45Z"
+      ],
+      "limits": "Does not establish current semantics, sample readiness or old/new SDK equivalence"
+    },
+    {
+      "id": "R03",
+      "state": "REFERENCE_ONLY",
+      "claim": "Capital-reduction numerical example posted by a repository member",
+      "issue": 231,
+      "comment_ids": [],
+      "limits": "Issue body is not a complete provider factor specification; no comments; closed state does not prove formula acceptance"
+    }
+  ],
+  "existing_12_claim_counts_unchanged": {
+    "supported": 4,
+    "partial": 4,
+    "pending": 4
+  },
+  "source_states": "S01 S02 S03 PARTIAL",
+  "execution_readiness": "BLOCKED"
+}
