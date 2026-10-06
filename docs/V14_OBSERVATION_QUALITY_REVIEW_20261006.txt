@@ -1,0 +1,29 @@
+DAVID V14 觀測品質離線原型與來源缺口審查
+2026年10月6日 台灣時間
+
+結論
+已新增獨立合成資料品質檢查原型compare_quality_checked_candidates，檢查個股與基準的全部觀測，拒絕無公告價、沿用價、未知狀態及原始日期錯配。未接入provider、Core、交易或資料庫。既有compare_candidate_metrics本身不變，直接呼叫舊函數仍不包含新品質檢查；正式整合須另行審查。
+
+官方文件有界查核
+FinMind SDK taiwan_stock_daily_adj取回TaiwanStockPriceAdj，未在所讀函數揭露還原因子計算。技術文件說明回溯調整及部分無公告價日的沿用價；更新公告有歷史資料校正及還原股價同步更新紀錄。
+https://github.com/FinMind/FinMind/blob/master/FinMind/data/data_loader.py
+https://finmind.github.io/tutor/TaiwanMarket/Technical/
+https://finmind.github.io/WhatIsNew/
+所讀範圍：daily_adj函數、Price與PriceAdj段落、還原股價同步更新公告。沒有保存原始網頁，也未固定上游commit；這些屬文件查核紀錄，不是行情RAW_EVIDENCE。
+精確還原因子、再投資等價性及可取回的固定as-of版本仍未取得；不能將查核未找到推定為provider不存在此功能。S01至S03維持PARTIAL，其他來源與接入狀態維持既有登錄。
+
+原型規格與實際限制
+輸入仍須synthetic_only=True，且通過既有日期、窗口、正有限值及調整字串一致性檢查。另要求raw_records與records逐筆對齊日期且筆數相等。
+每筆observation_status只接受OBSERVED；CARRIED、MISSING、UNKNOWN或缺欄位拒絕。raw close為0時拒絕NO_ANNOUNCED_PRICE；非數字、bool、非有限、負數或過大整數拒絕。不得以成交量或相鄰價格相同推定公告價存在或沿用價。
+成功只表示合成輸入通過候選品質檢查，source_verified永遠False；無訊號、排名或market state輸出。OBSERVED是測試輸入聲明，raw_records亦未經認證，不能當來源證明。
+目前未查驗raw與adjusted的經濟對應、因子、證券ID、日曆完整性、metadata或歷史時點；不得宣稱整套來源驗收完成。不同adjustment字串拒絕，同字串仍不證明同口徑。
+不刪列、不填補、不更動輸入，不把穩定且確實觀測到的價格誤判為沿用。
+
+案例與驗證
+新增11項品質測試，涵蓋雙邊無公告價與狀態拒絕、平價可接受、日期錯配、缺漏多餘與逆序raw資料、非法raw值、中間觀測、輸入不變與研究邊界。与既有17項RS研究合計28項，分別記錄，不與87 gate相加。
+最新執行結果與完整回歸原始log位於docs/evidence/V14_OBSERVATION_QUALITY_TEST_LOG_20261006.txt及V14_OBSERVATION_QUALITY_FULL_REGRESSION_20261006.txt。通過數與tested commit由安全節點JSON記錄，測試通過不解除TWSE readiness。
+
+下一工作單元
+建立獨立證據契約：證券與序列身分、raw與adjusted對應、公司行動因子、再投資、觀測來源旗標、as-of與revision、發布時點及日曆。拿到可定位文件後才考慮正式來源驗收；合成案例先驗證拒絕規則，不補造provider公式。
+外部澄清問題沿用S01至S03審查文件A至F，未對外寄送。正式行情取得、provider切換與production write仍未啟用。
+本階段完成本地提交、完整歷史bundle驗證及空白目錄復原核對後保存接續SHA；後續先讀新的安全節點紀錄。
