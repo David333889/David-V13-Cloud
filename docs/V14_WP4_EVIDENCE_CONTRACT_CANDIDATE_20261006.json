@@ -1,0 +1,109 @@
+{
+  "contract_version": "WP4_EVIDENCE_CANDIDATE_V1",
+  "status": "CANDIDATE_NOT_LOCKED",
+  "purpose": "OFFLINE_METADATA_REVIEW_ONLY",
+  "evidence_requirements": {
+    "series_identity": {
+      "required": [
+        "provider",
+        "endpoint",
+        "dataset",
+        "request_id",
+        "raw_identity_field",
+        "raw_identity_value",
+        "official_series_mapping"
+      ],
+      "acceptance": "Exact series and market mapping with source locator; names alone insufficient"
+    },
+    "return_basis": {
+      "required": [
+        "PRICE_or_TOTAL_RETURN",
+        "cash_dividend_treatment",
+        "tax_and_fee_policy",
+        "benchmark_equivalence"
+      ],
+      "acceptance": "Both sides have independently supported matching economic basis"
+    },
+    "corporate_action_factors": {
+      "required": [
+        "event_type",
+        "factor_equation",
+        "numerator_and_denominator",
+        "effective_date",
+        "calculation_order",
+        "rounding_policy",
+        "raw_adjusted_pair"
+      ],
+      "acceptance": "Cover cash and stock dividend, split, capital reduction and par-value change; not inferred from dataset name"
+    },
+    "dividend_reinvestment": {
+      "required": [
+        "reinvestment_date",
+        "reinvestment_price",
+        "tax_policy",
+        "fees",
+        "fractional_share_policy"
+      ],
+      "acceptance": "Explicit reinvestment semantics; PRICE basis requires supported exclusion/nonapplicability"
+    },
+    "observation_provenance": {
+      "required": [
+        "raw_price_reference",
+        "observed_missing_carried_flag",
+        "flag_derivation",
+        "same_security_date"
+      ],
+      "acceptance": "Positive adjusted values alone insufficient; unchanged values alone do not prove carry"
+    },
+    "trading_calendar": {
+      "required": [
+        "market",
+        "effective_calendar_version",
+        "date_grid",
+        "holiday_suspension_policy"
+      ],
+      "acceptance": "All observations match verified required calendar without fill or window shrinking"
+    },
+    "revision_history": {
+      "required": [
+        "as_of",
+        "snapshot_id",
+        "revision_id",
+        "retrieved_at",
+        "immutable_artifact_sha256",
+        "revision_policy"
+      ],
+      "acceptance": "Versioned artifacts and evidence of past availability; declarations are not proof"
+    },
+    "publication_time": {
+      "required": [
+        "published_at",
+        "timezone",
+        "decision_cutoff",
+        "publication_evidence"
+      ],
+      "acceptance": "Declared as_of and published_at no later than decision cutoff, with independent evidence"
+    }
+  },
+  "evidence_record_fields": [
+    "source_url",
+    "artifact_path",
+    "sha256",
+    "retrieved_at_with_timezone",
+    "source_revision",
+    "locator",
+    "supported_claim",
+    "limitations",
+    "reviewer",
+    "reviewed_at",
+    "review_result"
+  ],
+  "automation_limits": [
+    "Checks declared metadata and consistency only",
+    "Does not authenticate references, hashes or statements",
+    "Does not audit factor math, source prices, calendars or licenses",
+    "Never promotes source_verified or live_eligible",
+    "Synthetic fixtures only; not wired into calculation wrapper"
+  ],
+  "next_acceptance": "Independent evidence review, artifact integrity checks, exact-source sample validation and formal execution review remain separate"
+}

@@ -1,0 +1,44 @@
+DAVID V14 公司行動 再投資與歷史時點證據契約
+2026年10月6日 台灣時間
+
+本次成果與判斷
+完成候選證據契約及獨立離線metadata檢查器。以八類證據約束來源身分、比較口徑、公司行動因子、股利再投資、觀測品質、交易日曆、歷史版本與發布時點；來源仍未正式驗收。S01、S02、S03保持PARTIAL，TWSE execution readiness保持BLOCKED。
+本次沒有新增外部來源證據、取得市場資料或使用憑證。公式缺口不能用合成測試替代，沒有推定provider實際還原算法。
+
+契約位置與用途
+候選規格 docs/V14_WP4_EVIDENCE_CONTRACT_CANDIDATE_20261006.json
+離線檢查 research/wp4_evidence_contract.py
+案例 research/test_wp4_evidence_contract.py
+規格與程式皆為候選，不是正式Source Contract lock，也未串入RS計算或production runner。
+
+八類驗收要求
+1 系列身分：provider、精確接口、dataset、請求ID、raw身分欄位及官方序列對照。
+2 報酬口徑：價格或總報酬、股利、稅費處理及兩端可比性，均有獨立依據。
+3 公司行動因子：各事件公式、分子分母、實際生效日、順序、精度，以及同證券同日raw與adjusted的對應證據。
+4 再投資：日期、價格、稅費、零股處理；價格口徑也需有排除再投資或不適用的證據，不能留白。
+5 觀測品質：raw價、公告價存在性、沿用旗標及可重現判定。正值與價格相同均非充分證據。
+6 日曆：市場與版本、所需日期網格、假日及停牌政策，不自行填補或縮短窗口。
+7 歷史版本：as-of、snapshot、revision、取得時點、不可變原檔雜湊及修訂規則。
+8 發布時點：時區、published_at與decision_cutoff、當時可得性佐證。
+各證據記錄應含來源網址、原檔位置、SHA256、取得時間、版本、段落定位、支持內容、限制、審查人及審查結論。雜湊與文件真實性、正確性須分別審閱。
+
+離線檢查的實際行為
+僅接受synthetic_only=True與指定contract_version。八類聲明須為SUPPORTED且有非空references，否則逐項列出問題；PARTIAL、PENDING與CONTRADICTED不能自動提升。
+兩端provider、dataset、series_id、revision_id、snapshot_id須非空。return_basis只允許PRICE或TOTAL_RETURN且兩端一致。
+as_of與published_at須含時區並不晚於decision_cutoff；跨時區依同一瞬間比較。stock的raw_adjusted_pair與其series_id、revision_id及snapshot_id須一致。
+raw_adjusted_pair的revision與snapshot目前是「共同審查封裝版本」，不是要求兩個provider產品有相同原生修訂ID；原生ID對照須另保留於證據。兩端市場資料不必共用同一revision ID。
+metadata_valid=True僅代表這些聲明在形式與部分時間邊界上符合候選檢查。source_verified=False、live_eligible=False、execution_readiness=BLOCKED在所有結果都固定保留。
+檢查器不讀取或認證references、不驗證SHA256、不驗證factor數學、日曆或價格，也不證明聲明的SUPPORTED正確。它不會開放網路、發出訊號或寫入資料庫。
+
+重要時點區別
+published_at為發布時間；as_of為資料可用版本截至時間；retrieved_at為取得時間；decision_cutoff為欲重現的決策時點。日後下載可以協助研究，但不能只靠as_of字串宣稱過去當時可取得。回測仍需不可變歷史快照與獨立發布證據，不能以今日修訂資料冒充當時版本。
+
+驗證範圍
+新增13項契約測試，與既有17項RS及11項觀測品質共41項；測試含缺證據、部分與矛盾狀態、空參照、混配、未来as-of與發布、時區換算、版本错配、非法輸入及輸入不變。
+原始log docs/evidence/V14_EVIDENCE_CONTRACT_RESEARCH_LOG_20261006.txt
+完整回歸log docs/evidence/V14_EVIDENCE_CONTRACT_REGRESSION_LOG_20261006.txt
+測試版本內容與結果由本次安全節點JSON記錄；合成測試和完整回歸分開計數，不代表官方算法已驗證。
+
+接續工作與停止條件
+下一個可獨立推進項目是證據收件及完整性審查：將原檔、SHA256、版本與定位綁定，列出缺漏，並保持來源審查與執行授權分開。精確因子與再投資缺口仍需官方文件或可定位的來源說明；不得自造公式或寄送未授權對外訊息。
+本次先完成提交、完整歷史備份驗證、空白目錄復原及內容核對，隨即保存接續點。正式行情取得、provider切換、Core及資料庫寫入仍未啟用。
