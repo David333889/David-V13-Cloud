@@ -1,0 +1,368 @@
+{
+  "synthetic_only": true,
+  "limitations": "Demonstration only; fixture is not authentic evidence. Metadata binding does not authenticate observations or prove economic equivalence.",
+  "packet": {
+    "synthetic_only": true,
+    "contract": {
+      "synthetic_only": true,
+      "contract_version": "WP4_EVIDENCE_CANDIDATE_V1",
+      "decision_cutoff": "2026-09-01T17:00:00+08:00",
+      "stock": {
+        "provider": "SYNTHETIC",
+        "dataset": "fixture",
+        "series_id": "TEST",
+        "revision_id": "r1",
+        "snapshot_id": "s1",
+        "return_basis": "TOTAL_RETURN",
+        "as_of": "2026-09-01T16:00:00+08:00",
+        "published_at": "2026-09-01T16:00:00+08:00",
+        "raw_adjusted_pair": {
+          "series_id": "TEST",
+          "revision_id": "r1",
+          "snapshot_id": "s1"
+        }
+      },
+      "benchmark": {
+        "provider": "SYNTHETIC",
+        "dataset": "fixture",
+        "series_id": "TEST",
+        "revision_id": "r1",
+        "snapshot_id": "s1",
+        "return_basis": "TOTAL_RETURN",
+        "as_of": "2026-09-01T16:00:00+08:00",
+        "published_at": "2026-09-01T16:00:00+08:00"
+      },
+      "evidence": {
+        "series_identity": {
+          "state": "SUPPORTED",
+          "references": [
+            "proof"
+          ]
+        },
+        "return_basis": {
+          "state": "SUPPORTED",
+          "references": [
+            "proof"
+          ]
+        },
+        "corporate_action_factors": {
+          "state": "SUPPORTED",
+          "references": [
+            "proof"
+          ]
+        },
+        "dividend_reinvestment": {
+          "state": "SUPPORTED",
+          "references": [
+            "proof"
+          ]
+        },
+        "observation_provenance": {
+          "state": "SUPPORTED",
+          "references": [
+            "proof"
+          ]
+        },
+        "trading_calendar": {
+          "state": "SUPPORTED",
+          "references": [
+            "proof"
+          ]
+        },
+        "revision_history": {
+          "state": "SUPPORTED",
+          "references": [
+            "proof"
+          ]
+        },
+        "publication_time": {
+          "state": "SUPPORTED",
+          "references": [
+            "proof"
+          ]
+        }
+      }
+    },
+    "artifacts": [
+      {
+        "artifact_id": "proof",
+        "path": "proof.json",
+        "kind": "REVIEW_RECORD",
+        "source_url": "https://example.test/fixture",
+        "retrieved_at": "2026-09-01T16:00:00+08:00",
+        "sha256": "ffbc2dfc402782325da71132100e74ff511d1585dd80e4ea196ed4bcace3fef2",
+        "bytes": 16,
+        "revision_id": "r1",
+        "claim": "Synthetic declarations",
+        "limitations": "Not source evidence",
+        "locator": {
+          "type": "JSON_POINTER",
+          "value": "/fixture"
+        }
+      }
+    ],
+    "observations": {
+      "stock": {
+        "synthetic_only": true,
+        "adjustment_type": "SYNTHETIC_MATCHED_PRICE_BASIS",
+        "records": [
+          {
+            "trading_date": "2026-09-01",
+            "close": 100,
+            "observation_status": "OBSERVED"
+          },
+          {
+            "trading_date": "2026-09-02",
+            "close": 110,
+            "observation_status": "OBSERVED"
+          }
+        ],
+        "raw_records": [
+          {
+            "trading_date": "2026-09-01",
+            "close": 100
+          },
+          {
+            "trading_date": "2026-09-02",
+            "close": 110
+          }
+        ],
+        "series_metadata": {
+          "provider": "SYNTHETIC",
+          "dataset": "fixture",
+          "series_id": "TEST",
+          "revision_id": "r1",
+          "snapshot_id": "s1",
+          "return_basis": "TOTAL_RETURN",
+          "as_of": "2026-09-01T16:00:00+08:00",
+          "published_at": "2026-09-01T16:00:00+08:00",
+          "raw_adjusted_pair": {
+            "series_id": "TEST",
+            "revision_id": "r1",
+            "snapshot_id": "s1"
+          }
+        }
+      },
+      "benchmark": {
+        "synthetic_only": true,
+        "adjustment_type": "SYNTHETIC_MATCHED_PRICE_BASIS",
+        "records": [
+          {
+            "trading_date": "2026-09-01",
+            "close": 100,
+            "observation_status": "OBSERVED"
+          },
+          {
+            "trading_date": "2026-09-02",
+            "close": 105,
+            "observation_status": "OBSERVED"
+          }
+        ],
+        "raw_records": [
+          {
+            "trading_date": "2026-09-01",
+            "close": 100
+          },
+          {
+            "trading_date": "2026-09-02",
+            "close": 105
+          }
+        ],
+        "series_metadata": {
+          "provider": "SYNTHETIC",
+          "dataset": "fixture",
+          "series_id": "TEST",
+          "revision_id": "r1",
+          "snapshot_id": "s1",
+          "return_basis": "TOTAL_RETURN",
+          "as_of": "2026-09-01T16:00:00+08:00",
+          "published_at": "2026-09-01T16:00:00+08:00"
+        }
+      },
+      "lookback": 1
+    },
+    "revision": {
+      "before": {
+        "synthetic_only": true,
+        "snapshot_id": "s1",
+        "artifacts": [
+          {
+            "artifact_id": "proof",
+            "sha256": "ffbc2dfc402782325da71132100e74ff511d1585dd80e4ea196ed4bcace3fef2",
+            "revision_id": "r1"
+          }
+        ]
+      },
+      "after": {
+        "synthetic_only": true,
+        "snapshot_id": "s1",
+        "artifacts": [
+          {
+            "artifact_id": "proof",
+            "sha256": "ffbc2dfc402782325da71132100e74ff511d1585dd80e4ea196ed4bcace3fef2",
+            "revision_id": "r1"
+          }
+        ]
+      },
+      "windows": [
+        {
+          "window_id": "RS",
+          "artifact_ids": [
+            "proof"
+          ]
+        }
+      ]
+    },
+    "review_window_id": "RS"
+  },
+  "fixture_content": "{\"fixture\":true}",
+  "root_instruction": "Create proof.json with the exact UTF-8 fixture_content bytes in a separate directory; pass that directory as root.",
+  "valid_result": {
+    "candidate_checks_passed": true,
+    "research_only": true,
+    "source_verified": false,
+    "execution_readiness": "BLOCKED",
+    "signal_emitted": false,
+    "ranking_emitted": false,
+    "market_state_emitted": false,
+    "runtime_results_invalidated": false,
+    "layers": {
+      "contract": {
+        "metadata_valid": true,
+        "issues": [],
+        "research_only": true,
+        "source_verified": false,
+        "live_eligible": false,
+        "execution_readiness": "BLOCKED"
+      },
+      "integrity": {
+        "intake_valid": true,
+        "issues": [],
+        "artifacts": [
+          {
+            "integrity_valid": true,
+            "integrity_issues": [],
+            "metadata_issues": [],
+            "source_verified": false,
+            "execution_readiness": "BLOCKED",
+            "artifact_id": "proof",
+            "actual_bytes": 16,
+            "actual_sha256": "ffbc2dfc402782325da71132100e74ff511d1585dd80e4ea196ed4bcace3fef2",
+            "metadata_complete": true,
+            "artifact_kind": "REVIEW_RECORD"
+          }
+        ],
+        "source_verified": false,
+        "execution_readiness": "BLOCKED"
+      },
+      "revision": {
+        "assessment_valid": true,
+        "research_only": true,
+        "source_verified": false,
+        "execution_readiness": "BLOCKED",
+        "artifact_changes": [],
+        "windows_needing_review": [],
+        "unaffected_by_declared_changes": [
+          "RS"
+        ],
+        "runtime_results_invalidated": false,
+        "reason": "CANDIDATE_IMPACT_PLAN_ONLY"
+      },
+      "binding": {
+        "valid": true,
+        "issues": []
+      },
+      "observations": {
+        "allowed": true,
+        "research_only": true,
+        "synthetic_only": true,
+        "spec_status": "CANDIDATE_COMPARISON_ONLY",
+        "lookback_intervals": 1,
+        "start_date": "2026-09-01",
+        "end_date": "2026-09-02",
+        "stock_return": 0.10000000000000009,
+        "benchmark_return": 0.050000000000000044,
+        "return_difference": 0.050000000000000044,
+        "gross_relative_return": 0.04761904761904767,
+        "signal_emitted": false,
+        "ranking_emitted": false,
+        "market_state_emitted": false,
+        "quality_contract": "SYNTHETIC_OBSERVATION_PREFLIGHT_V1",
+        "source_verified": false
+      }
+    },
+    "blocking_layers": [],
+    "metrics": {
+      "stock_return": 0.10000000000000009,
+      "benchmark_return": 0.050000000000000044,
+      "return_difference": 0.050000000000000044,
+      "gross_relative_return": 0.04761904761904767
+    }
+  },
+  "mismatched_revision_result": {
+    "candidate_checks_passed": false,
+    "research_only": true,
+    "source_verified": false,
+    "execution_readiness": "BLOCKED",
+    "signal_emitted": false,
+    "ranking_emitted": false,
+    "market_state_emitted": false,
+    "runtime_results_invalidated": false,
+    "layers": {
+      "contract": {
+        "metadata_valid": true,
+        "issues": [],
+        "research_only": true,
+        "source_verified": false,
+        "live_eligible": false,
+        "execution_readiness": "BLOCKED"
+      },
+      "integrity": {
+        "intake_valid": true,
+        "issues": [],
+        "artifacts": [
+          {
+            "integrity_valid": true,
+            "integrity_issues": [],
+            "metadata_issues": [],
+            "source_verified": false,
+            "execution_readiness": "BLOCKED",
+            "artifact_id": "proof",
+            "actual_bytes": 16,
+            "actual_sha256": "ffbc2dfc402782325da71132100e74ff511d1585dd80e4ea196ed4bcace3fef2",
+            "metadata_complete": true,
+            "artifact_kind": "REVIEW_RECORD"
+          }
+        ],
+        "source_verified": false,
+        "execution_readiness": "BLOCKED"
+      },
+      "revision": {
+        "assessment_valid": true,
+        "research_only": true,
+        "source_verified": false,
+        "execution_readiness": "BLOCKED",
+        "artifact_changes": [],
+        "windows_needing_review": [],
+        "unaffected_by_declared_changes": [
+          "RS"
+        ],
+        "runtime_results_invalidated": false,
+        "reason": "CANDIDATE_IMPACT_PLAN_ONLY"
+      },
+      "binding": {
+        "valid": false,
+        "issues": [
+          "OBSERVATION_IDENTITY_MISMATCH:stock"
+        ]
+      },
+      "observations": {
+        "status": "NOT_RUN_PREREQUISITES_BLOCKED"
+      }
+    },
+    "blocking_layers": [
+      "binding"
+    ],
+    "metrics": null
+  }
+}

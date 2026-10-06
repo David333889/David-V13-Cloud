@@ -56,3 +56,5 @@ TWSE前進依賴官方契約或取得計畫決策；其餘工作可依既有WP t
 2026-10-06公開答覆：docs/V14_PUBLIC_REPLY_REVIEW_20261006.txt；7份reply JSON與manifest保存於docs/evidence/public_reply_20261006，三項新判定見V14_PUBLIC_REPLY_CLAIM_REVIEW_20261006.json。歷史修復與API完成答覆不等於現行因子、再投資或as-of支持；既有12項不變。新增修訂後重驗規格，正式功能未整合。草稿已補充修復案例，未寄送。程式未改，未重跑測試。
 
 2026-10-06修訂影響原型：research/wp4_revision_impact.py與docs/V14_REVISION_IMPACT_REVIEW_20261006.txt。新增12項研究測試，累計67項。候選清單辨識hash、revision、增刪及窗口依賴；不實際撤銷runtime結果。正式來源狀態PARTIAL、readiness BLOCKED。下一步離線審查封裝，分開記錄metadata、完整性、品質與影響；來源缺口仍需新正式證據。
+
+2026-10-06 Review packet: composed offline synthetic checks; research 79 tests, existing 87 gates separate. Source execution remains BLOCKED. See docs/V14_REVIEW_PACKET_REVIEW_20261006.txt.
