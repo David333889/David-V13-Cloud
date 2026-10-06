@@ -1,0 +1,33 @@
+DAVID V14 資料修訂影響與離線重驗清單原型
+2026年10月6日 台灣時間
+
+本次成果
+新增research/wp4_revision_impact.py，將前次修訂後重驗規格轉成獨立合成資料原型。它比較兩份聲明快照的artifact hash與revision，列出需重新審查的依賴窗口。沒有接入市場provider、RS計算wrapper、正式runner或資料庫，不實際撤銷任何正式結果。
+正式因子、再投資及as-of來源缺口仍在；S01至S03保持PARTIAL，execution readiness保持BLOCKED。此工作補強版本治理，不以合成測試提升來源口徑驗收。
+
+輸入契約
+before與after必須明確synthetic_only=True，snapshot_id非空，artifacts非空。每個artifact須唯一artifact_id、64位SHA256及非空revision_id。雜湊大小寫不造成內容差異，未知或缺漏的雜湊與版本拒絕。
+windows須非空，每個window_id唯一且有明確非空artifact_ids；重複或未知依賴拒絕。依賴須出現在兩版聯集中，已刪除的舊依賴仍可識別。
+相同snapshot_id不能承載不同hash或revision的內容，否則IMMUTABLE_SNAPSHOT_ID_REUSED拒絕。新的snapshot_id且內容與版本未變不強制標成資料變更。
+
+變更判定與輸出
+新增artifact為ADDED；移除為REMOVED；hash改變為CONTENT_CHANGED；hash相同但revision_id改變為REVISION_METADATA_CHANGED。
+窗口只要依賴任一變動artifact，即加入windows_needing_review；列明changed_dependencies。未命中者只列unaffected_by_declared_changes，不等於已驗收或來源正確。
+新增依賴沒有歷史驗收，不沿用舊結果。移除依賴也需重驗，不因新快照缺檔而默默忽略。
+assessment_valid只代表合成輸入可形成候選影響清單；source_verified=False、execution_readiness=BLOCKED、runtime_results_invalidated=False。沒有自動授權或狀態寫入。
+
+合成示例
+docs/evidence/V14_REVISION_IMPACT_SYNTHETIC_EXAMPLE_20261006.json保存兩版及結果。stock內容改變時，依賴stock與benchmark的RS窗口需重驗，僅依賴benchmark的窗口不受這次聲明變更影響。所有ID及hash均是假設fixture，不是市場資料或真實文件雜湊。
+
+限制與正式整合前條件
+原型只比較聲明的hash與revision，不讀原檔或認證雜湊；真實檔案完整性仍須使用收件審查並保留原始來源與取得時間。
+沒有分析改了哪些價格日期，依artifact層級保守標示窗口；日後精確日期影響需有版本diff與完整日曆證據。
+依賴清單的完整性仍需獨立審查，沒有命中變動不證明所有依賴都登錄。as-of、發布時點與來源經濟口徑仍由各自契約驗收，不能由未變動hash推導。
+沒有持久化檢查所有歷史snapshot_id，本次只比較輸入的兩份；全歷史不可變性與併發控制需正式儲存機制。
+下一工作單元可建立離線審查封裝，依序串接證據metadata、原檔完整性、觀測品質與修訂影響，輸出各層結果；仍須保持正式來源與執行授權分開。正式來源不足時不產生交易訊號。
+
+測試與保存
+新增12項測試：個股與基準變動、revision-only變動、移除新增、相同內容新快照、重用快照ID、未知重複與空依賴、非法hash及版本、研究範圍、輸入不變。與前17＋11＋13＋14項共67項，與完整回歸分开計數。
+研究log docs/evidence/V14_REVISION_IMPACT_RESEARCH_LOG_20261006.txt
+完整回歸log docs/evidence/V14_REVISION_IMPACT_REGRESSION_LOG_20261006.txt
+最終結果及tested code保存狀態由安全節點JSON記錄。完成本地提交、完整歷史備份驗證及空白目錄復原後立即保存接續點。

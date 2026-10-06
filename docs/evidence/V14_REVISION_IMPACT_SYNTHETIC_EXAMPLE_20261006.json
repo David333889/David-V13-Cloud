@@ -1,0 +1,75 @@
+{
+  "synthetic_only": true,
+  "before": {
+    "synthetic_only": true,
+    "snapshot_id": "s1",
+    "artifacts": [
+      {
+        "artifact_id": "stock",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "revision_id": "r1"
+      },
+      {
+        "artifact_id": "benchmark",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "revision_id": "r1"
+      }
+    ]
+  },
+  "after": {
+    "synthetic_only": true,
+    "snapshot_id": "s2",
+    "artifacts": [
+      {
+        "artifact_id": "stock",
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "revision_id": "r1"
+      },
+      {
+        "artifact_id": "benchmark",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "revision_id": "r1"
+      }
+    ]
+  },
+  "windows": [
+    {
+      "window_id": "RS",
+      "artifact_ids": [
+        "stock",
+        "benchmark"
+      ]
+    },
+    {
+      "window_id": "BENCHMARK",
+      "artifact_ids": [
+        "benchmark"
+      ]
+    }
+  ],
+  "assessment": {
+    "assessment_valid": true,
+    "research_only": true,
+    "source_verified": false,
+    "execution_readiness": "BLOCKED",
+    "artifact_changes": [
+      {
+        "artifact_id": "stock",
+        "change": "CONTENT_CHANGED"
+      }
+    ],
+    "windows_needing_review": [
+      {
+        "window_id": "RS",
+        "changed_dependencies": [
+          "stock"
+        ]
+      }
+    ],
+    "unaffected_by_declared_changes": [
+      "BENCHMARK"
+    ],
+    "runtime_results_invalidated": false,
+    "reason": "CANDIDATE_IMPACT_PLAN_ONLY"
+  }
+}
