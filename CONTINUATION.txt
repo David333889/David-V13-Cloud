@@ -35,3 +35,6 @@ source_verified=False；production_eligible=False；execution_readiness=BLOCKED�
 PriceAdj 專用研究取得模組與持久單次額度已加入 research；9項新測試及完整165項研究測試、87項回歸檢查通過。新提交尚未推送；舊安全標記不代表新HEAD。
 接續優先閱讀 docs/V14_PRICEADJ_ACQUISITION_LOCAL_20261008.txt 與更新後首批計畫。首批計畫V4的文件版本不得重置固定 execution_budget_id。
 所有真實前提預設封鎖；未確認帳號權限及憑證，未發送真實行情請求，未接入正式runtime啟用流程。source_verified=false、production_eligible=false、execution_readiness=BLOCKED。
+
+最新本地認證調整
+PriceAdj研究取得已對齊官方Bearer標頭；查詢網址不含Token。完整165項研究與87項回歸通過，真實取得仍封鎖。新提交尚未推送；接續以HEAD及本地安全標記核對，勿沿用先前99ff263的同步狀態。

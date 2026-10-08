@@ -12,3 +12,7 @@ SNAPSHOT_RECEIPT_RETURNED僅為保存收據；FAILED_OR_UNKNOWN不等於未取�
 source_verified=false、production_eligible=false、execution_readiness=BLOCKED維持不變。C06/C07與C12來源證據仍待完成。
 
 此變更僅本地整合；遠端同步狀態以實際遠端核對為準。不要推論本地HEAD已推送。
+
+官方認證方式對齊（2026-10-08）
+PriceAdj研究取得改用Authorization Bearer標頭，查詢參數只保留四項固定範圍。官方依據：https://finmind.github.io/login/ 及 https://finmind.github.io/tutor/TaiwanMarket/Technical/ 。離線測試核對標頭與網址均符合預期；165項研究與87項既有回歸通過，沒有真實服務驗證。
+此修改未設定或使用真實憑證；帳號有效權限、正式runtime啟用與真實觀測仍封鎖。新增本地提交未推送，不能沿用舊同步狀態。

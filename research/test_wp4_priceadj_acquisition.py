@@ -47,6 +47,8 @@ class AcquisitionTests(unittest.TestCase):
         class Session:
             def get(self,*args,**kwargs):
                 counts['get']+=1
+                if kwargs.get('headers') != {'Authorization': 'Bearer SYNTHETIC_NOT_REAL'} or kwargs['params'] != QUERY:
+                    raise AssertionError('credential must be header-only')
                 if kwargs['allow_redirects'] is not False or kwargs['stream'] is not True:
                     raise AssertionError('unsafe request options')
                 return Response()
@@ -134,7 +136,7 @@ class AcquisitionTests(unittest.TestCase):
         session.close()
         sent=[]
         def send(adapter,request,**kwargs):
-            sent.append(kwargs)
+            sent.append(dict(kwargs, auth_header_matches=request.headers.get('Authorization') == 'Bearer SYNTHETIC_NOT_REAL', token_in_url='token=' in request.url or 'SYNTHETIC_NOT_REAL' in request.url))
             response=requests.Response();response.status_code=302;response.request=request;response.url=request.url
             response._content=b'';response._content_consumed=True
             response.headers['Location']='https://example.test/forbidden'
@@ -144,5 +146,6 @@ class AcquisitionTests(unittest.TestCase):
             self.assertFalse(acquire_once(**opts)['allowed'])
             self.assertEqual(acquire_once(**opts)['reason'],'PLAN_BUDGET_USED')
         self.assertEqual(len(sent),1);self.assertTrue(sent[0]['verify']);self.assertEqual(sent[0]['proxies'],{})
+        self.assertTrue(sent[0]['auth_header_matches']);self.assertFalse(sent[0]['token_in_url'])
 
 if __name__=='__main__':unittest.main()

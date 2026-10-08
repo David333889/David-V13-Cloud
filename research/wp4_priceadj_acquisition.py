@@ -43,7 +43,8 @@ def acquire_once(*, budget_root, snapshot_root, plan_id, query, token=None,
         response = None
         try:
             started = datetime.now(timezone.utc).isoformat()
-            response = session.get(ENDPOINT, params=dict(scope,token=token),
+            response = session.get(ENDPOINT, params=dict(scope),
+                                   headers={"Authorization": "Bearer " + token},
                                    timeout=(5,20),allow_redirects=False,stream=True)
             if type(response.status_code) is not int or response.status_code != 200:
                 raise ValueError('HTTP_SUCCESS_REQUIRED')
