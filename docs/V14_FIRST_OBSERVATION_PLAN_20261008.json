@@ -1,0 +1,46 @@
+{
+  "plan_id": "PRICEADJ_SINGLE_SECURITY_SINGLE_DAY_20261008_V1",
+  "status": "PREPARED_NOT_EXECUTED",
+  "dataset": "TaiwanStockPriceAdj",
+  "query": {
+    "dataset": "TaiwanStockPriceAdj",
+    "data_id": "2330",
+    "start_date": "2026-10-07",
+    "end_date": "2026-10-07"
+  },
+  "source_endpoint": "https://api.finmindtrade.com/api/v4/data",
+  "candidate_date_trading_calendar_verified": false,
+  "membership_access_confirmed": false,
+  "credential_available_in_approved_runtime": false,
+  "max_market_requests": 1,
+  "automatic_retry": false,
+  "max_response_bytes": 2000000,
+  "max_rows": 1,
+  "capture_mode": "LOCAL_OBSERVATION",
+  "network_enabled_by_this_plan": false,
+  "source_verified": false,
+  "production_eligible": false,
+  "execution_readiness": "BLOCKED",
+  "purpose": "First local latest-version observation only; not historical PIT or trading",
+  "preconditions": [
+    "Confirm stock/date candidate and applicable trading calendar",
+    "Confirm PriceAdj access without exposing credentials in chat",
+    "Use approved runtime credential handling and existing one-shot execution gates",
+    "Record actual request start, response completion and HTTP status",
+    "Validate exact scope, provider status, row count, numeric fields and warnings before saving"
+  ],
+  "stop_conditions": [
+    "Missing precondition or runtime execution authorization",
+    "Non-200 HTTP or provider status",
+    "Empty data or more than one observation",
+    "Wrong stock/date, duplicates, invalid fields or response size exceeded",
+    "Unknown timezone or invalid time order",
+    "Unexpected response shape; no automatic retry"
+  ],
+  "limitations": [
+    "Observation times describe present acquisition, not availability on 2026-10-07",
+    "No provider revision or historical publication time will be invented",
+    "Content scope checks do not close C06/C07/C10/C12 evidence gaps",
+    "Price zero warnings require separate review even if raw snapshot is retained"
+  ]
+}

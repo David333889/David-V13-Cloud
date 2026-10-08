@@ -1,0 +1,252 @@
+[
+  {
+    "claim": "C06",
+    "field": "exact_formula",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C06",
+    "field": "numerator_denominator",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C06",
+    "field": "same_day_event_order",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C06",
+    "field": "precision",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C06",
+    "field": "rounding",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C06",
+    "field": "exception_rules",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C07",
+    "field": "cash_dividend_treatment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C07",
+    "field": "reinvestment_date",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C07",
+    "field": "reinvestment_price",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C07",
+    "field": "tax_treatment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C07",
+    "field": "fee_treatment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C07",
+    "field": "fractional_share_treatment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C07",
+    "field": "cash_capital_reduction_treatment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C07",
+    "field": "rights_treatment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C12",
+    "field": "stock_return_basis",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C12",
+    "field": "benchmark_return_basis",
+    "state": "PARTIAL",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C12",
+    "field": "cash_flow_alignment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C12",
+    "field": "event_timing_alignment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C12",
+    "field": "tax_fee_alignment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C12",
+    "field": "fractional_share_alignment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C12",
+    "field": "capital_reduction_alignment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C12",
+    "field": "rights_alignment",
+    "state": "PENDING",
+    "status_basis": "2026-10-07 uploaded report; retained after 2026-10-08 review",
+    "new_acceptance_pass": false
+  },
+  {
+    "claim": "C10",
+    "field": "historical_asof_retrieval",
+    "state": "UNSUPPORTED_REPORTED",
+    "status_basis": "User-supplied FinMind email transcription; sender identity/headers not independently verified",
+    "new_acceptance_pass": false,
+    "previous_state": "PENDING",
+    "response_status": "ANSWERED",
+    "source_file": "docs/evidence/finmind_c10_reply_20261008/user_supplied_transcript.txt",
+    "email_origin_verified": false,
+    "provider_capability_satisfied": false
+  },
+  {
+    "claim": "C10",
+    "field": "immutable_snapshot",
+    "state": "UNSUPPORTED_REPORTED",
+    "status_basis": "User-supplied FinMind email transcription; sender identity/headers not independently verified",
+    "new_acceptance_pass": false,
+    "previous_state": "PENDING",
+    "response_status": "ANSWERED",
+    "source_file": "docs/evidence/finmind_c10_reply_20261008/user_supplied_transcript.txt",
+    "email_origin_verified": false,
+    "provider_capability_satisfied": false
+  },
+  {
+    "claim": "C10",
+    "field": "provider_revision_identity",
+    "state": "UNSUPPORTED_REPORTED",
+    "status_basis": "User-supplied FinMind email transcription; sender identity/headers not independently verified",
+    "new_acceptance_pass": false,
+    "previous_state": "PENDING",
+    "response_status": "ANSWERED",
+    "source_file": "docs/evidence/finmind_c10_reply_20261008/user_supplied_transcript.txt",
+    "email_origin_verified": false,
+    "provider_capability_satisfied": false
+  },
+  {
+    "claim": "C10",
+    "field": "revision_timestamp",
+    "state": "UNSUPPORTED_REPORTED",
+    "status_basis": "User-supplied FinMind email transcription; sender identity/headers not independently verified",
+    "new_acceptance_pass": false,
+    "previous_state": "PENDING",
+    "response_status": "ANSWERED",
+    "source_file": "docs/evidence/finmind_c10_reply_20261008/user_supplied_transcript.txt",
+    "email_origin_verified": false,
+    "provider_capability_satisfied": false
+  },
+  {
+    "claim": "C10",
+    "field": "correction_history",
+    "state": "PARTIAL",
+    "status_basis": "User-supplied FinMind email transcription; sender identity/headers not independently verified",
+    "new_acceptance_pass": false,
+    "previous_state": "PARTIAL",
+    "response_status": "ANSWERED",
+    "source_file": "docs/evidence/finmind_c10_reply_20261008/user_supplied_transcript.txt",
+    "email_origin_verified": false,
+    "provider_capability_satisfied": false
+  },
+  {
+    "claim": "C10",
+    "field": "point_in_time_availability",
+    "state": "UNSUPPORTED_REPORTED",
+    "status_basis": "User-supplied FinMind email transcription; sender identity/headers not independently verified",
+    "new_acceptance_pass": false,
+    "previous_state": "PENDING",
+    "response_status": "ANSWERED",
+    "source_file": "docs/evidence/finmind_c10_reply_20261008/user_supplied_transcript.txt",
+    "email_origin_verified": false,
+    "provider_capability_satisfied": false
+  },
+  {
+    "claim": "C10",
+    "field": "published_at_evidence",
+    "state": "UNSUPPORTED_REPORTED",
+    "status_basis": "User-supplied FinMind email transcription; sender identity/headers not independently verified",
+    "new_acceptance_pass": false,
+    "previous_state": "PENDING",
+    "response_status": "ANSWERED",
+    "source_file": "docs/evidence/finmind_c10_reply_20261008/user_supplied_transcript.txt",
+    "email_origin_verified": false,
+    "provider_capability_satisfied": false
+  },
+  {
+    "claim": "C10",
+    "field": "decision_cutoff_alignment",
+    "state": "UNSUPPORTED_REPORTED",
+    "status_basis": "User-supplied FinMind email transcription; sender identity/headers not independently verified",
+    "new_acceptance_pass": false,
+    "previous_state": "PENDING",
+    "response_status": "ANSWERED",
+    "source_file": "docs/evidence/finmind_c10_reply_20261008/user_supplied_transcript.txt",
+    "email_origin_verified": false,
+    "provider_capability_satisfied": false
+  }
+]

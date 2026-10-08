@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-10-08T09:31:51.517067+08:00",
+  "source_kind": "USER_SUPPLIED_EMAIL_TRANSCRIPTION",
+  "original_email_headers_available": false,
+  "sender_identity_verified": false,
+  "reported_display_time": "2026-10-07 21:37; original timezone not verified",
+  "transcript_sha256": "a9d38db84e92827d9ff03d4c4a4bba81165222270742b2816f955b7c37237bac",
+  "hash_support": "Saved transcription byte identity only; not email authenticity",
+  "capability_decision": "Latest-version service insufficient for strict historical as-of retrieval",
+  "historical_pit_requirement_satisfied": false,
+  "production_eligible": false,
+  "source_verified": false,
+  "execution_readiness": "BLOCKED",
+  "agent_outbound_sent": false,
+  "market_api_called": false,
+  "counts": {
+    "PENDING": 21,
+    "UNSUPPORTED_REPORTED": 7,
+    "PARTIAL": 2
+  }
+}

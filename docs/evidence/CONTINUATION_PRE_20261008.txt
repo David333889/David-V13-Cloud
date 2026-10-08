@@ -1,0 +1,60 @@
+DAVID V14 後續工作專案
+日期 2026-10-05 台灣時間
+
+本副本已作為後續開發位置，承接原版本與已驗證的逾時修補。
+位置 C:\Users\Administrator\Documents\Codex\2026-10-05\new-chat\outputs\DAVID_V14_Active_Project
+工作分支 codex/v14-continuation
+原始基準 a0143836f70d4a981beefbff731c1cd3bc5ccd1f
+程式與審查基準 dca39549d38d065e49cebce5040160ae8953f841
+
+現況
+逾時檢查已拒絕bool及NaN等非法值，原始FinMind主機與30秒上限保持既有契約。
+完整回歸tests/run_all_gates.py已於此副本的相同程式版本執行，87項gate全部通過，包含E2E，exit0。
+原始測試位置為同一任務work中的副本；搬入outputs後Git基準保持相同，僅新增本交接文件與測試證據。
+測試版本與log hash位於docs/evidence/V14_ACTIVE_WORKSPACE_FULL_REGRESSION_RESULTS_20261005.json；原始log同目录留存。
+回歸通過不代表TWSE readiness完成，也不是市場行情取得或DB復原驗證。
+
+接續原則
+後續檔案變更以本目錄為準，原C:\David戰情室\V14_Unified目前沒有套用這些變更。
+每次接續先讀本檔、確認branch/HEAD/status，再查看最新docs及缺口判定。
+本副本未配置remote或沿用原專案憑證，沒有自動push設定。
+後續若需GitHub整合，先核對目標與分支，再決定推送或PR，不將本地保存誤報遠端封存。
+
+TWSE待閉合
+候選/rwd/zh/afterTrading/MI_INDEX只有靜態UI來源，尚未建立精確官方response/date scope/identity契約。
+公開搜尋已完成有界查證但不足；取得確切官方契約或明確修訂取得計畫，才會改變證據狀態。
+Date-only樣本目的不等於OHLC/benchmark資料來源。
+timeout候選5/10/20秒未啟用，正式TWSE transport與取消機制待驗證。
+single-date、classifier及execution readiness仍BLOCKED。不要直接呼叫市場API或production write。
+
+下一步
+本次先完成新工作位置與完整回歸保存。接續時可在本目錄繼續實作，不再受原目錄寫入限制。
+TWSE前進依賴官方契約或取得計畫決策；其餘工作可依既有WP traceability與實際規格獨立安排。
+新Git接續SHA與完整bundle由本次安全節點報告及任務outputs接續紀錄保存。
+
+新增研究節點：R23 兩種相對強弱候選算法完成合成資料比較，16項研究測試通過。
+規格見docs/V14_WP4_RS_CANDIDATE_COMPARISON_20261005.md。公式、來源與門檻未鎖定；不產生交易訊號。
+
+最新研究：比較口徑決策提案見docs/V14_WP4_RS_DECISION_PROPOSAL_20261005.md。補強相對比值下溢拒絕，研究測試17項通過。來源與正式規格仍待證據，不接入交易。
+
+最新接續：docs/V14_WP4_SOURCE_INTAKE_GUIDE_20261005.md及12項來源驗收CSV已建立。3份既有來源快照與hash manifest納入備份。沒有新行情或來源契約；優先補齊S01–S03。
+
+最新：官方指數口徑查核已保存，S02改PARTIAL。網頁檔案日期2026/7/2與PDF修訂April2023分開記錄。實際序列欄位映射與個股調整仍待驗證。
+
+2026-10-06最新：S01至S03審查見docs/V14_S01_S03_BASIS_REVIEW_20261006.txt；最新驗收表為docs/V14_WP4_SOURCE_ACCEPTANCE_REGISTER_20261006.csv。S01、S02、S03均PARTIAL，範圍與缺口見新文件；未選定正式序列，未修改程式。下一步取得精確還原因子、再投資與歷史版本證據，並補沿用價品質規格。新SHA以10月6日安全接續紀錄為準。
+
+2026-10-06觀測品質研究：新增research/wp4_observation_quality.py合成品質wrapper與11項測試；舊RS函数未改。review見docs/V14_OBSERVATION_QUALITY_REVIEW_20261006.txt。正值不等於有公告價，聲明不等於來源已驗證。下一步身分、公司行動因子與as-of證據契約；TWSE readiness仍BLOCKED。最新完整SHA見本次outputs安全節點。
+
+2026-10-06證據契約：docs/V14_WP4_EVIDENCE_CONTRACT_CANDIDATE_20261006.json與docs/V14_EVIDENCE_CONTRACT_REVIEW_20261006.txt定義八類證據；research/wp4_evidence_contract.py只檢查合成metadata，不認證來源。新增13項測試，三組研究合計41項。來源狀態保持PARTIAL，readiness保持BLOCKED。下一步證據收件及完整性審查；完整SHA見最新安全節點JSON。
+
+2026-10-06收件審查：docs/V14_EVIDENCE_INTAKE_REVIEW_20261006.txt；manifest與audit見docs/evidence/V14_EVIDENCE_INTAKE_*_20261006.json。四檔完整性通過，三份時間未知，整體intake_valid=False。新增14項，研究合計55項。下一步真正取得可保存的調整與再投資原始文件，不以更多合成測試提升來源驗收。完整接續SHA見最新安全節點JSON。
+
+2026-10-06原文固定版本：docs/V14_PINNED_SOURCE_CAPTURE_REVIEW_20261006.txt；新capture_manifest與兩份FinMind原始固定commit檔案保存。TWSE Swagger歷史時間找到且hash符合。最新收件6份完整性通過，4份metadata完整，2份旧審查時間未知；intake_valid仍False。最新驗收CSV為V14_WP4_SOURCE_ACCEPTANCE_REGISTER_20261006_PINNED.csv。程式未改，未重跑測試。下一步依固定原文逐項處理精確因子及再投資缺口。
+
+2026-10-06逐項判定：docs/V14_PINNED_CLAIM_DECISION_20261006.txt及docs/evidence/V14_PINNED_CLAIM_REVIEW_20261006.json，12項為4支持4部分4待證據。新增多事件與調整基準範圍澄清；六組草稿見docs/V14_FINMIND_CLARIFICATION_DRAFT_20261006.txt，未寄送。下一實質進展需正式公式、再投資及as-of說明；S01至S03保持PARTIAL，readiness保持BLOCKED。程式未變更，未重跑測試。
+
+2026-10-06公開答覆：docs/V14_PUBLIC_REPLY_REVIEW_20261006.txt；7份reply JSON與manifest保存於docs/evidence/public_reply_20261006，三項新判定見V14_PUBLIC_REPLY_CLAIM_REVIEW_20261006.json。歷史修復與API完成答覆不等於現行因子、再投資或as-of支持；既有12項不變。新增修訂後重驗規格，正式功能未整合。草稿已補充修復案例，未寄送。程式未改，未重跑測試。
+
+2026-10-06修訂影響原型：research/wp4_revision_impact.py與docs/V14_REVISION_IMPACT_REVIEW_20261006.txt。新增12項研究測試，累計67項。候選清單辨識hash、revision、增刪及窗口依賴；不實際撤銷runtime結果。正式來源狀態PARTIAL、readiness BLOCKED。下一步離線審查封裝，分開記錄metadata、完整性、品質與影響；來源缺口仍需新正式證據。
+
+2026-10-06 Review packet: composed offline synthetic checks; research 79 tests, existing 87 gates separate. Source execution remains BLOCKED. See docs/V14_REVIEW_PACKET_REVIEW_20261006.txt.
