@@ -1,0 +1,14 @@
+V14 PriceAdj 研究取得模組：本地整合接續
+
+research/wp4_plan_request_budget.py：可信本機目錄中的固定計畫額度，以排他建檔及檔案同步在取得前消耗一次額度；失敗不重置。
+research/wp4_priceadj_acquisition.py：固定2330、2026-10-07、TaiwanStockPriceAdj範圍；前提預設封鎖；串流限制2,000,000位元組；取得起迄時間、原始位元組驗收及保存；無重新導向。
+research/test_wp4_priceadj_acquisition.py：九項正式離線測試。完整研究165項與既有回歸檢查通過；沒有真實行情或正式用途啟動。
+
+執行額度身分固定 PRICEADJ_2330_20261007_FIRST_OBSERVATION，文件V1～V4不得重置此身分。可信目錄須固定且不可任意清除。跨機器、目錄被替換及斷電持久性未驗證。
+標準連線建立函式設定零重試、trust_env=false及預設TLS驗證。測試攔截傳送動作，不代表真實TLS、網路或帳號權限已驗證。注入的其他連線元件不自動享有此設定。
+SNAPSHOT_RECEIPT_RETURNED僅為保存收據；FAILED_OR_UNKNOWN不等於未取得；NOT_STARTED只描述此次呼叫。結果未知時先離線核對既有快照，不再請求。
+
+市場與2330候選日成交已由官方網頁查閱確認，摘要不是原始HTTP快照或歴史當時版本。PriceAdj權限與核准環境憑證仍未確認。此研究入口尚未連接原受控runtime或CLI的正式啟用流程；不可因函式存在就啟動真實取得。
+source_verified=false、production_eligible=false、execution_readiness=BLOCKED維持不變。C06/C07與C12來源證據仍待完成。
+
+此變更僅本地整合；遠端同步狀態以實際遠端核對為準。不要推論本地HEAD已推送。

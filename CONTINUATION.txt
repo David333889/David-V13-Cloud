@@ -30,3 +30,8 @@ source_verified=False；production_eligible=False；execution_readiness=BLOCKED�
 原2026-10-05副本位置、分支及追加紀錄保存於docs/evidence/CONTINUATION_PRE_20261008.txt，僅供歷史查閱。
 本工程目前已套用10月8日修改；舊檔「原工程沒有套用」文字不再適用目前工程。
 接續先確認HEAD、branch、status，核對最新文件，保留市場請求與生產阻擋，直到必要條件明確。
+
+2026-10-08 最新本地研究整合
+PriceAdj 專用研究取得模組與持久單次額度已加入 research；9項新測試及完整165項研究測試、87項回歸檢查通過。新提交尚未推送；舊安全標記不代表新HEAD。
+接續優先閱讀 docs/V14_PRICEADJ_ACQUISITION_LOCAL_20261008.txt 與更新後首批計畫。首批計畫V4的文件版本不得重置固定 execution_budget_id。
+所有真實前提預設封鎖；未確認帳號權限及憑證，未發送真實行情請求，未接入正式runtime啟用流程。source_verified=false、production_eligible=false、execution_readiness=BLOCKED。

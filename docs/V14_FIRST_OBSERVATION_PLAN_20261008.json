@@ -1,5 +1,5 @@
 {
-  "plan_id": "PRICEADJ_SINGLE_SECURITY_SINGLE_DAY_20261008_V1",
+  "plan_id": "PRICEADJ_SINGLE_SECURITY_SINGLE_DAY_20261008_V4",
   "status": "PREPARED_NOT_EXECUTED",
   "dataset": "TaiwanStockPriceAdj",
   "query": {
@@ -9,7 +9,7 @@
     "end_date": "2026-10-07"
   },
   "source_endpoint": "https://api.finmindtrade.com/api/v4/data",
-  "candidate_date_trading_calendar_verified": false,
+  "candidate_date_trading_calendar_verified": true,
   "membership_access_confirmed": false,
   "credential_available_in_approved_runtime": false,
   "max_market_requests": 1,
@@ -27,7 +27,8 @@
     "Confirm PriceAdj access without exposing credentials in chat",
     "Use approved runtime credential handling and existing one-shot execution gates",
     "Record actual request start, response completion and HTTP status",
-    "Validate exact scope, provider status, row count, numeric fields and warnings before saving"
+    "Validate exact scope, provider status, row count, numeric fields and warnings before saving",
+    "Implement and verify a separately bounded PriceAdj acquisition path before any live request; do not substitute unadjusted TaiwanStockPrice"
   ],
   "stop_conditions": [
     "Missing precondition or runtime execution authorization",
@@ -42,5 +43,17 @@
     "No provider revision or historical publication time will be invented",
     "Content scope checks do not close C06/C07/C10/C12 evidence gaps",
     "Price zero warnings require separate review even if raw snapshot is retained"
-  ]
+  ],
+  "supersedes": "PRICEADJ_SINGLE_SECURITY_SINGLE_DAY_20261008_V3",
+  "acquisition_route_verified": false,
+  "existing_acquisition_dataset": "TaiwanStockPrice",
+  "route_blocker": "Legacy live chain rejects PriceAdj. Dedicated research acquisition module is locally integrated and offline tested; actual runtime activation remains unverified and disabled by default.",
+  "actual_market_session_verified": true,
+  "candidate_security_trading_verified": true,
+  "evidence_record": "DAVID_V14_20261008_官方交易日查證.json",
+  "security_evidence_record": "DAVID_V14_20261008_2330個股交易查證.json",
+  "plan_version_is_not_request_budget_reset": true,
+  "execution_budget_id": "PRICEADJ_2330_20261007_FIRST_OBSERVATION",
+  "research_acquisition_module_available": true,
+  "research_acquisition_validation": "OFFLINE_ONLY"
 }
