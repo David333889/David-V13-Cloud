@@ -176,7 +176,8 @@ def assess_c10_evidence(packet):
     }
 
     result["historical_asof_verified"] = (
-        not historical_issue
+        packet.get("synthetic_only") is True
+        and not historical_issue
         and as_of is not None
         and packet.get("historical_authentication_complete") is True
     )

@@ -121,7 +121,8 @@ def assess_c07_c12_evidence(packet):
     )
 
     result["reinvestment_verified"] = (
-        result["dataset_identity_supported"]
+        packet.get("synthetic_only") is True
+        and result["dataset_identity_supported"]
         and not reinvestment_issue
         and packet.get("reinvestment_authentication_complete") is True
     )

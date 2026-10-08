@@ -65,6 +65,7 @@ def assess_c06_evidence(packet):
 
     if (
         not isinstance(events, list)
+        or any(not isinstance(event, str) for event in events)
         or len(events) != len(set(events))
         or set(events) != set(SUPPORTED_EVENT_TYPES)
     ):
@@ -113,7 +114,8 @@ def assess_c06_evidence(packet):
     )
 
     result["formula_verified"] = (
-        result["framework_supported"]
+        packet.get("synthetic_only") is True
+        and result["framework_supported"]
         and not formula_issue
         and packet.get("formula_authentication_complete") is True
     )
